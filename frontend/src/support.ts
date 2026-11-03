@@ -4,8 +4,11 @@ const STOP = new Set(("the and for are but not you your with that this from have
   "into than then them they their there these those its it's also more most such only each other some any about " +
   "between does use used using how why who all may might could would should our out very just like").split(" "));
 
+/** Crude stemming, so "commonly" meets "common" and "groups" meets "group". */
+const stem = (w: string) => (w.length > 5 ? w.replace(/(ly|ing|ed|es|s)$/, "") : w);
+
 export function words(text: string): Set<string> {
-  return new Set((text.toLowerCase().match(/[a-z][a-z-]{2,}/g) ?? []).filter((w) => !STOP.has(w)));
+  return new Set((text.toLowerCase().match(/[a-z][a-z-]{2,}/g) ?? []).filter((w) => !STOP.has(w)).map(stem));
 }
 
 const sentences = (text: string) => text.split(/(?<=[.!?])\s+|\n+/).filter((s) => s.trim());
@@ -16,12 +19,13 @@ export function statementsCiting(text: string, n: number): string[] {
   return sentences(text).filter((s) => s.includes(`[${n}]`)).map(bare).filter(Boolean);
 }
 
-/** The same sentences for matching; a short one ("It is common [1].") takes the sentence before it as context. */
+/** The same sentences for matching, each with the sentence before it when that one cites nothing itself:
+ *  "A t-test compares two groups. It is the common choice [1]." is one claim. */
 export function claimsCiting(text: string, n: number): string[] {
   const all = sentences(text);
   return all.flatMap((s, i) => {
     if (!s.includes(`[${n}]`)) return [];
-    return words(s).size < 6 && i > 0 ? [bare(all[i - 1]), bare(s)] : [bare(s)];
+    return i > 0 && !/\[\d+\]/.test(all[i - 1]) ? [bare(all[i - 1]), bare(s)] : [bare(s)];
   });
 }
 

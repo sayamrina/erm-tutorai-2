@@ -27,8 +27,13 @@ STOP = set(("the and for are but not you your with that this from have has was w
             "does use used using how why who all may might could would should our out very just like").split())
 
 
+def stem(w: str) -> str:
+    return re.sub(r"(ly|ing|ed|es|s)$", "", w) if len(w) > 5 else w
+
+
 def words(text: str) -> set[str]:
-    return {w for w in re.findall(r"[a-z][a-z-]{2,}", text.lower()) if w not in STOP}
+    """Content words, crudely stemmed; the same rule as frontend/src/support.ts."""
+    return {stem(w) for w in re.findall(r"[a-z][a-z-]{2,}", text.lower()) if w not in STOP}
 
 
 def statements(answer: str) -> list[str]:
@@ -72,8 +77,8 @@ def score(item: dict, res: dict) -> dict:
         nums = [int(n) for n in re.findall(r"\[(\d+)\]", s) if 1 <= int(n) <= len(res["passages"])]
         passage_words = set().union(*(words(res["passages"][n - 1]["text"] + " " + res["passages"][n - 1]["section"]) for n in nums)) if nums else set()
         claim = words(re.sub(r"\[\d+\]", "", s))
-        if len(claim) < 6 and i > 0:  # a short sentence ("It is common [1].") is read with the one before, as in the app
-            claim |= words(re.sub(r"\[\d+\]", "", sts[i - 1]))
+        if i > 0 and not re.search(r"\[\d+\]", sts[i - 1]):  # an uncited sentence before belongs to the claim, as in the app
+            claim |= words(sts[i - 1])
         if len(claim & passage_words) >= 2:
             supported += 1
     cited = res["done"]["cited"] if res["done"] else []
@@ -88,6 +93,7 @@ def score(item: dict, res: dict) -> dict:
         "total_ms": trace.get("timings", {}).get("total_ms"), "first_token_ms": trace.get("timings", {}).get("first_token_ms"),
         "tokens": trace.get("tokens"), "cost_usd": trace.get("cost_usd"),
         "answer": res["text"],
+        "passages": [{k: p[k] for k in ("id", "unit", "page", "section", "text")} for p in res["passages"]],
     }
 
 
