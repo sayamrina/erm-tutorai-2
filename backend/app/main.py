@@ -6,6 +6,7 @@ from collections import defaultdict, deque
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -105,6 +106,8 @@ def sse(events) -> StreamingResponse:
 
 def create_app(tutor: Tutor | None = None) -> FastAPI:
     app = FastAPI(title="ERM Tutor-AI 2", version="2.0.0")
+    # The start page on GitHub Pages polls /api/health while the free server wakes up.
+    app.add_middleware(CORSMiddleware, allow_origins=["https://sayamrina.github.io"], allow_methods=["GET"])
     tutor = tutor or make_tutor()
     limiter = Limiter()
 

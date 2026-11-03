@@ -126,3 +126,8 @@ def test_rating_is_accepted_and_validated(api, tmp_path, monkeypatch):
     assert ok.status_code == 204
     assert '"rating": "up"' in (tmp_path / "ratings.jsonl").read_text()
     assert api.post("/api/rating", json={"rating": "meh", "kind": "answer", "question": "q", "answer": "a"}).status_code == 422
+
+
+def test_health_allows_the_start_page_on_github_pages(demo_api):
+    r = demo_api.get("/api/health", headers={"Origin": "https://sayamrina.github.io"})
+    assert r.headers["access-control-allow-origin"] == "https://sayamrina.github.io"
