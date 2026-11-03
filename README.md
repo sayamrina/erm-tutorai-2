@@ -72,7 +72,7 @@ Version 2 has not been evaluated yet. The thesis evaluated version 1:
 - **Systems:** ERM Tutor-AI vs. ChatGPT-4o (without retrieval) as the baseline.
 - **Raters:** two course instructors, using a 7-point rubric adapted from Lee (2024): accuracy, relevance, excessive or insufficient information, user perception, and tutoring behaviour.
 
-The thesis reports a mean rubric score of **6.75 ± 0.44** for ERM Tutor-AI and **6.00 ± 0.76** for ChatGPT-4o. Re-computed from the raw ratings, per rater:
+Mean rubric score (± SD), re-computed from the raw ratings:
 
 | Rater | ERM Tutor-AI | ChatGPT-4o |
 |---|---|---|
@@ -80,7 +80,9 @@ The thesis reports a mean rubric score of **6.75 ± 0.44** for ERM Tutor-AI and 
 | Instructor 1 (n = 20) | 7.00 ± 0.00 | 5.60 ± 0.50 |
 | Instructor 2 (n = 20) | 5.65 ± 1.04 | 6.40 ± 0.75 |
 
-On average the tutor was rated higher (two-way ANOVA on the raw ratings, system F(1, 76) = 4.44, p = .038), but the two instructors disagreed on which system was better (interaction F(1, 76) = 48.6, p < .001), so the quality result is preliminary. The tutor's answers were shorter (198 vs. 280 words on average) and more consistent in length.
+On average the tutor was rated slightly higher (two-way ANOVA, system F(1, 76) = 4.44, p = .038), but the two instructors disagreed on which system was better (interaction F(1, 76) = 48.6, p < .001), so the quality result is preliminary. The tutor's answers were shorter (198 vs. 280 words on average) and more consistent in length.
+
+These figures were re-checked against the raw ratings after the thesis was submitted and replace the summary table in the thesis (6.75 vs. 6.00).
 
 ![Research notes panel](docs/img/t-notes.jpg)
 
