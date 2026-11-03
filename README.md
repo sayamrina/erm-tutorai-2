@@ -13,7 +13,7 @@ Amrina · Supervisors: Dominik Thüs and Dr. Sarah Malone
 
 ERM Tutor-AI is a virtual assistant for students in the *Empirical Research Methods* (ERM) course. Like version 1, it answers from the course's twelve lecture units with **Retrieval-Augmented Generation (RAG)**, behaves like a tutor rather than a search engine, and declines questions outside the course.
 
-Version 2 keeps the same lecture materials, model and tutor rules and makes the answers easier to check and to learn from: every statement points to the lecture slide it is based on, shown as the slide itself with the supporting lines marked; a practice mode gives feedback on the student's own answers; a "Behind the answer" panel shows what retrieval found, how long each step took and what the answer cost; and an evaluation script measures the tutor on the 20 thesis questions.
+Version 2 keeps the same lecture materials and model, tightens the tutor rules (the slides first, a citation for every sentence, general knowledge only for gaps and marked as such) and makes the answers easier to check and to learn from: every statement points to the lecture slide it is based on, shown as the slide itself with the supporting lines marked; a practice mode gives feedback on the student's own answers; a "Behind the answer" panel shows what retrieval found, how long each step took and what the answer cost; and an evaluation script measures the tutor on the 20 thesis questions.
 
 ![Answer with numbered citations, the syllabus strip and the source panel](docs/img/d-answer.jpg)
 
@@ -32,6 +32,7 @@ The thesis showed that grounding a tutor in the course materials gives shorter, 
 |---|---|---|
 | Sources | Name of one source file under the answer | Numbered citations after each statement, with a preview on hover; each opens the lecture slide as an image (zoomable), its text, and the lines that share the most words with the cited statement |
 | Where an answer comes from | Label "course materials" or "general knowledge" | The same two labels, now derived from whether the answer cites a passage, plus a strip of twelve ticks showing which lecture units the answer used |
+| Tutor rules | Course materials first, general ERM knowledge second | The slides are the source; a citation for every sentence; general knowledge only for gaps, introduced with "Beyond the course slides" and marked in the interface |
 | Course focus | All units | All units, or one chosen unit |
 | Practice | – | The tutor writes a question from a lecture slide, the student answers, the feedback gives a verdict (correct, partly correct, not yet) and cites the slides to review |
 | Follow-up | Written in the answer | Shown separately with a button to answer it; the last two turns are sent along so the tutor can follow the conversation |
@@ -51,7 +52,7 @@ The thesis showed that grounding a tutor in the course materials gives shorter, 
 1. **Indexing** (`backend/app/ingest.py`). The 12 lecture PDFs (unchanged from version 1) are read page by page with pdfminer, the engine Markitdown uses for PDFs, and split into chunks of up to 1,500 characters with 50 characters overlap, as in version 1. Each chunk keeps its unit, page and slide title (`backend/data/chunks.json`, 354 chunks).
 2. **Embeddings.** OpenAI `text-embedding-3-small`, as in the live version 1 app. They are computed once at start-up and cached in `backend/data/embeddings.npy`.
 3. **Retrieval** (`retrieval.py`). Cosine similarity with maximal marginal relevance, 4 passages from 10 candidates, as in version 1; optionally limited to one unit.
-4. **Answering** (`tutor.py`). GPT-4o, temperature 0, with the version 1 tutor prompt: course materials first, general ERM knowledge second, the same refusal sentence for unrelated questions, and reflection, answer and follow-up woven into one reply. New: the passages are numbered and the model cites them as [1], [2]. Answers stream to the browser as server-sent events.
+4. **Answering** (`tutor.py`). GPT-4o, temperature 0. The prompt keeps the version 1 tutor style (reflection, answer and follow-up woven into one reply) and its refusal sentence, but revises the source rules: the numbered course passages are the source, every sentence that uses one ends with its number, and general ERM knowledge is allowed only for what the passages do not cover, introduced with "Beyond the course slides," so the interface can mark it. Answers stream to the browser as server-sent events. Version 1 keeps the original prompt.
 5. **Trace.** With each answer the backend sends what happened behind it: the candidates and scores from retrieval, timings, and the token usage reported by the API, priced at list price (`config.py`).
 6. **Slides** (`slides.py`). At build time every lecture page is rendered to a WebP image with pypdfium2 (395 slides, about 13 MB), so the source panel can show the slide as the student knows it.
 7. **Interface.** React and TypeScript, served by the FastAPI backend. Which lines of a passage support a statement is computed in the browser by word overlap, without a model call.
@@ -73,20 +74,22 @@ Version 2 calls the OpenAI API directly, because streaming and numbered citation
 
 ## Automatic check of version 2
 
-`backend/eval/run_eval.py` asks a running app the 20 evaluation questions of the thesis, each in a fresh conversation, plus three off-topic questions, and measures what can be checked without a human rater. Run on 3 November 2026 against the live app ([full report](backend/eval/results/2026-11-03.md)):
+`backend/eval/run_eval.py` asks a running app the 20 evaluation questions of the thesis, each in a fresh conversation, plus three off-topic questions, and measures what can be checked without a human rater. Both runs on 3 November 2026 against the live app, first with the tutor rules of version 1, then with the revised rules of version 2 ([report v1 rules](backend/eval/results/2026-11-03-v1-prompt.md), [report v2 rules](backend/eval/results/2026-11-03-v2-prompt.md)):
 
-| Check | Result |
-|---|---|
-| Answers based on the course materials | 20 of 20 |
-| Off-topic questions declined | 3 of 3 |
-| A passage from the unit the thesis assigned to the question cited | 18 of 20 |
-| Statements with a citation | 24% |
-| Cited statements sharing at least two content words with the cited slide | 96% |
-| Answer length | 190 ± 53 words |
-| Median time to the full answer | 3.0 s |
-| Cost of the whole run | about $0.10 |
+| Check | Version 1 rules | Version 2 rules |
+|---|---|---|
+| Answers based on the course materials | 20 of 20 | 20 of 20 |
+| …that add general knowledge, marked "Beyond the course slides" | – | 19 of 20 |
+| Off-topic questions declined | 3 of 3 | 3 of 3 |
+| A passage from the unit the thesis assigned to the question cited | 18 of 20 | 18 of 20 |
+| Statements with a citation | 24% | **41%** |
+| Statements neither cited nor marked as general knowledge | 76% | **45%** |
+| Cited statements sharing at least two content words with the cited slide | 96% | 99% |
+| Answer length | 190 ± 53 words | 192 ± 48 words |
+| Median time to the full answer | 3.0 s | 2.8 s |
+| Cost of the whole run | about $0.10 | about $0.12 |
 
-What this shows: the tutor stays in the course and cites slides that match what it says, but it cites only about one statement in four. Its prompt, kept from version 1, allows general research-methods knowledge next to the slides, and the model often cites once per paragraph. Word overlap is a cheap proxy for support, not a judgement of correctness; the two "misses" (Q3, Q4) cited a neighbouring unit that also covers hypotheses and factors.
+What this shows: with the version 1 rules the tutor stayed in the course but cited only about one statement in four, because it mixed slides with general knowledge and often cited once per paragraph. The version 2 rules make the slides the source, ask for a citation per sentence and require general knowledge to be marked; citations rose to 41% and unmarked statements fell from 76% to 45%. Many of the remaining unmarked sentences restate the passage cited in the next sentence or add small steps from general knowledge without the marker, so prompt rules alone do not get every sentence cited. Word overlap is a cheap proxy for support, not a judgement of correctness; the two "misses" (Q3, Q4) cited a neighbouring unit that also covers hypotheses and factors.
 
 ```bash
 cd backend && ../.venv/bin/python -m eval.run_eval --url https://erm-tutorai-2.onrender.com
@@ -119,7 +122,7 @@ These figures were re-checked against the raw ratings after the thesis was submi
 - The evaluation used 20 questions and two raters who were not blind to the system and who disagreed.
 - There was no study with students, so effects on learning and engagement are unknown.
 - The knowledge base is limited to the course materials, and the system was not compared with other architectures.
-- Version 2 has only been checked automatically. About three quarters of its statements carry no citation, and word overlap cannot tell whether a cited slide really supports a statement, so the source panel is there for students to check.
+- Version 2 has only been checked automatically. About 45% of its statements are still neither cited nor marked, and word overlap cannot tell whether a cited slide really supports a statement, so the source panel is there for students to check.
 
 ## Next steps
 

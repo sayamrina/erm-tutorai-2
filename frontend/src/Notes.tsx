@@ -87,7 +87,7 @@ export default function ResearchNotes() {
       <p className="lede">
         ERM Tutor-AI was built and evaluated in a master's thesis in Educational Technology at Saarland
         University (2025), supervised by Dominik Thüs and Dr. Sarah Malone. Version 2 uses the same lecture
-        materials and tutor rules. The findings below are about the first version.
+        materials, with stricter rules for citing them. The findings below are about the first version.
       </p>
 
       <h3>How it was tested</h3>
@@ -135,10 +135,10 @@ export default function ResearchNotes() {
       <h3>Automatic check of version 2</h3>
       <p>
         The 20 thesis questions and three off-topic questions, run against this app on 3 November 2026: all 20
-        answers drew on the course materials and all three off-topic questions were declined. About one statement
-        in four carries a citation, because the tutor mixes the slides with general methods knowledge, as the
-        thesis prompt allows; 96% of cited statements share key words with the slide they cite. Answers had
-        190 words on average. No human rating yet.
+        answers drew on the course materials and all three off-topic questions were declined. With the thesis
+        rules, about one statement in four carried a citation. Version 2 rules make the slides the source, ask for a
+        citation per sentence and mark general knowledge as "Beyond the course slides": cited statements rose to
+        41%, and 99% of them share key words with the slide they cite. No human rating yet.
       </p>
 
       <p className="source-note">

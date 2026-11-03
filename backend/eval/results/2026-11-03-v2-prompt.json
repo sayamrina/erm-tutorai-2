@@ -3,14 +3,15 @@
  "summary": {
   "questions": 20,
   "answers_from_course": 20,
-  "answers_with_marked_general_knowledge": 11,
-  "citation_coverage": 0.294,
-  "lexical_support": 0.967,
+  "answers_with_marked_general_knowledge": 19,
+  "citation_coverage": 0.408,
+  "unmarked_uncited": 0.454,
+  "lexical_support": 0.986,
   "unit_match": 18,
-  "words_mean": 216.6,
-  "words_sd": 55.0,
-  "latency_median_s": 3.38,
-  "cost_total_usd": 0.1115,
+  "words_mean": 192.4,
+  "words_sd": 48.1,
+  "latency_median_s": 2.75,
+  "cost_total_usd": 0.1176,
   "refusals": "3 of 3"
  },
  "questions": [
@@ -18,23 +19,24 @@
    "q": "Q1",
    "question": "What is the Empirical Research method?",
    "unit": 1,
-   "label": "course",
+   "label": "mixed",
    "words": 139,
    "statements": 6,
    "cited_statements": 4,
    "supported_statements": 4,
+   "unmarked_statements": 1,
    "cited_units": [
     1
    ],
    "unit_match": true,
-   "total_ms": 5999,
-   "first_token_ms": 4059,
+   "total_ms": 16113,
+   "first_token_ms": 770,
    "tokens": {
-    "prompt": 859,
-    "completion": 169
+    "prompt": 1058,
+    "completion": 172
    },
-   "cost_usd": 0.00384,
-   "answer": "Great question! Empirical Research Methods (ERM) are all about the systematic collection and analysis of data, which involves observation and evidence [1]. In this course, you'll dive into various aspects of empirical research, such as understanding basic empirical concepts and research philosophy, developing experimental designs, and ensuring the quality of scientific texts [1]. You'll also learn how to design questionnaires and assess their validity and reliability, use SPSS for data preparation, and explore both parametric and non-parametric approaches to data analysis [1]. Additionally, the course covers multi-level analysis, which is crucial for handling complex data structures [1].\n\nIt's a fascinating field because it combines theory with practical skills, allowing you to conduct research that is both rigorous and meaningful. How do you feel about diving into these topics? Is there a particular area you're most excited to learn about?",
+   "cost_usd": 0.00436,
+   "answer": "Great question! Understanding what Empirical Research Methods (ERM) are is a fantastic starting point for your studies. ERM involves the systematic collection and analysis of data, which means gathering observations and evidence in a structured way [1]. In this course, you'll dive into various aspects of empirical research, such as basic empirical concepts, research philosophy, and experiment design [1]. You'll also learn about the quality aspects of scientific texts, designing questionnaires, and ensuring their validity and reliability [1]. Additionally, the course covers using SPSS for data preparation, as well as parametric and non-parametric data analysis approaches, and even multi-level analysis [1].\n\nBeyond the course slides, empirical research methods are essential for ensuring that findings are based on observable and measurable evidence, which helps in making informed conclusions. What aspect of empirical research are you most excited to learn about?",
    "passages": [
     {
      "id": "u01-p002-0",
@@ -71,23 +73,24 @@
    "question": "What quality criteria in research, and why are they important?",
    "unit": 2,
    "label": "mixed",
-   "words": 267,
-   "statements": 15,
-   "cited_statements": 5,
+   "words": 242,
+   "statements": 12,
+   "cited_statements": 4,
    "supported_statements": 3,
+   "unmarked_statements": 6,
    "cited_units": [
     2,
     3
    ],
    "unit_match": true,
-   "total_ms": 4404,
-   "first_token_ms": 909,
+   "total_ms": 3148,
+   "first_token_ms": 782,
    "tokens": {
-    "prompt": 962,
-    "completion": 316
+    "prompt": 1161,
+    "completion": 288
    },
-   "cost_usd": 0.00556,
-   "answer": "That's a great question! Understanding quality criteria in research is crucial because they ensure that the findings are trustworthy and meaningful. The main quality criteria discussed in your course are objectivity, reliability, and validity [2].\n\nObjectivity refers to the extent to which research findings are free from bias. This is important because it ensures that the results are based on the data and not influenced by the researcher's personal beliefs or expectations [2]. Techniques like blind and double-blind experimental designs help maintain objectivity by preventing biases. In a blind study, the participant doesn't know which condition they are in, while in a double-blind study, neither the participant nor the experimenter knows the condition, further reducing bias [3].\n\nReliability is about the consistency of the measurement. If a study is reliable, it means that repeating the study under the same conditions would yield the same results. This consistency is vital for the credibility of the research findings [2].\n\nValidity, on the other hand, is about measuring what you truly intend to measure. Even if data is objective and reliable, it may not be valid if it doesn't accurately reflect the underlying construct. For example, if you're measuring length in centimeters, your ruler must be calibrated in centimeters, not inches. This ensures that the measurement is accurate and meaningful [1][4].\n\nBeyond the course slides, these criteria are important because they collectively ensure that research findings can be trusted and applied in real-world settings. They help researchers build a solid foundation for scientific knowledge.\n\nHow do you think these criteria might affect the way you design your own research studies?",
+   "cost_usd": 0.00578,
+   "answer": "Great question! Understanding quality criteria is crucial for conducting solid research. In your course, three main quality criteria are highlighted: objectivity, reliability, and validity [2]. \n\nObjectivity ensures that the research findings are not influenced by the researcher's personal biases or expectations. This is often achieved through methods like blind or double-blind experimental designs, where either the participant or both the participant and the experimenter are unaware of the conditions to which participants are assigned, thus preventing biases [3].\n\nReliability refers to the consistency of a measure. If you were to repeat the study or measurement under the same conditions, you should get similar results each time. This consistency is key to ensuring that the findings are dependable and not just a one-time occurrence [2].\n\nValidity, on the other hand, is about measuring what you truly intend to measure. Even if your data is objective and reliable, it might not be valid if it doesn't accurately reflect the construct you're interested in. For example, if you're using a ruler to measure length, it must be calibrated correctly and in the right units (e.g., centimeters if you're measuring in centimeters) to ensure validity [1][4].\n\nBeyond the course slides, these criteria are important because they help ensure that research findings are credible and can be trusted by others in the field. They form the foundation for building knowledge that others can build upon. What aspect of these criteria do you find most challenging or interesting?",
    "passages": [
     {
      "id": "u02-p017-0",
@@ -123,23 +126,24 @@
    "q": "Q3",
    "question": "What do the terms null hypothesis and alternative hypothesis (H0 and H1) mean?",
    "unit": 3,
-   "label": "course",
-   "words": 216,
-   "statements": 9,
-   "cited_statements": 1,
-   "supported_statements": 1,
+   "label": "mixed",
+   "words": 192,
+   "statements": 7,
+   "cited_statements": 4,
+   "supported_statements": 4,
+   "unmarked_statements": 2,
    "cited_units": [
     6
    ],
    "unit_match": false,
-   "total_ms": 3375,
-   "first_token_ms": 921,
+   "total_ms": 2471,
+   "first_token_ms": 513,
    "tokens": {
-    "prompt": 1073,
-    "completion": 255
+    "prompt": 1272,
+    "completion": 224
    },
-   "cost_usd": 0.00523,
-   "answer": "Great question! Understanding the null and alternative hypotheses is fundamental to grasping how statistical testing works. In the context of hypothesis testing, the null hypothesis, often denoted as H0, is a statement that there is no effect or no difference, and it serves as the default or starting assumption. For example, if you're testing whether a new drug is effective, the null hypothesis would state that the drug has no effect compared to a placebo.\n\nOn the other hand, the alternative hypothesis, denoted as H1, is what you might consider the \"research hypothesis.\" It suggests that there is an effect or a difference. Continuing with the drug example, the alternative hypothesis would claim that the drug does have an effect.\n\nWhen you conduct a statistical test, you're essentially trying to determine whether the evidence in your data is strong enough to reject the null hypothesis in favor of the alternative hypothesis. A p-value helps in this decision-making process by indicating the probability that the observed data would occur if the null hypothesis were true. A small p-value (typically ≤ 0.05 in social sciences) suggests strong evidence against the null hypothesis, leading researchers to reject it and accept the alternative hypothesis [2].\n\nDoes this help clarify things? What specific hypothesis are you working with in your research?",
+   "cost_usd": 0.00542,
+   "answer": "Great question! Understanding the null and alternative hypotheses is fundamental to hypothesis testing. The null hypothesis, often denoted as H0, is a statement that there is no effect or no difference, and it serves as the default or starting assumption in statistical testing [2]. When we conduct a test, we are essentially trying to find evidence against this null hypothesis. If the evidence is strong enough, we reject the null hypothesis in favor of the alternative hypothesis, denoted as H1, which suggests that there is an effect or a difference [2].\n\nIn the context of p-values, a small p-value indicates strong evidence against the null hypothesis, leading us to reject it and accept the alternative hypothesis [2]. However, it's important to remember that rejecting the null hypothesis doesn't mean the alternative hypothesis is true with certainty; it just means the data provides enough evidence to favor it over the null [2].\n\nBeyond the course slides, the alternative hypothesis is often what researchers hope to support, as it represents the presence of an effect or relationship they are investigating. What kind of hypotheses are you working with in your current research or studies?",
    "passages": [
     {
      "id": "u03-p003-0",
@@ -175,23 +179,24 @@
    "q": "Q4",
    "question": "What is a factor, and what is the difference to a factor level? Give one example each.",
    "unit": 3,
-   "label": "course",
+   "label": "mixed",
    "words": 168,
    "statements": 8,
    "cited_statements": 2,
    "supported_statements": 2,
+   "unmarked_statements": 5,
    "cited_units": [
     7
    ],
    "unit_match": false,
-   "total_ms": 2874,
-   "first_token_ms": 719,
+   "total_ms": 2384,
+   "first_token_ms": 542,
    "tokens": {
-    "prompt": 1137,
-    "completion": 203
+    "prompt": 1336,
+    "completion": 202
    },
-   "cost_usd": 0.00487,
-   "answer": "Great question! Understanding the difference between a factor and a factor level is crucial for designing and interpreting experiments.\n\nIn the context of empirical research methods, a factor is essentially another term for an independent variable (IV). It's the variable that you manipulate in your experiment to observe its effect on the dependent variable (DV) [1]. For example, if you're studying the effect of different types of music on concentration, \"type of music\" would be your factor.\n\nOn the other hand, factor levels are the specific values or categories within that factor. If your factor is \"type of music,\" the levels could be \"classical,\" \"jazz,\" and \"no music\" [1]. Each level represents a different condition or category within the factor that you are testing.\n\nSo, to sum it up, the factor is the overarching category or variable you're interested in, while the levels are the specific conditions or categories within that factor. Does that make sense? What factor and levels are you considering for your own research project?",
+   "cost_usd": 0.00536,
+   "answer": "Great question! Understanding factors and their levels is key to designing and interpreting experiments. In the context of empirical research, a factor is essentially the independent variable (IV) in your study. It's the variable that you manipulate to observe its effect on the dependent variable (DV) [1]. For example, if you're studying the effect of different teaching methods on student performance, the teaching method would be your factor.\n\nNow, within each factor, there are levels, which are the possible values or categories that the factor can take. If your factor is a category, then a level is a sub-category within that factor [1]. Continuing with the teaching methods example, if you have three different methods you're testing—say, traditional, online, and hybrid—each of these methods would be a level of the teaching method factor.\n\nBeyond the course slides, think of factors as the broad categories you're interested in, and levels as the specific conditions or groups within those categories. What factors are you considering for your current research project?",
    "passages": [
     {
      "id": "u07-p046-0",
@@ -227,23 +232,24 @@
    "q": "Q5",
    "question": "What are the differences between a speed test and a power test? Name at least one example of a reasonable usage for each of them.",
    "unit": 4,
-   "label": "course",
-   "words": 179,
-   "statements": 9,
+   "label": "mixed",
+   "words": 161,
+   "statements": 6,
    "cited_statements": 2,
    "supported_statements": 2,
+   "unmarked_statements": 3,
    "cited_units": [
     4
    ],
    "unit_match": true,
-   "total_ms": 3392,
-   "first_token_ms": 817,
+   "total_ms": 1960,
+   "first_token_ms": 516,
    "tokens": {
-    "prompt": 1172,
-    "completion": 202
+    "prompt": 1371,
+    "completion": 180
    },
-   "cost_usd": 0.00495,
-   "answer": "Great question! Understanding the differences between speed tests and power tests can really help clarify how they're used in various contexts. \n\nA speed test is designed to see how many questions can be answered within a given time frame. These tests typically contain a large number of simple items that are limited in scope, and the methods to answer them are clear. They're often used in selection processes at the administrative and clerical level, where the ability to quickly process straightforward information is important [1].\n\nOn the other hand, a power test focuses on how well each complex question can be answered within the allotted time. These tests contain a smaller set of complex items with practically unlimited scope, and the methods to answer them are not obvious. Power tests are more suitable for selection processes at the graduate, professional, or managerial level, where the ability to tackle complex problems is crucial [1].\n\nDoes this help clarify the differences for you? If you have more questions about how these tests are applied in real-world scenarios, feel free to ask!",
+   "cost_usd": 0.00523,
+   "answer": "Understanding the differences between speed tests and power tests is a great step in grasping how standardized questionnaires can be tailored for different purposes. A speed test is designed to see how many questions a person can answer within a set time limit. It typically contains many simple items with clear methods for answering, making it suitable for selection processes at the administrative and clerical level [1]. On the other hand, a power test focuses on how well a person can answer complex questions within the allotted time. It includes a smaller set of complex items where the methods to answer are not obvious, making it more appropriate for selection processes at the graduate, professional, or managerial level [1].\n\nBeyond the course slides, speed tests might be used in situations where quick decision-making is crucial, while power tests could be used in scenarios requiring deep analytical skills. Are you considering using one of these tests for a specific project or study?",
    "passages": [
     {
      "id": "u04-p014-0",
@@ -280,22 +286,23 @@
    "question": "What are the advantages and disadvantages of standardized questionnaires vs. unstructured interviews? When would you use which way of gathering data?",
    "unit": 4,
    "label": "mixed",
-   "words": 306,
-   "statements": 13,
-   "cited_statements": 1,
-   "supported_statements": 1,
+   "words": 212,
+   "statements": 9,
+   "cited_statements": 2,
+   "supported_statements": 2,
+   "unmarked_statements": 5,
    "cited_units": [
     4
    ],
    "unit_match": true,
-   "total_ms": 4052,
-   "first_token_ms": 849,
+   "total_ms": 2719,
+   "first_token_ms": 730,
    "tokens": {
-    "prompt": 1179,
-    "completion": 343
+    "prompt": 1378,
+    "completion": 240
    },
-   "cost_usd": 0.00638,
-   "answer": "That's a great question! Understanding the differences between standardized questionnaires and unstructured interviews can really help you decide which method to use for your research.\n\nStandardized questionnaires are structured tools that consist of a written set of questions that respondents complete, often used for research purposes [4]. One of the main advantages of standardized questionnaires is that they provide a consistent way to collect data, which can make it easier to compare responses across different participants. This consistency can be particularly useful when you need to gather data from a large number of people efficiently. However, one potential disadvantage is that they might not capture the depth of information that unstructured interviews can, as they are limited to the questions asked and may not allow for exploration of unexpected topics.\n\nOn the other hand, unstructured interviews are more flexible and allow for a deeper exploration of a participant's thoughts and feelings. They can adapt to the flow of conversation, which can lead to richer, more detailed data. However, this flexibility can also be a disadvantage, as it may lead to inconsistencies in the data collected, making it harder to compare responses across different participants.\n\nBeyond the course slides, you might choose standardized questionnaires when you need to collect data from a large sample size and require consistency and comparability in responses. Unstructured interviews are often more suitable when you want to explore complex issues in depth and are less concerned with comparing responses across a large group.\n\nWhen deciding which method to use, consider the nature of your research question and the type of data you need. Are you looking for broad patterns or detailed insights? This will guide your choice between these two methods. What kind of research are you planning to conduct, and how do you think these methods might fit into your study?",
+   "cost_usd": 0.00585,
+   "answer": "That's a thoughtful question! Understanding when to use standardized questionnaires versus unstructured interviews is crucial for effective research design. Let's dive into what the course slides offer.\n\nStandardized questionnaires are structured tools that consist of a written set of questions completed by respondents, often used for research purposes [4]. They are efficient for collecting data from a large number of people and allow for objective comparisons across respondents [2]. However, the slides don't explicitly mention disadvantages, but one could infer that their structured nature might limit the depth of responses and the ability to explore unexpected topics.\n\nOn the other hand, unstructured interviews are not covered in the passages, but they generally allow for more in-depth exploration of a topic, as they are flexible and can adapt to the flow of conversation. This can lead to richer, more detailed data but might be more time-consuming and harder to analyze due to the variability in responses.\n\nBeyond the course slides, standardized questionnaires are often used when you need to gather data from a large sample and require consistency in responses for statistical analysis. Unstructured interviews are more suitable when exploring new areas where you want to understand participants' perspectives in depth. What kind of data are you looking to collect for your research?",
    "passages": [
     {
      "id": "u04-p021-0",
@@ -331,23 +338,24 @@
    "q": "Q7",
    "question": "What is the difference between the data view and the variable view in SPSS? When do you use which?",
    "unit": 5,
-   "label": "course",
-   "words": 236,
-   "statements": 11,
-   "cited_statements": 4,
-   "supported_statements": 4,
+   "label": "mixed",
+   "words": 246,
+   "statements": 12,
+   "cited_statements": 6,
+   "supported_statements": 6,
+   "unmarked_statements": 5,
    "cited_units": [
     5
    ],
    "unit_match": true,
-   "total_ms": 3394,
-   "first_token_ms": 687,
+   "total_ms": 2917,
+   "first_token_ms": 685,
    "tokens": {
-    "prompt": 941,
-    "completion": 277
+    "prompt": 1140,
+    "completion": 288
    },
-   "cost_usd": 0.00512,
-   "answer": "Great question! Understanding the difference between Data View and Variable View in SPSS is crucial for effectively managing and analyzing your data. \n\nIn SPSS, the Data Editor window is the default window where you can see your data in a spreadsheet format. This window contains two views: Data View and Variable View [4]. In Data View, columns represent variables, and rows represent cases. This is where you actually see the data values for each case and variable, making it the place to go when you want to enter or examine the raw data itself [4].\n\nOn the other hand, Variable View is where you see information about the variables themselves, not the data. Here, you can define and modify the properties of each variable, such as the variable name, type, width, decimals, columns, alignment, measure, and role [1][4]. This view is essential when you need to set up your variables correctly before performing any analysis, as these settings can affect everything from how graphs are displayed to how statistical analyses are conducted [1].\n\nYou would typically use Data View when you need to input or review the actual data values. Variable View is used when you need to define or adjust the characteristics of your variables, such as when you're setting up your dataset or preparing it for analysis.\n\nDoes this help clarify things? What kind of data are you planning to work with in SPSS?",
+   "cost_usd": 0.00573,
+   "answer": "Great question! Understanding the difference between Data View and Variable View in SPSS is crucial for managing your data effectively. In SPSS, the Data Editor window is the default window where you can see your data in a spreadsheet format [4]. This window has two views: Data View and Variable View [4].\n\nIn Data View, columns represent variables, and rows represent cases [4]. This is where you enter and view the actual data values for each case. It's similar to a spreadsheet where you can see all your data laid out.\n\nOn the other hand, Variable View shows information about the variables themselves, not the data [4]. Here, you can define and modify the properties of each variable, such as the variable name, type, width, decimals, columns, alignment, measure, and role [1]. This view is essential for setting up your data correctly before analysis, as it affects everything from graphs to the internal algorithms used for statistical analysis [1].\n\nYou would typically use Data View when you need to enter or examine the data itself. Variable View is used when you need to define or adjust the properties of your variables, ensuring they are set up correctly for your analysis.\n\nBeyond the course slides, think of Data View as the place to handle your raw data, while Variable View is where you set the rules and characteristics for how that data is interpreted and analyzed. Are you currently working on setting up a dataset in SPSS?",
    "passages": [
     {
      "id": "u05-p022-0",
@@ -384,22 +392,23 @@
    "question": "Why is it important to define the variables in SPSS?",
    "unit": 5,
    "label": "mixed",
-   "words": 194,
-   "statements": 9,
-   "cited_statements": 2,
-   "supported_statements": 2,
+   "words": 144,
+   "statements": 7,
+   "cited_statements": 3,
+   "supported_statements": 3,
+   "unmarked_statements": 2,
    "cited_units": [
     5
    ],
    "unit_match": true,
-   "total_ms": 2738,
-   "first_token_ms": 735,
+   "total_ms": 2000,
+   "first_token_ms": 607,
    "tokens": {
-    "prompt": 825,
-    "completion": 226
+    "prompt": 1024,
+    "completion": 169
    },
-   "cost_usd": 0.00432,
-   "answer": "Great question! Defining variables in SPSS is a crucial step in preparing your data for analysis. When you define variables properly, it ensures that your data is organized and interpretable, which is essential for accurate analysis. In SPSS, each variable must have a unique name, and there are specific rules for naming them, such as keeping them up to 64 characters long and avoiding spaces [3]. This helps maintain clarity and prevents errors during data manipulation and analysis.\n\nAdditionally, defining variables allows you to assign value labels, which can make your data more understandable. For example, instead of just seeing numbers in your dataset, you can assign labels to those numbers to represent categories or groups, making your output more readable and meaningful [4]. This is particularly helpful when you're dealing with large datasets or when presenting your findings to others who may not be familiar with the raw data.\n\nBeyond the course slides, defining variables also helps in maintaining consistency across different datasets and analyses, which is important for replicability and reliability in research.\n\nHave you had a chance to work with variable definitions in SPSS yet? How did you find the process?",
+   "cost_usd": 0.00425,
+   "answer": "Defining variables in SPSS is a crucial step in your data analysis journey. It ensures that your data is organized and interpretable, which is essential for accurate analysis. Each variable name in SPSS must be unique and can be up to 64 characters long, allowing you to clearly identify and differentiate between different data points [3]. By following best practices for naming variables, such as avoiding spaces and using alphanumeric characters, you maintain clarity and prevent errors during analysis [3]. Additionally, using labels can make your output more readable, which is particularly helpful when dealing with large datasets [3].\n\nBeyond the course slides, defining variables properly also helps in maintaining consistency and accuracy throughout your research process. It minimizes the risk of errors and makes it easier to communicate your findings to others. What kind of data are you planning to analyze with SPSS?",
    "passages": [
     {
      "id": "u05-p025-0",
@@ -436,22 +445,23 @@
    "question": "What are the differences between mean, mode, and median?",
    "unit": 6,
    "label": "mixed",
-   "words": 253,
+   "words": 226,
    "statements": 13,
    "cited_statements": 2,
    "supported_statements": 2,
+   "unmarked_statements": 10,
    "cited_units": [
     6
    ],
    "unit_match": true,
-   "total_ms": 3876,
-   "first_token_ms": 672,
+   "total_ms": 2697,
+   "first_token_ms": 868,
    "tokens": {
-    "prompt": 972,
-    "completion": 294
+    "prompt": 1171,
+    "completion": 258
    },
-   "cost_usd": 0.00537,
-   "answer": "Great question! Understanding the differences between mean, mode, and median is fundamental in statistics, and it's wonderful that you're diving into this.\n\nThe **mode** is the value that appears most frequently in a dataset. It's particularly useful for nominal and ordinal scale data, where you might be interested in the most common category or score. Interestingly, a dataset can have more than one mode, which is referred to as bimodal or multimodal if there are two or more modes, respectively [1].\n\nThe **median** is the midpoint of a dataset. To find it, you first order all the values from lowest to highest. If there's an odd number of values, the median is the middle one. If there's an even number, you take the average of the two middle values. The median is a better representative of a sample when there are extreme scores because it is not sensitive to those extremes [2].\n\nBeyond the course slides, the **mean** is the arithmetic average of a dataset. You calculate it by adding up all the values and then dividing by the number of values. The mean is sensitive to extreme values, which can skew the average, making it less representative of the dataset if there are outliers.\n\nEach measure of central tendency provides different insights, and the choice between them depends on the nature of your data and what you want to understand from it. Do you have a specific dataset in mind that you're working with, or are you just exploring these concepts generally?",
+   "cost_usd": 0.00551,
+   "answer": "Great question! Understanding the differences between mean, mode, and median is key to grasping how data can be summarized.\n\nThe mean is what most people think of as the average. You calculate it by adding up all the values in your dataset and then dividing by the number of values. It's a useful measure but can be sensitive to extreme values, which might skew the average.\n\nThe mode is the value that appears most frequently in a dataset. It's particularly useful for nominal and ordinal scale data, where you might not be able to calculate a mean or median. Interestingly, a dataset can have more than one mode, which is referred to as bimodal or multimodal if there are more than two peaks [1].\n\nThe median is the midpoint of your dataset. To find it, you order all the values from lowest to highest. If you have an odd number of values, the median is the middle one. If you have an even number, it's the average of the two middle values. The median is a better representative of a sample when there are extreme scores because it is not sensitive to them [2].\n\nBeyond the course slides, the mean is often used in interval and ratio data, while the median is preferred in skewed distributions. Which measure do you find most challenging to work with?",
    "passages": [
     {
      "id": "u06-p024-0",
@@ -487,23 +497,24 @@
    "q": "Q10",
    "question": "Please explain the link between standard deviation and variance.",
    "unit": 6,
-   "label": "course",
-   "words": 189,
+   "label": "mixed",
+   "words": 174,
    "statements": 8,
-   "cited_statements": 3,
-   "supported_statements": 3,
+   "cited_statements": 5,
+   "supported_statements": 5,
+   "unmarked_statements": 2,
    "cited_units": [
     6
    ],
    "unit_match": true,
-   "total_ms": 3256,
-   "first_token_ms": 711,
+   "total_ms": 2321,
+   "first_token_ms": 512,
    "tokens": {
-    "prompt": 1038,
-    "completion": 214
+    "prompt": 1237,
+    "completion": 203
    },
-   "cost_usd": 0.00473,
-   "answer": "Great question! Understanding the relationship between standard deviation and variance is fundamental in statistics, and it's wonderful that you're diving into this topic.\n\nVariance and standard deviation are both measures of dispersion, which means they help us understand how spread out the data points are from the mean. Variance is calculated as the sum of the squared deviations from the mean, divided by the number of observations (N) [1]. This gives us an average of the squared differences from the mean, providing a sense of how much the data points vary.\n\nStandard deviation, on the other hand, is simply the square root of the variance [1]. This transformation is useful because it brings the measure back to the original units of the data, making it easier to interpret and compare with the mean. In publications, standard deviation is often reported because it is more intuitive to understand than variance, which is in squared units [1].\n\nBoth of these measures are crucial for understanding the distribution of your data and are often used in various statistical tests and analyses. How do you feel about applying these concepts to real data?",
+   "cost_usd": 0.00512,
+   "answer": "Great question! Understanding the link between standard deviation and variance is fundamental in statistics. Variance and standard deviation are both measures of dispersion, which describe how data points spread out from the mean value [1]. Variance is calculated as the sum of the squared deviations from the mean, divided by the number of observations (N) [1]. It essentially gives you the average of these squared differences from the mean [1].\n\nStandard deviation, on the other hand, is simply the square root of the variance [1]. It's often reported in publications because it is in the same units as the data, making it more interpretable than variance [1]. So, while variance gives you a sense of the overall spread of the data, standard deviation provides a more intuitive measure of that spread.\n\nBeyond the course slides, it's worth noting that both variance and standard deviation are crucial for understanding the variability in your data, which can impact statistical tests and confidence intervals. Are you currently working with any data sets where you're calculating these measures?",
    "passages": [
     {
      "id": "u06-p026-0",
@@ -539,23 +550,24 @@
    "q": "Q11",
    "question": "What is the meaning of “P-value”?",
    "unit": 6,
-   "label": "course",
-   "words": 212,
-   "statements": 11,
+   "label": "mixed",
+   "words": 177,
+   "statements": 6,
    "cited_statements": 4,
    "supported_statements": 4,
+   "unmarked_statements": 1,
    "cited_units": [
     6
    ],
    "unit_match": true,
-   "total_ms": 2376,
-   "first_token_ms": 463,
+   "total_ms": 2335,
+   "first_token_ms": 612,
    "tokens": {
-    "prompt": 994,
-    "completion": 249
+    "prompt": 1193,
+    "completion": 209
    },
-   "cost_usd": 0.00498,
-   "answer": "Great question! Understanding the meaning of a p-value is crucial for interpreting statistical results. A p-value is essentially a measure of the probability that the observed difference in your data could have occurred just by random chance [1]. In other words, it helps you determine whether your results are statistically significant or not.\n\nWhen you calculate a p-value, you're assessing the evidence against the null hypothesis, which is the assumption that there is no effect or no difference. A smaller p-value indicates stronger evidence against the null hypothesis, suggesting that the observed results are unlikely to be due to random chance alone [1]. In the social sciences, a p-value of 0.05 or less is typically considered statistically significant. This means there's less than a 5% probability that the null hypothesis is correct, leading researchers to reject the null hypothesis and accept the alternative hypothesis [1].\n\nHowever, it's important to note that a p-value does not tell you the probability that the research hypothesis is true. It is conditional upon the null hypothesis being true and is unrelated to the truth or falsity of the research hypothesis [1].\n\nDoes this help clarify the concept for you? If you have more questions about how p-values are used in hypothesis testing, feel free to ask!",
+   "cost_usd": 0.00507,
+   "answer": "Great question! Understanding the p-value is crucial for interpreting statistical results. A p-value is a measure of the probability that an observed difference could have occurred just by random chance [1]. Essentially, it provides evidence against the null hypothesis by indicating the probability that the null hypothesis is correct and the results are random [1]. In the social sciences, a p-value of ≤ 0.05 is typically considered statistically significant, meaning there is strong evidence against the null hypothesis, as there is less than a 5% probability that the null is correct [1]. However, it's important to note that a p-value does not mean there is a 95% probability that the research hypothesis is true; it is conditional upon the null hypothesis being true and is unrelated to the truth or falsity of the research hypothesis [1].\n\nBeyond the course slides, think of the p-value as a tool to help you decide whether your findings are likely due to chance or if they reflect a real effect. What kind of research are you planning to apply this to?",
    "passages": [
     {
      "id": "u06-p011-0",
@@ -592,22 +604,23 @@
    "question": "Describe the T-test independent sample, and ANOVA Test.",
    "unit": 7,
    "label": "mixed",
-   "words": 299,
-   "statements": 14,
-   "cited_statements": 5,
-   "supported_statements": 5,
+   "words": 270,
+   "statements": 12,
+   "cited_statements": 6,
+   "supported_statements": 6,
+   "unmarked_statements": 5,
    "cited_units": [
     7
    ],
    "unit_match": true,
-   "total_ms": 3872,
-   "first_token_ms": 645,
+   "total_ms": 4235,
+   "first_token_ms": 763,
    "tokens": {
-    "prompt": 1240,
-    "completion": 376
+    "prompt": 1439,
+    "completion": 334
    },
-   "cost_usd": 0.00686,
-   "answer": "Great question! It sounds like you're diving into some fundamental statistical tests. Let's break down both the independent-samples t-test and the ANOVA test based on what your course slides provide.\n\nThe independent-samples t-test is part of the t-test family, which is used when you want to determine if there are statistically significant differences between the means of two groups [1]. This test is particularly useful when you have two independent groups and you want to compare their means to see if they differ significantly. The process involves calculating a t-value, which is then used to find a p-value from a t-distribution. This p-value helps you decide whether the difference between the group means is statistically significant [1]. In SPSS, you can perform this test by navigating to Analyze > Compare Means > Independent-Samples T Test, and you can practice using the file “topic-8.indep-t-test.sav” provided in your course materials [2].\n\nOn the other hand, ANOVA, which stands for Analysis of Variance, is used when you have more than two groups to compare. Specifically, a two-way ANOVA is used when you have two or more independent variables (IVs) that are categorical and a single dependent variable (DV) that is continuous [3]. The assumptions for a two-way ANOVA include having categorical independent variables, a continuous dependent variable, independence of observations, no outliers, normality, and homogeneity of variances [3]. These assumptions ensure that the test results are valid and reliable.\n\nBeyond the course slides, ANOVA helps in understanding if there are any statistically significant differences between the means of three or more independent groups. It's a powerful tool when dealing with complex experimental designs.\n\nI hope this helps clarify the differences and uses of these tests! Do you have any specific examples or datasets you're working with that you'd like to discuss further?",
+   "cost_usd": 0.00694,
+   "answer": "It's great that you're diving into understanding these tests, as they are fundamental tools in statistical analysis. Let's break them down based on the course slides.\n\nThe independent-samples t-test is part of the t-test family, which is used when you want to determine if there are statistically significant differences between the means of two groups [1]. This test is parametric, meaning it assumes that the data follows a certain distribution. The independent-samples t-test specifically compares the means of two independent groups to see if they are significantly different from each other [1]. The process involves calculating a t-value, which is then used to find a p-value from a t-distribution to determine the significance of the results [1]. In SPSS, you can perform this test by navigating to Analyze > Compare Means > Independent-Samples T Test [2].\n\nOn the other hand, ANOVA, or Analysis of Variance, is used when you have more than two groups or levels to compare. A two-way ANOVA, for example, involves two or more independent variables that are categorical, and a single dependent variable that is continuous, either at the ratio or interval level [3]. The assumptions for a two-way ANOVA include independence of observations, no outliers, normality of the dependent variable, and homogeneity of variances [3]. These assumptions ensure that the test results are valid and reliable.\n\nBeyond the course slides, it's worth noting that while the t-test is limited to comparing two groups, ANOVA can handle multiple groups and interactions between factors, making it a more versatile tool in many research scenarios. Are you planning to use these tests in a specific project or analysis?",
    "passages": [
     {
      "id": "u07-p021-0",
@@ -644,22 +657,23 @@
    "question": "What is regression and multiple regression analysis?",
    "unit": 8,
    "label": "mixed",
-   "words": 193,
-   "statements": 9,
+   "words": 213,
+   "statements": 10,
    "cited_statements": 2,
    "supported_statements": 2,
+   "unmarked_statements": 7,
    "cited_units": [
     8
    ],
    "unit_match": true,
-   "total_ms": 3312,
-   "first_token_ms": 878,
+   "total_ms": 3148,
+   "first_token_ms": 726,
    "tokens": {
-    "prompt": 1005,
-    "completion": 220
+    "prompt": 1204,
+    "completion": 247
    },
-   "cost_usd": 0.00471,
-   "answer": "Great question! Regression analysis is a statistical method used to examine the relationship between a dependent variable and one or more independent variables. It's a way to model and analyze the connections between variables, helping us understand how changes in the independent variables might affect the dependent variable.\n\nMultiple regression analysis is an extension of this concept. It involves using more than one independent variable to predict the outcome of a dependent variable. This method allows researchers to understand the impact of several factors simultaneously. In multiple regression, different methods can be used to enter variables into the model, such as hierarchical (block-wise entry), forced entry, and stepwise methods, although the latter is not very popular among researchers [1]. When reporting multiple regression results, it's common to include statistics like the percentage of variance explained by the predictors, as shown in an example where personality traits were used to predict aggression ratings [3].\n\nBeyond the course slides, regression analysis is widely used in various fields, from economics to psychology, to make predictions and infer causal relationships.\n\nDoes this help clarify things? What specific aspect of regression are you most interested in exploring further?",
+   "cost_usd": 0.00548,
+   "answer": "Great question! Understanding regression is a key part of analyzing relationships between variables. Regression analysis is a statistical method used to examine the relationship between a dependent variable and one or more independent variables. It helps in predicting the value of the dependent variable based on the values of the independent variables.\n\nMultiple regression analysis is an extension of this concept. It involves using more than one independent variable to predict the dependent variable. This method allows researchers to understand how different factors collectively influence the outcome. In multiple regression, there are various methods to enter predictors into the model, such as hierarchical (block-wise entry), forced entry, and stepwise methods, although the latter is not very well liked by researchers [1].\n\nWhen reporting multiple regression, you might see results indicating how much variance in the dependent variable is explained by the predictors. For example, a study might report that two predictors explained 35.8% of the variance in participants' ratings of aggression, with specific statistical values provided to support this finding [3].\n\nBeyond the course slides, regression analysis is widely used in various fields, from economics to psychology, to make informed decisions based on data. Are you planning to use regression analysis in your research, or are you exploring it for a specific project?",
    "passages": [
     {
      "id": "u08-p008-0",
@@ -696,23 +710,24 @@
    "question": "Explain the concept of multicollinearity in regression analysis and how it affects the model.",
    "unit": 8,
    "label": "mixed",
-   "words": 227,
-   "statements": 10,
+   "words": 209,
+   "statements": 9,
    "cited_statements": 3,
    "supported_statements": 3,
+   "unmarked_statements": 5,
    "cited_units": [
     8,
     9
    ],
    "unit_match": true,
-   "total_ms": 3100,
-   "first_token_ms": 961,
+   "total_ms": 2775,
+   "first_token_ms": 638,
    "tokens": {
-    "prompt": 912,
-    "completion": 283
+    "prompt": 1111,
+    "completion": 261
    },
-   "cost_usd": 0.00511,
-   "answer": "Multicollinearity can be a bit tricky, but it's an important concept to grasp in regression analysis. Essentially, multicollinearity occurs when two or more predictor variables in a regression model are highly correlated with each other. This means that as one variable increases or decreases, the other does as well, which can make it difficult to determine the individual effect of each predictor on the outcome variable [1].\n\nIn terms of its impact on the model, multicollinearity can limit the size of R, which is a measure of how well the predictors explain the variability in the outcome variable [4]. When multicollinearity is present, it can inflate the variance of the coefficient estimates, making them unstable and difficult to interpret. This is why it's important to check for multicollinearity when building a regression model. One way to do this is by calculating the Variance Inflation Factor (VIF). A VIF value greater than 10 is a red flag, indicating a high level of multicollinearity, but even a value of 1 can suggest some bias in the regression [4].\n\nBeyond the course slides, multicollinearity doesn't affect the predictive power of the model, but it can make it hard to determine which predictors are actually important. This can lead to less reliable conclusions about the relationships between variables.\n\nHave you encountered any specific challenges with multicollinearity in your own data analysis?",
+   "cost_usd": 0.00539,
+   "answer": "Multicollinearity can be a bit tricky, but it's an important concept to grasp in regression analysis. Essentially, multicollinearity occurs when two or more predictor variables in a regression model are highly correlated with each other. This means that as one variable increases or decreases, the other does as well, which can make it difficult to determine the individual effect of each predictor on the outcome variable [1]. \n\nIn terms of its impact on the model, multicollinearity can limit the size of R, which is a measure of how well the predictors explain the variability in the outcome variable [4]. When multicollinearity is present, it can inflate the variance of the coefficient estimates, making them unstable and difficult to interpret. This is why it's important to check for multicollinearity when building a regression model. One way to do this is by calculating the Variance Inflation Factor (VIF). A VIF value greater than 10 is considered problematic, but even a value of 1 can indicate potential bias in the regression model [4].\n\nBeyond the course slides, multicollinearity doesn't affect the predictive power of the model as a whole, but it can make it challenging to assess the importance of individual predictors. Have you encountered multicollinearity in any of your analyses yet?",
    "passages": [
     {
      "id": "u09-p016-0",
@@ -749,23 +764,23 @@
    "question": "What is MANOVA, and how is it different from ANOVA?",
    "unit": 9,
    "label": "mixed",
-   "words": 282,
-   "statements": 12,
+   "words": 178,
+   "statements": 7,
    "cited_statements": 5,
    "supported_statements": 5,
+   "unmarked_statements": 1,
    "cited_units": [
-    7,
     9
    ],
    "unit_match": true,
-   "total_ms": 3754,
-   "first_token_ms": 620,
+   "total_ms": 2443,
+   "first_token_ms": 716,
    "tokens": {
-    "prompt": 970,
-    "completion": 345
+    "prompt": 1169,
+    "completion": 220
    },
-   "cost_usd": 0.00588,
-   "answer": "Great question! Understanding the difference between MANOVA and ANOVA is key to grasping how we analyze data with multiple dependent variables.\n\nMANOVA, or Multivariate Analysis of Variance, is essentially an extension of ANOVA. While ANOVA allows you to analyze one dependent variable to see if there are any statistically significant differences between groups, MANOVA takes it a step further by enabling the analysis of multiple dependent variables simultaneously [1]. This is particularly useful when the dependent variables are related, either in the model you develop or as suggested by existing literature. For example, you might use MANOVA to test differences in motivation, interest, and curiosity across different groups [1].\n\nOne of the advantages of using MANOVA over conducting multiple ANOVAs is that it helps avoid the Type 1 Error, which occurs when you incorrectly reject a true null hypothesis. By testing multiple dependent variables at once, MANOVA reduces the risk of this error that might arise from repeated testing on the same data [1].\n\nANOVA is described as an \"omnibus\" test, meaning that it can tell you there is a significant difference somewhere among the groups, but it doesn't specify where that difference lies. For that, you would need to conduct a post-hoc analysis [3]. MANOVA, like ANOVA, also uses mean scores to test for group differences, but it does so across multiple dependent variables [1].\n\nBeyond the course slides, MANOVA is particularly useful in research scenarios where the dependent variables are expected to be correlated, as it considers the interrelationships between them, providing a more comprehensive understanding of the data.\n\nDoes this help clarify the differences for you? What kind of research are you thinking about where you might use MANOVA?",
+   "cost_usd": 0.00512,
+   "answer": "Great question! Understanding the difference between MANOVA and ANOVA is key to choosing the right analysis for your data.\n\nMANOVA, or Multivariate Analysis of Variance, is essentially an extension of ANOVA [1]. While ANOVA allows you to analyze one dependent variable at a time, MANOVA enables you to include multiple dependent variables in your model [1]. This is particularly useful when your dependent variables are related, either in the model you develop or as suggested by existing literature, such as when you're testing constructs like motivation, interest, and curiosity across different groups [1].\n\nOne of the advantages of using MANOVA is that it helps avoid Type 1 errors, which occur when you incorrectly reject a true null hypothesis, by omitting repeated testing on the same variables [1]. Like ANOVA, MANOVA uses mean scores to test for group differences [1].\n\nBeyond the course slides, MANOVA can provide a more comprehensive understanding of the data when multiple dependent variables are involved, as it considers the interrelationships between them. Are you working with a dataset that might benefit from using MANOVA?",
    "passages": [
     {
      "id": "u09-p004-0",
@@ -802,23 +817,23 @@
    "question": "Describe the process of conducting a one-way MANOVA and explain the assumptions it tests.",
    "unit": 9,
    "label": "mixed",
-   "words": 263,
-   "statements": 13,
+   "words": 257,
+   "statements": 14,
    "cited_statements": 4,
    "supported_statements": 4,
+   "unmarked_statements": 8,
    "cited_units": [
-    7,
     9
    ],
    "unit_match": true,
-   "total_ms": 3576,
-   "first_token_ms": 698,
+   "total_ms": 3224,
+   "first_token_ms": 665,
    "tokens": {
-    "prompt": 930,
-    "completion": 329
+    "prompt": 1129,
+    "completion": 325
    },
-   "cost_usd": 0.00562,
-   "answer": "Conducting a one-way MANOVA can seem a bit daunting at first, but once you break it down, it becomes more manageable. Let's walk through the process together. First, you'll want to ensure that your data meets the necessary assumptions for MANOVA. These include the assumption of homogeneity of variance-covariance matrices, which you can check using Box’s M test. The Box’s M value should be non-significant at α = .001 to satisfy this assumption [3]. \n\nBefore you dive into the analysis, it's crucial to select the appropriate multivariate test based on your data characteristics. For example, if you have a small sample size and more than two levels of independent variables (IVs), Pillai’s Trace might be the right choice. On the other hand, Wilk’s Lambda is suitable for medium to large sample sizes [4].\n\nOnce you've confirmed that your data meets these assumptions and selected the appropriate test, you can proceed with conducting the MANOVA. This involves using statistical software to input your data and run the analysis, which will help you determine if there are any statistically significant differences between the groups on a combination of dependent variables.\n\nBeyond the course slides, it's also important to ensure that your data approximates a normal distribution, as ANOVA tests, including MANOVA, are fairly robust to deviations from normality [2]. \n\nAfter running the analysis, you'll need to report the results, which typically includes the test statistic, degrees of freedom, and p-value, among other details [1].\n\nDoes this help clarify the process for you? What specific part of conducting a MANOVA would you like to explore further?",
+   "cost_usd": 0.00607,
+   "answer": "Conducting a one-way MANOVA can seem a bit daunting at first, but once you break it down, it becomes more manageable. Let's walk through the process together. A one-way MANOVA is used when you have one independent variable (IV) with two or more levels and multiple dependent variables (DVs) [1]. Before you dive into the analysis, it's crucial to ensure that your data meets certain assumptions.\n\nFirst, you need to check for the homogeneity of variance-covariance matrices. This assumption is satisfied if the Box’s M test is non-significant at α = .001 [3]. This means that the variance-covariance matrices of the dependent variables are equal across the groups formed by the levels of the independent variable.\n\nNext, you should consider the sample size and the levels of the IVs. Depending on these factors, you might choose different multivariate tests like Pillai’s Trace, Wilk’s Lambda, Hotelling’s Trace, or Roy’s Largest Root [4]. Each of these tests has different strengths depending on the characteristics of your data, such as sample size and the number of levels in your IV.\n\nOnce you've ensured that your data meets these assumptions, you can proceed with conducting the MANOVA. After running the analysis, you'll need to report the results, which typically include the test statistic, degrees of freedom, and p-value [1].\n\nBeyond the course slides, it's often helpful to visualize your data and results to better understand the relationships between your variables. This can also aid in communicating your findings to others. What kind of data are you working with for your MANOVA?",
    "passages": [
     {
      "id": "u09-p002-0",
@@ -855,22 +870,23 @@
    "question": "Explain the concept of \"sphericity\" in repeated measures ANOVA",
    "unit": 10,
    "label": "mixed",
-   "words": 216,
-   "statements": 11,
-   "cited_statements": 2,
-   "supported_statements": 2,
+   "words": 173,
+   "statements": 7,
+   "cited_statements": 1,
+   "supported_statements": 1,
+   "unmarked_statements": 5,
    "cited_units": [
     10
    ],
    "unit_match": true,
-   "total_ms": 2948,
-   "first_token_ms": 617,
+   "total_ms": 2911,
+   "first_token_ms": 521,
    "tokens": {
-    "prompt": 1419,
-    "completion": 270
+    "prompt": 1618,
+    "completion": 229
    },
-   "cost_usd": 0.00625,
-   "answer": "Great question! Sphericity is an important concept when dealing with repeated measures ANOVA. It refers to the assumption that the variances of the differences between all combinations of related groups (or levels) are equal. In simpler terms, it means that the way the scores vary between different conditions should be consistent across all pairs of conditions.\n\nIn the context of your course, sphericity is crucial because if this assumption is violated, it can affect the validity of the ANOVA results. The course slides mention Mauchly’s test, which is used to check for sphericity. If Mauchly’s test is significant, it indicates a violation of the sphericity assumption, and you would need to apply a correction to your ANOVA results to account for this violation [3]. The slides also guide you on which correction to apply based on the results of Mauchly’s test and the Greenhouse-Geisser correction value [3].\n\nBeyond the course slides, when sphericity is violated, it can lead to an increased risk of Type I errors, where you might incorrectly conclude that there is a significant effect when there isn't one. That's why applying the correct sphericity correction is essential for accurate results.\n\nDoes this help clarify the concept for you? Let me know if you have more questions about repeated measures ANOVA or anything else!",
+   "cost_usd": 0.00634,
+   "answer": "Sphericity is an important concept in repeated measures ANOVA, and it's great that you're looking to understand it better. In the context of repeated measures ANOVA, sphericity refers to the assumption that the variances of the differences between all combinations of related groups (or levels) are equal. This assumption is crucial because it affects the validity of the F-tests used in the analysis.\n\nWhen conducting a repeated measures ANOVA, one of the steps involves checking the sphericity assumption using Mauchly’s test. If Mauchly’s test is significant, it indicates that the assumption of sphericity has been violated. In such cases, corrections like Greenhouse-Geisser or Huynh-Feldt are applied to adjust the degrees of freedom for the F-tests, which helps in maintaining the validity of the test results [3].\n\nBeyond the course slides, sphericity is somewhat similar to the homogeneity of variances assumption in between-subjects ANOVA, but it specifically deals with the repeated measures design where the same subjects are measured multiple times. How are you finding the process of running repeated measures ANOVA so far?",
    "passages": [
     {
      "id": "u10-p015-0",
@@ -907,22 +923,23 @@
    "question": "What corrective methods are available if the assumption of sphericity is violated?",
    "unit": 10,
    "label": "mixed",
-   "words": 200,
-   "statements": 10,
-   "cited_statements": 2,
-   "supported_statements": 2,
+   "words": 165,
+   "statements": 8,
+   "cited_statements": 3,
+   "supported_statements": 3,
+   "unmarked_statements": 4,
    "cited_units": [
     10
    ],
    "unit_match": true,
-   "total_ms": 4255,
-   "first_token_ms": 591,
+   "total_ms": 3001,
+   "first_token_ms": 690,
    "tokens": {
-    "prompt": 1082,
-    "completion": 261
+    "prompt": 1281,
+    "completion": 225
    },
-   "cost_usd": 0.00532,
-   "answer": "Great question! It sounds like you're diving into the intricacies of ANOVA, which is fantastic. When the assumption of sphericity is violated in a repeated measures ANOVA, we have a few corrective methods to consider. According to the course slides, if Mauchly’s test indicates a significant result, which suggests a violation of sphericity, we need to apply a correction to adjust the degrees of freedom in our analysis [1].\n\nThe decision chart provided in the course helps us choose the appropriate correction. If the Greenhouse-Geisser correction value is greater than 0.75, as it was in the example with a value of 0.871, the \"Huynh-Feldt\" correction is recommended [1]. This correction adjusts the degrees of freedom to account for the violation, helping to maintain the validity of the ANOVA results.\n\nBeyond the course slides, another common correction is the Greenhouse-Geisser correction itself, which is often used when the value is less than 0.75. These corrections help ensure that the results of the ANOVA are reliable despite the violation of sphericity.\n\nDoes this help clarify how to handle violations of sphericity in your analyses? Let me know if you have more questions about this or anything else related to your research methods!",
+   "cost_usd": 0.00545,
+   "answer": "Great question! It's important to know how to handle violations of assumptions in statistical tests. When the assumption of sphericity is violated in a repeated measures ANOVA, we have a couple of corrective methods to consider. First, we need to determine if Mauchly’s test for sphericity is significant. If it is, as in the example where p = 0.047, we look at the Greenhouse-Geisser correction value. If this value is greater than 0.75, we should use the Huynh-Feldt correction [1]. If the Greenhouse-Geisser value were less than or equal to 0.75, we would use the Greenhouse-Geisser results instead [1]. Additionally, the decision chart also suggests using multivariate results from the \"Multivariate Tests\" table in the output as another option [1].\n\nBeyond the course slides, it's worth noting that these corrections adjust the degrees of freedom in the F-tests to account for the violation, which helps maintain the validity of the test results. Are you currently working on an analysis where sphericity might be an issue?",
    "passages": [
     {
      "id": "u10-p017-0",
@@ -959,22 +976,23 @@
    "question": "A non-parametric test is also known as?",
    "unit": 11,
    "label": "course",
-   "words": 75,
+   "words": 67,
    "statements": 3,
-   "cited_statements": 2,
-   "supported_statements": 2,
+   "cited_statements": 3,
+   "supported_statements": 3,
+   "unmarked_statements": 0,
    "cited_units": [
     11
    ],
    "unit_match": true,
-   "total_ms": 1596,
-   "first_token_ms": 731,
+   "total_ms": 1720,
+   "first_token_ms": 603,
    "tokens": {
-    "prompt": 899,
-    "completion": 92
+    "prompt": 1098,
+    "completion": 85
    },
-   "cost_usd": 0.00317,
-   "answer": "Great question! Non-parametric tests are also known as \"assumption-free tests\" because they do not require the assumptions that are necessary for parametric tests [2]. This makes them particularly useful when your data violates those assumptions and there's no way to fix the issues [4]. It's like having a backup plan when your data doesn't fit the usual mold. \n\nHave you encountered any situations where you think a non-parametric test might be useful for your data?",
+   "cost_usd": 0.0036,
+   "answer": "Great question! Non-parametric tests are also known as assumption-free tests [2]. This is because they do not require the assumptions that parametric tests do, such as normal distribution or homogeneity of variance [2]. It's nice to have these tests available, especially when your data doesn't meet those assumptions and there's no way to fix it [4]. \n\nHave you encountered any data that might need a non-parametric approach?",
    "passages": [
     {
      "id": "u11-p005-0",
@@ -1010,25 +1028,26 @@
    "q": "Q20",
    "question": "What is the difference between a parametric and non-parametric test, and when should each be used?",
    "unit": 11,
-   "label": "course",
-   "words": 218,
+   "label": "mixed",
+   "words": 235,
    "statements": 10,
-   "cited_statements": 5,
-   "supported_statements": 5,
+   "cited_statements": 6,
+   "supported_statements": 6,
+   "unmarked_statements": 2,
    "cited_units": [
     6,
     7,
     11
    ],
    "unit_match": true,
-   "total_ms": 3134,
-   "first_token_ms": 669,
+   "total_ms": 3214,
+   "first_token_ms": 643,
    "tokens": {
-    "prompt": 1063,
-    "completion": 271
+    "prompt": 1262,
+    "completion": 295
    },
-   "cost_usd": 0.00537,
-   "answer": "Great question! Understanding when to use parametric versus non-parametric tests is crucial for analyzing your data correctly. Let's dive into it.\n\nParametric tests are statistical tests that rely on certain assumptions about the data. Specifically, they assume a normally distributed sampling distribution, homogeneity of variance, interval or ratio data, and independence among observations [3]. These tests are powerful because they can provide more precise estimates when these assumptions are met [3]. A common example of a parametric test is the t-test, which is used to determine if there are statistically significant differences between two means [4].\n\nOn the other hand, non-parametric tests come into play when your data violates these assumptions, and there's no way to fix these issues [1]. They are more flexible because they don't require the data to follow a specific distribution. For instance, if you want to test for differences between two groups but can't meet the assumptions needed for a t-test, you might use the Wilcoxon rank-sum test or the Mann-Whitney test, which are non-parametric alternatives [2].\n\nIn summary, use parametric tests when your data meets the necessary assumptions, as they are more powerful. If your data doesn't meet these assumptions, non-parametric tests are a reliable alternative.\n\nHave you encountered any specific data sets where you're unsure which type of test to apply?",
+   "cost_usd": 0.00611,
+   "answer": "That's a great question! Understanding when to use parametric versus non-parametric tests is crucial for analyzing your data correctly. \n\nParametric tests are statistical tests that make specific assumptions about the distribution of the data, such as normality, homogeneity of variance, and the use of interval or ratio data [3]. These tests are powerful when their assumptions are met, which is why researchers often prefer them when possible [3]. For example, the t-test is a parametric test used to compare the means of two groups, assuming the data meets these criteria [4].\n\nHowever, sometimes your data might not meet these assumptions, no matter how much you try to adjust it [1]. This is where non-parametric tests come in handy. They don't require the same strict assumptions about the data distribution, making them a flexible alternative when parametric test assumptions are violated [1]. For instance, the Wilcoxon rank-sum test and the Mann-Whitney test are non-parametric tests that can be used to test for differences between two groups, similar to the t-test, but without the need for normally distributed data [2].\n\nBeyond the course slides, non-parametric tests are generally less powerful than parametric tests, meaning they might require a larger sample size to detect the same effect. But they are invaluable when your data doesn't fit the parametric mold. What kind of data are you working with, and do you think it meets the assumptions for parametric tests?",
    "passages": [
     {
      "id": "u11-p003-0",
@@ -1071,15 +1090,16 @@
    "statements": 1,
    "cited_statements": 0,
    "supported_statements": 0,
+   "unmarked_statements": 1,
    "cited_units": [],
    "unit_match": null,
-   "total_ms": 1300,
-   "first_token_ms": 751,
+   "total_ms": 1216,
+   "first_token_ms": 655,
    "tokens": {
-    "prompt": 922,
+    "prompt": 1121,
     "completion": 25
    },
-   "cost_usd": 0.00255,
+   "cost_usd": 0.00305,
    "answer": "Sorry, I cannot answer that, because I am ERM Tutor, I only want you to ask questions related to that.",
    "passages": [
     {
@@ -1121,15 +1141,16 @@
    "statements": 1,
    "cited_statements": 0,
    "supported_statements": 0,
+   "unmarked_statements": 1,
    "cited_units": [],
    "unit_match": null,
-   "total_ms": 1222,
-   "first_token_ms": 593,
+   "total_ms": 1162,
+   "first_token_ms": 757,
    "tokens": {
-    "prompt": 892,
+    "prompt": 1091,
     "completion": 25
    },
-   "cost_usd": 0.00248,
+   "cost_usd": 0.00298,
    "answer": "Sorry, I cannot answer that, because I am ERM Tutor, I only want you to ask questions related to that.",
    "passages": [
     {
@@ -1171,15 +1192,16 @@
    "statements": 1,
    "cited_statements": 0,
    "supported_statements": 0,
+   "unmarked_statements": 1,
    "cited_units": [],
    "unit_match": null,
-   "total_ms": 1132,
-   "first_token_ms": 469,
+   "total_ms": 1193,
+   "first_token_ms": 646,
    "tokens": {
-    "prompt": 1047,
+    "prompt": 1246,
     "completion": 25
    },
-   "cost_usd": 0.00287,
+   "cost_usd": 0.00336,
    "answer": "Sorry, I cannot answer that, because I am ERM Tutor, I only want you to ask questions related to that.",
    "passages": [
     {

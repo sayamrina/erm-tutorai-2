@@ -91,7 +91,11 @@ p { margin: 0 0 14px; }
 .compare td.v1 { color: var(--ink-2); width: 30%; }
 .compare tr:last-child > * { border-bottom: 0; }
 .checks th { width: auto !important; font-weight: 500; }
-.checks td { font-weight: 700; white-space: nowrap; text-align: right; }
+.checks td { font-weight: 700; white-space: nowrap; text-align: right; width: auto !important; }
+.checks td.v1 { color: var(--ink-2); font-weight: 500; }
+.checks thead th { text-align: right; }
+.checks thead th:first-child { text-align: left; }
+.checks td:last-child { color: var(--evidence); }
 
 .v1card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 32px; padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
 .v1card img { border-radius: 8px; border: 1px solid var(--line); display: block; }
@@ -195,12 +199,13 @@ footer p { margin: 0 0 6px; }
 <section>
   <div class="wrap">
     <h2>What changed from version 1</h2>
-    <p class="sub">Same lecture materials, same model (GPT-4o) and the same tutor rules as the thesis app. Two next steps from the thesis shaped this version: citations at passage level and feedback on the student's own answers. An evaluation script now measures it on the 20 thesis questions.</p>
+    <p class="sub">Same lecture materials and the same model (GPT-4o) as the thesis app, with stricter source rules: the slides first, a citation for every sentence, general knowledge only for gaps and marked. Two next steps from the thesis shaped this version: citations at passage level and feedback on the student's own answers. Version 1 stays online unchanged.</p>
     <table class="compare">
       <thead><tr><th scope="col"></th><th scope="col">Version 1 (thesis)</th><th scope="col">Version 2</th></tr></thead>
       <tbody>
         <tr><th scope="row">Sources</th><td class="v1">Name of one source file under the answer</td><td class="v2">A numbered citation after each statement, with a preview on hover; each opens the lecture slide itself, its text, and the lines that share the most words with the cited statement</td></tr>
         <tr><th scope="row">Where an answer comes from</th><td class="v1">Label “course materials” or “general knowledge”</td><td class="v2">The same labels, now based on whether the answer cites a passage, plus a strip of twelve ticks for the units it used</td></tr>
+        <tr><th scope="row">Tutor rules</th><td class="v1">Course materials first, general knowledge second</td><td class="v2">The slides are the source; a citation for every sentence; general knowledge only for gaps, introduced with “Beyond the course slides” and marked</td></tr>
         <tr><th scope="row">Course focus</th><td class="v1">All units</td><td class="v2">All units, or one chosen unit</td></tr>
         <tr><th scope="row">Practice</th><td class="v1">None</td><td class="v2">The tutor writes a question from a lecture slide, the student answers, the feedback gives a verdict and cites the slides to review</td></tr>
         <tr><th scope="row">Follow-up question</th><td class="v1">Inside the answer text</td><td class="v2">Shown separately with a button to answer it; the last two turns go along so the tutor can follow</td></tr>
@@ -251,7 +256,7 @@ footer p { margin: 0 0 6px; }
       <ol class="steps">
         <li><b>Index the course</b><span>The 12 lecture PDFs are read page by page and split into 354 chunks of up to 1,500 characters. Each chunk keeps its unit, page and slide title.</span></li>
         <li><b>Retrieve</b><span>The question is embedded with OpenAI text-embedding-3-small; the 4 most relevant and varied passages are chosen from 10 candidates (maximal marginal relevance), optionally within one unit.</span></li>
-        <li><b>Answer and cite</b><span>GPT-4o (temperature 0) gets the numbered passages and the version 1 tutor prompt: course materials first, general methods knowledge second, a polite refusal for unrelated questions. It cites passages as [1], [2].</span></li>
+        <li><b>Answer and cite</b><span>GPT-4o (temperature 0) gets the numbered passages and the tutor rules: the slides are the source, every sentence that uses one ends with its number, general knowledge only for gaps and marked, a polite refusal for unrelated questions.</span></li>
         <li><b>Show the evidence</b><span>The answer streams to the browser; each number opens its slide, rendered from the PDF at build time. The lines that support a statement are found by word overlap in the browser, without another model call.</span></li>
         <li><b>Report the trace</b><span>With each answer the backend sends the retrieval candidates, the time per step and the token usage, priced at list price.</span></li>
       </ol>
@@ -276,24 +281,25 @@ footer p { margin: 0 0 6px; }
 <section>
   <div class="wrap">
     <h2>Checking version 2</h2>
-    <p class="sub">An evaluation script asks the live app the 20 evaluation questions of the thesis, each in a fresh conversation, and three off-topic questions, then measures what can be checked without a human rater. Run on 3 November 2026.</p>
+    <p class="sub">An evaluation script asks the live app the 20 evaluation questions of the thesis, each in a fresh conversation, and three off-topic questions, then measures what can be checked without a human rater. Two runs on 3 November 2026: with the tutor rules of the thesis app, and with the revised rules of version 2.</p>
     <div class="eval">
       <table class="compare checks">
+        <thead><tr><th scope="col">Check</th><th scope="col">v1 rules</th><th scope="col">v2 rules</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Answers based on the course materials</th><td>20 of 20</td></tr>
-          <tr><th scope="row">Off-topic questions declined</th><td>3 of 3</td></tr>
-          <tr><th scope="row">A passage from the question's unit cited</th><td>18 of 20</td></tr>
-          <tr><th scope="row">Statements with a citation</th><td>24%</td></tr>
-          <tr><th scope="row">Cited statements sharing key words with their slide</th><td>96%</td></tr>
-          <tr><th scope="row">Answer length</th><td>190 ± 53 words</td></tr>
-          <tr><th scope="row">Median time to the full answer</th><td>3.0 s</td></tr>
-          <tr><th scope="row">Cost of the whole run</th><td>about $0.10</td></tr>
+          <tr><th scope="row">Answers based on the course materials</th><td class="v1">20 of 20</td><td class="v2">20 of 20</td></tr>
+          <tr><th scope="row">Off-topic questions declined</th><td class="v1">3 of 3</td><td class="v2">3 of 3</td></tr>
+          <tr><th scope="row">A passage from the question's unit cited</th><td class="v1">18 of 20</td><td class="v2">18 of 20</td></tr>
+          <tr><th scope="row">Statements with a citation</th><td class="v1">24%</td><td class="v2">41%</td></tr>
+          <tr><th scope="row">Statements neither cited nor marked as general</th><td class="v1">76%</td><td class="v2">45%</td></tr>
+          <tr><th scope="row">Cited statements sharing key words with their slide</th><td class="v1">96%</td><td class="v2">99%</td></tr>
+          <tr><th scope="row">Answer length (words)</th><td class="v1">190</td><td class="v2">192</td></tr>
+          <tr><th scope="row">Cost of the whole run</th><td class="v1">$0.10</td><td class="v2">$0.12</td></tr>
         </tbody>
       </table>
       <div>
-        <p class="reported">The tutor stays in the course and cites slides that match what it says. It cites only about one statement in four.</p>
-        <p>The prompt, kept from the thesis app, allows general research-methods knowledge next to the slides, and the model often cites once per paragraph. Raising coverage would mean changing the tutor's rules, which version 2 deliberately keeps. Word overlap is a cheap proxy for support, not a judgement of correctness, and no human has rated version 2 yet.</p>
-        <p class="note"><a href="https://github.com/sayamrina/erm-tutorai-2/blob/main/backend/eval/results/2026-11-03.md">Full report per question</a> and <a href="https://github.com/sayamrina/erm-tutorai-2/blob/main/backend/eval/run_eval.py">the script</a>.</p>
+        <p class="reported">With the thesis rules the tutor cited about one statement in four. The stricter version 2 rules raised that to 41% and cut unmarked statements from 76% to 45%.</p>
+        <p>Many remaining unmarked sentences restate the passage cited in the next sentence, or add a small step from general knowledge without the marker, so prompt rules alone do not get every sentence cited. Word overlap is a cheap proxy for support, not a judgement of correctness, and no human has rated version 2 yet.</p>
+        <p class="note">Reports per question: <a href="https://github.com/sayamrina/erm-tutorai-2/blob/main/backend/eval/results/2026-11-03-v1-prompt.md">v1 rules</a>, <a href="https://github.com/sayamrina/erm-tutorai-2/blob/main/backend/eval/results/2026-11-03-v2-prompt.md">v2 rules</a>; and <a href="https://github.com/sayamrina/erm-tutorai-2/blob/main/backend/eval/run_eval.py">the script</a>.</p>
       </div>
     </div>
   </div>
