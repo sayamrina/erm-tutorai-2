@@ -82,6 +82,10 @@ def score(item: dict, res: dict) -> dict:
         if len(claim & passage_words) >= 2:
             supported += 1
     cited = res["done"]["cited"] if res["done"] else []
+    # Statements that are neither cited nor inside the part marked as general knowledge.
+    marker_at = res["text"].lower().find("beyond the course slides")
+    unmarked = sum(1 for s in sts if not re.search(r"\[\d+\]", s)
+                   and (marker_at < 0 or res["text"].find(s) < marker_at))
     cited_units = sorted({res["passages"][n - 1]["unit"] for n in cited})
     trace = res["trace"] or {}
     return {
@@ -89,6 +93,7 @@ def score(item: dict, res: dict) -> dict:
         "label": res["done"]["label"] if res["done"] else None,
         "words": res["done"]["words"] if res["done"] else len(res["text"].split()),
         "statements": len(sts), "cited_statements": len(cited_sts), "supported_statements": supported,
+        "unmarked_statements": unmarked,
         "cited_units": cited_units, "unit_match": item.get("unit") in cited_units if item.get("unit") else None,
         "total_ms": trace.get("timings", {}).get("total_ms"), "first_token_ms": trace.get("timings", {}).get("first_token_ms"),
         "tokens": trace.get("tokens"), "cost_usd": trace.get("cost_usd"),
@@ -106,6 +111,7 @@ def summarise(rows: list[dict], off: list[dict]) -> dict:
         "answers_from_course": sum(r["label"] in ("course", "mixed") for r in rows),
         "answers_with_marked_general_knowledge": sum(r["label"] == "mixed" for r in rows),
         "citation_coverage": round(cited / sts, 3) if sts else None,
+        "unmarked_uncited": round(sum(r["unmarked_statements"] for r in rows) / sts, 3) if sts else None,
         "lexical_support": round(sum(r["supported_statements"] for r in rows) / cited, 3) if cited else None,
         "unit_match": sum(bool(r["unit_match"]) for r in rows),
         "words_mean": round(statistics.mean(r["words"] for r in rows), 1),
@@ -125,6 +131,7 @@ def report(summary: dict, rows: list[dict], off: list[dict], url: str) -> str:
         "| Check | Result |", "|---|---|",
         f"| Answers based on the course materials | {s['answers_from_course']} of {s['questions']} |",
         f"| Statements with a citation | {s['citation_coverage']:.0%} |",
+        f"| Statements neither cited nor marked as general knowledge | {s['unmarked_uncited']:.0%} |",
         f"| Cited statements sharing ≥ 2 content words with the cited passage | {s['lexical_support']:.0%} |",
         f"| A passage from the question's own unit cited | {s['unit_match']} of {s['questions']} |",
         f"| …of which add general knowledge, marked \"Beyond the course slides\" | {s['answers_with_marked_general_knowledge']} |",
@@ -146,8 +153,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8096")
     parser.add_argument("--name", help="file name for the results (default: today's date)")
+    parser.add_argument("--only", help="comma-separated question ids for a quick check, e.g. Q6,Q9 (no files written)")
     args = parser.parse_args()
     items = json.loads((HERE / "questions.json").read_text(encoding="utf-8"))
+    if args.only:
+        ids = set(args.only.split(","))
+        items = {"course": [i for i in items["course"] if i["q"] in ids], "off_topic": [i for i in items["off_topic"] if i["q"] in ids]}
     rows, off = [], []
     with httpx.Client() as client:
         for item in items["course"]:
@@ -157,6 +168,10 @@ def main():
         for item in items["off_topic"]:
             off.append(score(item, ask(client, args.url, item["text"])))
             print(off[-1]["q"], off[-1]["label"])
+    if args.only:
+        for r in rows:
+            print(r["q"], f"cited {r['cited_statements']}/{r['statements']}, unmarked {r['unmarked_statements']}")
+        return
     summary = summarise(rows, off)
     out = HERE / "results"
     out.mkdir(exist_ok=True)

@@ -432,7 +432,7 @@ export default function App() {
         <a className="brand" href="/" aria-label="ERM Tutor-AI, start page">
           <img src="/logo.png" alt="" width={34} height={34} />
           <span className="brand-text">
-            <span>ERM Tutor-AI <small>2</small></span>
+            <span>ERM Tutor-AI <small>Version 2</small></span>
             <em>Virtual assistant for the Empirical Research Methods course</em>
           </span>
         </a>
