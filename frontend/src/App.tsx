@@ -586,7 +586,7 @@ export default function App() {
             <button type="button" role="tab" aria-selected={panel === "notes"} onClick={() => setPanel("notes")}>Research notes</button>
             <button type="button" className="close-sheet" onClick={() => setSheetOpen(false)} aria-label="Close panel">Close</button>
           </div>
-          <div className="panel-body">
+          <div className="panel-body" key={panel}>
             {panel === "sources" && <SourcePanel entry={selectedEntry} active={selected?.n ?? 0} onSelect={(n) => selected && setSelected({ ...selected, n })} />}
             {panel === "behind" && (
               <Behind question={behindEntry?.question ?? ""} trace={behindEntry?.trace}

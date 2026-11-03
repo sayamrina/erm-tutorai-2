@@ -131,7 +131,15 @@ export default function ResearchNotes() {
         <li>Every answer links to the lecture page it uses, so you can check it against the slide.</li>
         <li>Practice questions with feedback, a first step towards the adaptive feedback the thesis proposed as future work.</li>
       </ul>
-      <p className="muted">Version 2 itself has not been evaluated.</p>
+
+      <h3>Automatic check of version 2</h3>
+      <p>
+        The 20 thesis questions and three off-topic questions, run against this app on 3 November 2026: all 20
+        answers drew on the course materials and all three off-topic questions were declined. About one statement
+        in four carries a citation, because the tutor mixes the slides with general methods knowledge, as the
+        thesis prompt allows; 96% of cited statements share key words with the slide they cite. Answers had
+        190 words on average. No human rating yet.
+      </p>
 
       <p className="source-note">
         Figures are re-computed from the raw ratings. Full thesis:{" "}
