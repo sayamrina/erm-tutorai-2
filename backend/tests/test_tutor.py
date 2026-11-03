@@ -106,3 +106,23 @@ def test_rate_limit(api, chat, monkeypatch):
     headers = {"x-session-id": "s1"}
     assert api.post("/api/ask", json={"question": "t-test"}, headers=headers).status_code == 200
     assert api.post("/api/ask", json={"question": "t-test"}, headers=headers).status_code == 429
+
+
+def test_trace_shows_candidates_timings_and_cost(api, chat):
+    chat.replies.append("ANOVA compares means [1].")
+    ev = events(api.post("/api/ask", json={"question": "anova variance"}))
+    trace = next(e for e in ev if e["type"] == "trace")
+    assert trace["retrieval"]["method"] == "mmr"
+    chosen = [c for c in trace["retrieval"]["candidates"] if c["chosen"]]
+    assert len(chosen) == 4 and sorted(c["rank"] for c in chosen) == [1, 2, 3, 4]
+    assert [c["id"] for c in sorted(chosen, key=lambda c: c["rank"])] == [p["id"] for p in ev[0]["passages"]]
+    assert trace["timings"]["total_ms"] >= trace["timings"]["retrieval_ms"] >= 0
+    assert ev[-1]["type"] == "done"
+
+
+def test_rating_is_accepted_and_validated(api, tmp_path, monkeypatch):
+    monkeypatch.setattr("app.main.RATINGS", tmp_path / "ratings.jsonl")
+    ok = api.post("/api/rating", json={"rating": "up", "kind": "answer", "question": "q", "answer": "a [1]", "cited": [1]})
+    assert ok.status_code == 204
+    assert '"rating": "up"' in (tmp_path / "ratings.jsonl").read_text()
+    assert api.post("/api/rating", json={"rating": "meh", "kind": "answer", "question": "q", "answer": "a"}).status_code == 422

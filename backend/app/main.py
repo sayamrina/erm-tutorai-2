@@ -11,11 +11,13 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from .config import settings
-from .ingest import UNIT_TITLES
+from .ingest import DATA, UNIT_TITLES
 from .retrieval import Retriever
+from .slides import SLIDES
 from .tutor import Tutor
 
 STATIC = Path(__file__).resolve().parent.parent / "static"
+RATINGS = DATA / "ratings.jsonl"
 log = logging.getLogger("uvicorn.error")
 
 
@@ -74,6 +76,14 @@ class Question(BaseModel):
 
 class PracticeRequest(BaseModel):
     unit: int = Field(ge=1, le=12)
+
+
+class Rating(BaseModel):
+    rating: str = Field(pattern="^(up|down)$")
+    kind: str = Field(pattern="^(answer|feedback)$")
+    question: str = Field(max_length=800)
+    answer: str = Field(max_length=6000)
+    cited: list[int] = Field(default_factory=list, max_length=20)
 
 
 class PracticeAnswer(BaseModel):
@@ -140,6 +150,20 @@ def create_app(tutor: Tutor | None = None) -> FastAPI:
             raise HTTPException(404, "Practice passage not found")
         guard(request)
         return sse(tutor.feedback(a.question, a.answer, a.seed_id, a.unit))
+
+    @app.post("/api/rating", status_code=204)
+    def rating(r: Rating):
+        # Render's free disk is wiped on every deploy, so ratings also go to the log.
+        record = {"time": time.strftime("%Y-%m-%dT%H:%M:%S"), **r.model_dump()}
+        log.info("rating %s", json.dumps(record, ensure_ascii=False))
+        try:
+            with RATINGS.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(record, ensure_ascii=False) + "\n")
+        except OSError:  # read-only or full disk: the log line is enough
+            pass
+
+    if SLIDES.exists():
+        app.mount("/slides", StaticFiles(directory=SLIDES), name="slides")
 
     if STATIC.exists():
         app.mount("/assets", StaticFiles(directory=STATIC / "assets"), name="assets")

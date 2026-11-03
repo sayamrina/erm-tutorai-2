@@ -5,11 +5,22 @@ export type Unit = { unit: number; title: string; chunks: number };
 export type Health = { status: string; mode: "tutor" | "demo"; retrieval: string };
 export type Label = "course" | "general" | "declined" | "demo";
 export type Verdict = "correct" | "partly correct" | "not yet";
+export type Candidate = {
+  id: string; unit: number; page: number; section: string; score: number; chosen: boolean; rank: number | null;
+};
+export type Trace = {
+  model: string | null;
+  retrieval: { method?: "mmr" | "bm25"; candidates?: Candidate[]; seed?: string };
+  timings: { retrieval_ms: number; first_token_ms: number | null; total_ms: number };
+  tokens: { prompt: number; completion: number } | null;
+  cost_usd: number | null;
+};
 export type StreamEvent =
   | { type: "sources"; passages: Passage[] }
   | { type: "token"; text: string }
   | { type: "verdict"; verdict: Verdict | null }
   | { type: "done"; label?: Label; cited: number[]; words: number }
+  | ({ type: "trace" } & Trace)
   | { type: "error"; message: string };
 export type PracticeQuestion = { question: string; unit: number; seed_id: string };
 
@@ -47,6 +58,13 @@ export const getHealth = async () => (await request("/api/health")).json() as Pr
 export const getUnits = async () => (await request("/api/units")).json() as Promise<Unit[]>;
 export const newPracticeQuestion = async (unit: number) =>
   (await request("/api/practice/question", { unit })).json() as Promise<PracticeQuestion>;
+
+export const slideUrl = (unit: number, page: number) =>
+  `/slides/u${String(unit).padStart(2, "0")}-p${String(page).padStart(3, "0")}.webp`;
+
+export async function rate(body: { rating: "up" | "down"; kind: "answer" | "feedback"; question: string; answer: string; cited: number[] }) {
+  await request("/api/rating", body);
+}
 
 /** Reads a server-sent event stream from a POST request. */
 export async function stream(path: string, body: unknown, onEvent: (e: StreamEvent) => void) {

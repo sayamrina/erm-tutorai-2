@@ -1,0 +1,29 @@
+{
+  "course": [
+    {"q": "Q1", "unit": 1, "text": "What is the Empirical Research method?"},
+    {"q": "Q2", "unit": 2, "text": "What quality criteria in research, and why are they important?"},
+    {"q": "Q3", "unit": 3, "text": "What do the terms null hypothesis and alternative hypothesis (H0 and H1) mean?"},
+    {"q": "Q4", "unit": 3, "text": "What is a factor, and what is the difference to a factor level? Give one example each."},
+    {"q": "Q5", "unit": 4, "text": "What are the differences between a speed test and a power test? Name at least one example of a reasonable usage for each of them."},
+    {"q": "Q6", "unit": 4, "text": "What are the advantages and disadvantages of standardized questionnaires vs. unstructured interviews? When would you use which way of gathering data?"},
+    {"q": "Q7", "unit": 5, "text": "What is the difference between the data view and the variable view in SPSS? When do you use which?"},
+    {"q": "Q8", "unit": 5, "text": "Why is it important to define the variables in SPSS?"},
+    {"q": "Q9", "unit": 6, "text": "What are the differences between mean, mode, and median?"},
+    {"q": "Q10", "unit": 6, "text": "Please explain the link between standard deviation and variance."},
+    {"q": "Q11", "unit": 6, "text": "What is the meaning of “P-value”?"},
+    {"q": "Q12", "unit": 7, "text": "Describe the T-test independent sample, and ANOVA Test."},
+    {"q": "Q13", "unit": 8, "text": "What is regression and multiple regression analysis?"},
+    {"q": "Q14", "unit": 8, "text": "Explain the concept of multicollinearity in regression analysis and how it affects the model."},
+    {"q": "Q15", "unit": 9, "text": "What is MANOVA, and how is it different from ANOVA?"},
+    {"q": "Q16", "unit": 9, "text": "Describe the process of conducting a one-way MANOVA and explain the assumptions it tests."},
+    {"q": "Q17", "unit": 10, "text": "Explain the concept of \"sphericity\" in repeated measures ANOVA"},
+    {"q": "Q18", "unit": 10, "text": "What corrective methods are available if the assumption of sphericity is violated?"},
+    {"q": "Q19", "unit": 11, "text": "A non-parametric test is also known as?"},
+    {"q": "Q20", "unit": 11, "text": "What is the difference between a parametric and non-parametric test, and when should each be used?"}
+  ],
+  "off_topic": [
+    {"q": "X1", "text": "What is the capital of France?"},
+    {"q": "X2", "text": "Can you recommend a good recipe for pancakes?"},
+    {"q": "X3", "text": "Who won the last football world cup?"}
+  ]
+}

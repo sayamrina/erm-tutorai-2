@@ -7,8 +7,10 @@ New in v2: passages are numbered and the model cites them as [1], [2] …
 import json
 import random
 import re
+import time
 from collections.abc import Iterator
 
+from .config import settings
 from .retrieval import Retriever
 
 REFUSAL = ("Sorry, I cannot answer that, because I am ERM Tutor, "
@@ -76,29 +78,57 @@ def public(p: dict) -> dict:
     return {k: p[k] for k in ("id", "unit", "unit_title", "page", "section", "text", "score")}
 
 
+def ms(start: float) -> int:
+    return round((time.perf_counter() - start) * 1000)
+
+
+def trace_event(retrieval: dict, retrieval_ms: int, meter: dict, started: float, model: str | None) -> dict:
+    """What happened behind an answer: candidates, timings, tokens and an estimated cost."""
+    usage = meter.get("usage")
+    tokens = cost = None
+    if usage is not None:
+        tokens = {"prompt": usage.prompt_tokens, "completion": usage.completion_tokens}
+        cost = round((usage.prompt_tokens * settings.price_input_per_million
+                      + usage.completion_tokens * settings.price_output_per_million) / 1e6, 5)
+    return {"type": "trace", "model": model, "retrieval": retrieval,
+            "timings": {"retrieval_ms": retrieval_ms, "first_token_ms": meter.get("first_token_ms"),
+                        "total_ms": ms(started)},
+            "tokens": tokens, "cost_usd": cost}
+
+
 class Tutor:
     def __init__(self, retriever: Retriever, client=None, model: str = "gpt-4o"):
         self.retriever = retriever
         self.client = client  # OpenAI client, or None in demo mode
         self.model = model
 
-    def _stream(self, messages: list[dict]) -> Iterator[str]:
+    def _stream(self, messages: list[dict], meter: dict | None = None) -> Iterator[str]:
+        """Streams the reply; meter collects time to first token and token usage."""
+        meter = {} if meter is None else meter
+        start = time.perf_counter()
         stream = self.client.chat.completions.create(
-            model=self.model, messages=messages, temperature=0, stream=True)
+            model=self.model, messages=messages, temperature=0, stream=True,
+            stream_options={"include_usage": True})
         for event in stream:
+            if getattr(event, "usage", None):
+                meter["usage"] = event.usage
             if event.choices and event.choices[0].delta.content:
+                meter.setdefault("first_token_ms", ms(start))
                 yield event.choices[0].delta.content
 
     def ask(self, question: str, unit: int | None = None, history: list[dict] | None = None) -> Iterator[dict]:
         history = (history or [])[-4:]
         # When the student replies to the tutor's follow-up, the follow-up carries the topic.
         context_query = " ".join([m["content"][-300:] for m in history[-1:] if m["role"] == "assistant"] + [question])
-        passages = self.retriever.search(context_query, unit=unit)
+        started, retrieval = time.perf_counter(), {}
+        passages = self.retriever.search(context_query, unit=unit, trace=retrieval)
+        retrieval_ms = ms(started)
         yield {"type": "sources", "passages": [public(p) for p in passages]}
 
         if self.client is None:
             text = self._demo_answer(passages)
             yield {"type": "token", "text": text}
+            yield trace_event(retrieval, retrieval_ms, {}, started, None)
             yield {"type": "done", "label": "demo", "cited": list(range(1, len(passages) + 1)),
                    "words": len(text.split())}
             return
@@ -108,10 +138,11 @@ class Tutor:
         messages = [{"role": "system", "content": TUTOR_PROMPT}]
         messages += [{"role": m["role"], "content": m["content"]} for m in history if m["role"] in ("user", "assistant")]
         messages.append({"role": "user", "content": f"{QUESTION_NOTE}\n\nCourse passages:\n{format_passages(passages)}\n\nStudent question: {question}"})
-        answer = ""
-        for piece in self._stream(messages):
+        answer, meter = "", {}
+        for piece in self._stream(messages, meter):
             answer += piece
             yield {"type": "token", "text": piece}
+        yield trace_event(retrieval, retrieval_ms, meter, started, self.model)
         cited = cited_numbers(answer, len(passages))
         yield {"type": "done", "label": source_label(answer, cited), "cited": cited, "words": len(answer.split())}
 
@@ -135,16 +166,19 @@ class Tutor:
         return {"question": question, "unit": unit, "seed_id": seed["id"]}
 
     def feedback(self, question: str, answer: str, seed_id: str, unit: int) -> Iterator[dict]:
+        started, retrieval = time.perf_counter(), {}
         passages = [{**self.retriever.by_id[seed_id], "score": 1.0}]
-        for hit in self.retriever.search(question, unit=unit):
+        for hit in self.retriever.search(question, unit=unit, trace=retrieval):
             if hit["id"] != seed_id and len(passages) < 4:
                 passages.append(hit)
+        retrieval_ms = ms(started)
+        retrieval["seed"] = seed_id  # passage [1] is the slide the question was written from
         yield {"type": "sources", "passages": [public(p) for p in passages]}
 
         messages = [{"role": "system", "content": FEEDBACK_PROMPT + "\n\nCourse passages:\n" + format_passages(passages)},
                     {"role": "user", "content": f"Question: {question}\n\nStudent answer: {answer}"}]
-        buffer, text, verdict_sent = "", "", False
-        for piece in self._stream(messages):
+        buffer, text, verdict_sent, meter = "", "", False, {}
+        for piece in self._stream(messages, meter):
             if verdict_sent:
                 text += piece
                 yield {"type": "token", "text": piece}
@@ -159,6 +193,7 @@ class Tutor:
         if not verdict_sent:  # the model ignored the format: show everything as feedback
             text = buffer
             yield {"type": "token", "text": buffer}
+        yield trace_event(retrieval, retrieval_ms, meter, started, self.model)
         yield {"type": "done", "cited": cited_numbers(text, len(passages)), "words": len(text.split())}
 
 

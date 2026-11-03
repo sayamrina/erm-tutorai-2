@@ -42,21 +42,33 @@ class Retriever:
     def mode(self) -> str:
         return "semantic" if self.vectors is not None else "keyword"
 
-    def search(self, query: str, unit: int | None = None, k: int = K) -> list[dict]:
+    def search(self, query: str, unit: int | None = None, k: int = K, trace: dict | None = None) -> list[dict]:
+        """trace, if given, is filled with the candidates and their scores (shown as "Behind the answer")."""
         allowed = np.array([unit is None or c["unit"] == unit for c in self.chunks])
         if self.vectors is None:
             scores = np.where(allowed, self.bm25.get_scores(tokens(query)), -np.inf)
             order = [i for i in np.argsort(-scores)[:k] if scores[i] > 0]
             top = scores[order[0]] if order else 1.0
+            if trace is not None:
+                trace.update(method="bm25", candidates=[self._candidate(i, float(scores[i] / top), r) for r, i in enumerate(order)])
             return [self._hit(i, float(scores[i] / top)) for i in order]
 
         q = normalise(np.asarray(self.embed([query]), dtype=np.float32))[0]
         sims = np.where(allowed, self.vectors @ q, -np.inf)
         candidates = [int(i) for i in np.argsort(-sims)[:FETCH_K] if np.isfinite(sims[i])]
-        return [self._hit(i, float(sims[i])) for i in mmr(self.vectors, sims, candidates, k)]
+        chosen = mmr(self.vectors, sims, list(candidates), k)
+        if trace is not None:
+            trace.update(method="mmr", candidates=[
+                self._candidate(i, float(sims[i]), chosen.index(i) if i in chosen else None) for i in candidates])
+        return [self._hit(i, float(sims[i])) for i in chosen]
 
     def _hit(self, i: int, score: float) -> dict:
         return {**self.chunks[i], "score": round(score, 3)}
+
+    def _candidate(self, i: int, score: float, rank: int | None) -> dict:
+        c = self.chunks[i]
+        return {"id": c["id"], "unit": c["unit"], "page": c["page"], "section": c["section"],
+                "score": round(score, 3), "chosen": rank is not None, "rank": None if rank is None else rank + 1}
 
 
 def normalise(m: np.ndarray) -> np.ndarray:

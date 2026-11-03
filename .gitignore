@@ -6,3 +6,5 @@ __pycache__/
 backend/static/
 backend/data/embeddings.npy
 .pytest_cache/
+backend/data/slides/
+backend/data/ratings.jsonl
