@@ -90,6 +90,8 @@ p { margin: 0 0 14px; }
 .compare tbody th { font-weight: 600; width: 18%; }
 .compare td.v1 { color: var(--ink-2); width: 30%; }
 .compare tr:last-child > * { border-bottom: 0; }
+.checks th { width: auto !important; font-weight: 500; }
+.checks td { font-weight: 700; white-space: nowrap; text-align: right; }
 
 .v1card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 32px; padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
 .v1card img { border-radius: 8px; border: 1px solid var(--line); display: block; }
@@ -158,7 +160,7 @@ footer p { margin: 0 0 6px; }
       <h1>ERM Tutor-AI<span class="two" aria-label="version 2">2</span></h1>
       <p class="lead">A virtual assistant for the <em>Empirical Research Methods</em> course. It answers from the twelve lecture units, points every statement to the slide it comes from, and lets students practise with feedback.</p>
       <div class="btns">
-        <a class="btn primary" href="https://erm-tutorai-2.onrender.com/">Try the live app</a>
+        <a class="btn primary" href="open.html">Try the live app</a>
         <a class="btn" href="https://github.com/sayamrina/erm-tutorai-2">View code</a>
         <a class="btn" href="#version-1">See version 1</a>
       </div>
@@ -193,17 +195,19 @@ footer p { margin: 0 0 6px; }
 <section>
   <div class="wrap">
     <h2>What changed from version 1</h2>
-    <p class="sub">Same lecture materials, same model (GPT-4o) and the same tutor rules as the thesis app. Two next steps from the thesis shaped this version: citations at passage level and feedback on the student's own answers.</p>
+    <p class="sub">Same lecture materials, same model (GPT-4o) and the same tutor rules as the thesis app. Two next steps from the thesis shaped this version: citations at passage level and feedback on the student's own answers. An evaluation script now measures it on the 20 thesis questions.</p>
     <table class="compare">
       <thead><tr><th scope="col"></th><th scope="col">Version 1 (thesis)</th><th scope="col">Version 2</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Sources</th><td class="v1">Name of one source file under the answer</td><td class="v2">A numbered citation after each statement; each opens the lecture passage with unit, page and slide title</td></tr>
+        <tr><th scope="row">Sources</th><td class="v1">Name of one source file under the answer</td><td class="v2">A numbered citation after each statement, with a preview on hover; each opens the lecture slide itself, its text, and the lines that share the most words with the cited statement</td></tr>
         <tr><th scope="row">Where an answer comes from</th><td class="v1">Label “course materials” or “general knowledge”</td><td class="v2">The same labels, now based on whether the answer cites a passage, plus a strip of twelve ticks for the units it used</td></tr>
         <tr><th scope="row">Course focus</th><td class="v1">All units</td><td class="v2">All units, or one chosen unit</td></tr>
         <tr><th scope="row">Practice</th><td class="v1">None</td><td class="v2">The tutor writes a question from a lecture slide, the student answers, the feedback gives a verdict and cites the slides to review</td></tr>
         <tr><th scope="row">Follow-up question</th><td class="v1">Inside the answer text</td><td class="v2">Shown separately with a button to answer it; the last two turns go along so the tutor can follow</td></tr>
+        <tr><th scope="row">Behind the answer</th><td class="v1">None</td><td class="v2">The 10 candidate passages with their scores and the 4 that were chosen, time per step, tokens and estimated cost</td></tr>
+        <tr><th scope="row">Practice progress</th><td class="v1">None</td><td class="v2">Verdicts per lecture unit, kept in the browser, as a map of the twelve units</td></tr>
         <tr><th scope="row">Research notes</th><td class="v1">PDF “About this app”</td><td class="v2">Side panel with the evaluation design, a ratings chart, answer length and limits</td></tr>
-        <tr><th scope="row">Also</th><td class="v1">Streamlit chat</td><td class="v2">Streaming answers, save the chat as Markdown, light and dark mode, phone layout</td></tr>
+        <tr><th scope="row">Also</th><td class="v1">Streamlit chat</td><td class="v2">Streaming answers, the chat survives a reload, copy an answer with its sources, helpful buttons, save as Markdown, a start page that wakes the sleeping server, light and dark mode, phone layout</td></tr>
       </tbody>
     </table>
 
@@ -227,11 +231,13 @@ footer p { margin: 0 0 6px; }
     <h2>The interface</h2>
     <p class="sub">Screenshots of the live app with real model answers.</p>
     <figure><img class="shot" src="img/d-answer.jpg" alt="Answer about t-test and ANOVA with numbered citations; the source panel on the right shows the cited lecture passages with unit, page and slide title" loading="lazy">
-      <figcaption>An answer with numbered citations. The source panel shows the four passages the tutor read and which ones it cited.</figcaption></figure>
+      <figcaption>An answer with numbered citations. The source panel shows the cited slide as an image and marks the lines that support the statement.</figcaption></figure>
+    <figure style="margin-top:28px"><img class="shot" src="img/d-behind.jpg" alt="Behind the answer: a time bar for retrieval, waiting and writing, prompt and answer tokens, estimated cost, and the ten candidate passages with similarity scores" loading="lazy">
+      <figcaption>Behind the answer: 2.8 seconds in total, 1,076 tokens, about $0.004. Retrieval found ten candidates; maximal marginal relevance skipped page 52 because it repeats page 51.</figcaption></figure>
     <div class="gallery">
       <figure><img class="shot" src="img/d-practice.jpg" alt="Practice mode: a question on two-way ANOVA, the student's answer, and feedback marked correct with citations" loading="lazy">
-        <figcaption>Practice mode: a question from a unit 7 slide, the student's answer, and feedback with a verdict and the slides to review.</figcaption></figure>
-      <figure><img class="shot" src="img/m-answer.jpg" alt="The app on a phone, answering a question about sphericity" loading="lazy">
+        <figcaption>Practice mode: a question from a unit 7 slide, the student's answer, and feedback with a verdict. The dot next to unit 7 is the saved progress.</figcaption></figure>
+      <figure><img class="shot" src="img/m-answer.jpg" alt="The app on a phone, answering when to use a t-test or an ANOVA" loading="lazy">
         <figcaption>On a phone.</figcaption></figure>
     </div>
   </div>
@@ -246,7 +252,8 @@ footer p { margin: 0 0 6px; }
         <li><b>Index the course</b><span>The 12 lecture PDFs are read page by page and split into 354 chunks of up to 1,500 characters. Each chunk keeps its unit, page and slide title.</span></li>
         <li><b>Retrieve</b><span>The question is embedded with OpenAI text-embedding-3-small; the 4 most relevant and varied passages are chosen from 10 candidates (maximal marginal relevance), optionally within one unit.</span></li>
         <li><b>Answer and cite</b><span>GPT-4o (temperature 0) gets the numbered passages and the version 1 tutor prompt: course materials first, general methods knowledge second, a polite refusal for unrelated questions. It cites passages as [1], [2].</span></li>
-        <li><b>Show the evidence</b><span>The answer streams to the browser; each number opens its passage in the source panel.</span></li>
+        <li><b>Show the evidence</b><span>The answer streams to the browser; each number opens its slide, rendered from the PDF at build time. The lines that support a statement are found by word overlap in the browser, without another model call.</span></li>
+        <li><b>Report the trace</b><span>With each answer the backend sends the retrieval candidates, the time per step and the token usage, priced at list price.</span></li>
       </ol>
       <div>
         <table class="stack">
@@ -256,8 +263,8 @@ footer p { margin: 0 0 6px; }
             <tr><td>API</td><td>–</td><td>FastAPI, server-sent events</td></tr>
             <tr><td>Model</td><td>GPT-4o</td><td>GPT-4o</td></tr>
             <tr><td>Retrieval</td><td>LangChain, ChromaDB</td><td>NumPy (cosine, MMR)</td></tr>
-            <tr><td>PDF parsing</td><td>Markitdown</td><td>pdfminer.six, per page</td></tr>
-            <tr><td>Delivery</td><td>Streamlit Cloud</td><td>pytest, GitHub Actions, Docker, Render</td></tr>
+            <tr><td>PDF parsing</td><td>Markitdown</td><td>pdfminer.six, per page; pypdfium2 for slide images</td></tr>
+            <tr><td>Delivery</td><td>Streamlit Cloud</td><td>pytest (16 tests), evaluation script, GitHub Actions, Docker, Render</td></tr>
           </tbody>
         </table>
         <p class="note" style="margin-top:14px">Version 2 calls the OpenAI API directly because streaming and numbered citations need control over the prompt and the passages. Without an API key it runs in a demo mode with keyword search over the same passages.</p>
@@ -268,8 +275,34 @@ footer p { margin: 0 0 6px; }
 
 <section>
   <div class="wrap">
+    <h2>Checking version 2</h2>
+    <p class="sub">An evaluation script asks the live app the 20 evaluation questions of the thesis, each in a fresh conversation, and three off-topic questions, then measures what can be checked without a human rater. Run on 3 November 2026.</p>
+    <div class="eval">
+      <table class="compare checks">
+        <tbody>
+          <tr><th scope="row">Answers based on the course materials</th><td>20 of 20</td></tr>
+          <tr><th scope="row">Off-topic questions declined</th><td>3 of 3</td></tr>
+          <tr><th scope="row">A passage from the question's unit cited</th><td>18 of 20</td></tr>
+          <tr><th scope="row">Statements with a citation</th><td>24%</td></tr>
+          <tr><th scope="row">Cited statements sharing key words with their slide</th><td>96%</td></tr>
+          <tr><th scope="row">Answer length</th><td>190 ± 53 words</td></tr>
+          <tr><th scope="row">Median time to the full answer</th><td>3.0 s</td></tr>
+          <tr><th scope="row">Cost of the whole run</th><td>about $0.10</td></tr>
+        </tbody>
+      </table>
+      <div>
+        <p class="reported">The tutor stays in the course and cites slides that match what it says. It cites only about one statement in four.</p>
+        <p>The prompt, kept from the thesis app, allows general research-methods knowledge next to the slides, and the model often cites once per paragraph. Raising coverage would mean changing the tutor's rules, which version 2 deliberately keeps. Word overlap is a cheap proxy for support, not a judgement of correctness, and no human has rated version 2 yet.</p>
+        <p class="note"><a href="https://github.com/sayamrina/erm-tutorai-2/blob/main/backend/eval/results/2026-11-03.md">Full report per question</a> and <a href="https://github.com/sayamrina/erm-tutorai-2/blob/main/backend/eval/run_eval.py">the script</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>What the thesis found</h2>
-    <p class="sub">The evaluation is about version 1. Two course instructors rated the answers of ERM Tutor-AI and of ChatGPT-4o (without the course materials) to 20 questions from the weekly assignments, on a 7-point rubric adapted from Lee (2024). Version 2 has not been evaluated yet.</p>
+    <p class="sub">The evaluation is about version 1. Two course instructors rated the answers of ERM Tutor-AI and of ChatGPT-4o (without the course materials) to 20 questions from the weekly assignments, on a 7-point rubric adapted from Lee (2024). Instructors have not rated version 2 yet.</p>
     <div class="eval">
       <div>
         <p class="reported">Instructors rated ERM Tutor-AI <b>6.33</b> on average, against <b>6.00</b> for ChatGPT-4o (two-way ANOVA, p = .038). Its answers were shorter: <b>198</b> against 280 words on average.</p>
@@ -279,7 +312,7 @@ footer p { margin: 0 0 6px; }
         <ul class="lim">
           <li>20 questions and two raters, who were not blind to the system.</li>
           <li>No students took part, so the study measured answer quality, not learning.</li>
-          <li>Version 2's citations and practice feedback have not been evaluated. A study with students could compare both versions: do page-level citations change how often students check an answer and how much they trust it?</li>
+          <li>Version 2 has only been checked automatically. A study with students could compare both versions: do page-level citations change how often students check an answer and how much they trust it?</li>
         </ul>
       </div>
       <div class="panel">
