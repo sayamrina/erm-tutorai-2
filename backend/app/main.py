@@ -1,5 +1,6 @@
 """API of ERM Tutor-AI 2. The React frontend is served from the same origin."""
 import json
+import logging
 import time
 from collections import defaultdict, deque
 from pathlib import Path
@@ -15,6 +16,7 @@ from .retrieval import Retriever
 from .tutor import Tutor
 
 STATIC = Path(__file__).resolve().parent.parent / "static"
+log = logging.getLogger("uvicorn.error")
 
 
 def make_tutor() -> Tutor:
@@ -30,7 +32,12 @@ def make_tutor() -> Tutor:
             out += [d.embedding for d in response.data]
         return out
 
-    return Tutor(Retriever(embed), client, settings.chat_model)
+    try:
+        retriever = Retriever(embed)
+    except Exception as exc:  # wrong key, no credit, network: keep the app up in demo mode
+        log.error("Could not build embeddings, starting in demo mode: %s", exc)
+        return Tutor(Retriever())
+    return Tutor(retriever, client, settings.chat_model)
 
 
 class Limiter:
