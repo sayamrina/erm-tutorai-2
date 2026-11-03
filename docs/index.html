@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ERM Tutor-AI 2</title>
+<meta name="description" content="Version 2 of a RAG-based AI tutor for the Empirical Research Methods course: every statement cites the lecture page it is based on, and a practice mode gives feedback. Master's thesis project, Saarland University.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Same notebook as the app: graph paper, blue-black ink, the course blue,
+   and teal used only for "this comes from the slides". */
+:root {
+  --paper: #f2f5f4; --grid: #e0e7e5; --surface: #ffffff;
+  --ink: #172631; --ink-2: #4a5a66; --ink-3: #6c7b85; --line: #d3dcda;
+  --blue: #1a629b; --blue-ink: #124a75;
+  --evidence: #0e7c6b; --evidence-soft: #dff1ec;
+  --s-tutor: #1a629b; --s-gpt: #b4651a;
+  --serif: "Source Serif 4", Georgia, serif; --sans: "Hanken Grotesk", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1a21; --grid: #17252e; --surface: #13202a;
+    --ink: #e3ebe9; --ink-2: #aab8bf; --ink-3: #8595a0; --line: #253540;
+    --blue: #5d9fd8; --blue-ink: #8bbbe4;
+    --evidence: #45bba3; --evidence-soft: #133631;
+    --s-tutor: #3f8fd4; --s-gpt: #c9842a;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--sans); }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+img { max-width: 100%; }
+
+.banner { background: var(--surface); border-bottom: 1px solid var(--line); font-size: 15px; }
+.banner .wrap { padding-top: 10px; padding-bottom: 10px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; justify-content: center; }
+.banner a { font-weight: 600; }
+
+/* hero on graph paper */
+header { background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px; border-bottom: 1px solid var(--line); }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; color: var(--ink-2); font-size: 15px; }
+.brand img { width: 44px; height: 44px; border-radius: 9px; }
+h1 { font: 700 clamp(40px, 6vw, 60px)/1.02 var(--serif); letter-spacing: -0.015em; margin: 0 0 18px; }
+h1 .two { display: inline-grid; place-items: center; width: .82em; height: .82em; margin-left: .12em; border: 3px solid var(--blue); border-radius: 50%; color: var(--blue); font-size: .62em; vertical-align: .18em; }
+.lead { font: 400 20px/1.55 var(--serif); margin: 0; max-width: 34em; }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1.5px solid var(--blue); color: var(--blue); background: var(--surface); }
+.btn.primary { background: var(--blue-ink); border-color: var(--blue-ink); color: #fff; }
+.btn:hover { border-color: var(--blue-ink); }
+.author { display: flex; align-items: center; gap: 12px; margin-top: 28px; font-size: 15px; color: var(--ink-2); }
+.author img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+.author b { color: var(--ink); display: block; }
+
+/* the specimen: one real answer, citations you can open */
+.specimen { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 40px rgba(23, 38, 49, .10); overflow: hidden; }
+.specimen .q { padding: 14px 20px; border-bottom: 1px solid var(--line); font-weight: 600; font-size: 16px; border-left: 4px solid var(--blue); }
+.specimen .a { padding: 18px 20px 6px; font: 400 18px/1.65 var(--serif); }
+.specimen .a p { margin: 0 0 12px; }
+.cite { font: 600 12px/1 var(--sans); color: var(--evidence); background: var(--evidence-soft); border: 1px solid transparent; border-radius: 5px; padding: 3px 6px; margin: 0 2px; cursor: pointer; vertical-align: 2px; }
+.cite[aria-expanded="true"] { border-color: var(--evidence); }
+.passage { margin: 0 20px 18px; padding: 14px 16px; border: 1.5px solid var(--evidence); border-radius: 10px; background: var(--surface); }
+.passage .where { font-size: 14px; color: var(--ink-3); margin-bottom: 6px; }
+.passage .where b { color: var(--ink); font-weight: 600; }
+.passage blockquote { margin: 0; font: 400 16px/1.55 var(--serif); }
+.specimen .foot { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; padding: 10px 20px 14px; border-top: 1px dashed var(--line); font-size: 14px; color: var(--ink-3); }
+.rug { display: inline-flex; gap: 3px; vertical-align: middle; }
+.rug i { width: 5px; height: 12px; border-radius: 1px; background: var(--line); }
+.rug i.on { background: var(--evidence); height: 16px; }
+.from { color: var(--evidence); font-weight: 600; }
+.caption { font-size: 14px; color: var(--ink-3); margin: 10px 4px 0; }
+
+main section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+h2 { font: 700 32px/1.15 var(--serif); margin: 0 0 10px; letter-spacing: -0.01em; }
+h3 { font: 600 20px/1.3 var(--serif); margin: 28px 0 8px; }
+.sub { color: var(--ink-2); margin: 0 0 28px; max-width: 42em; }
+p { margin: 0 0 14px; }
+
+/* version 1 → 2 */
+.compare { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 16px; }
+.compare th, .compare td { text-align: left; vertical-align: top; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.compare thead th { font-size: 15px; color: var(--ink-2); font-weight: 600; background: var(--paper); }
+.compare tbody th { font-weight: 600; width: 18%; }
+.compare td.v1 { color: var(--ink-2); width: 30%; }
+.compare tr:last-child > * { border-bottom: 0; }
+
+.v1card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: center; margin-top: 32px; padding: 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.v1card img { border-radius: 8px; border: 1px solid var(--line); display: block; }
+.v1card h3 { margin-top: 0; }
+.v1card .btns { margin-top: 14px; }
+
+/* screenshots */
+.shot { display: block; width: 100%; border-radius: 10px; border: 1px solid var(--line); box-shadow: 0 10px 28px rgba(23, 38, 49, .10); }
+figure { margin: 0; }
+figcaption { font-size: 15px; color: var(--ink-2); margin-top: 10px; }
+.gallery { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 24px; margin-top: 28px; align-items: start; }
+
+/* how it works: a real sequence */
+.how { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; }
+ol.steps li { counter-increment: s; position: relative; padding: 0 0 18px 44px; }
+ol.steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--blue); color: var(--blue); font: 600 14px/25px var(--sans); text-align: center; }
+ol.steps b { display: block; }
+ol.steps span { color: var(--ink-2); }
+.stack { width: 100%; border-collapse: collapse; font-size: 15px; }
+.stack th, .stack td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.stack thead th { color: var(--ink-2); font-weight: 600; }
+.stack td:nth-child(2) { color: var(--ink-3); }
+.note { font-size: 15px; color: var(--ink-2); }
+
+/* evaluation */
+.eval { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.panel .t { font-weight: 600; margin-bottom: 4px; }
+.legend { display: flex; gap: 16px; font-size: 14px; color: var(--ink-2); margin: 6px 0 4px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.dots { width: 100%; height: auto; display: block; }
+.dots text { font: 14px var(--sans); fill: var(--ink-2); }
+.dots .axis { stroke: var(--line); }
+.reported { font: 400 17px/1.55 var(--serif); }
+.reported b { font-weight: 600; }
+ul.lim { padding-left: 20px; margin: 0; } ul.lim li { margin-bottom: 8px; }
+
+footer { padding: 36px 0 64px; color: var(--ink-2); font-size: 15px; }
+footer p { margin: 0 0 6px; }
+
+@media (max-width: 860px) {
+  .hero, .how, .eval, .v1card { grid-template-columns: minmax(0, 1fr); }
+  .hero { gap: 32px; padding-top: 40px; padding-bottom: 44px; }
+  .gallery { grid-template-columns: minmax(0, 1fr); }
+  .gallery figure:last-child { max-width: 260px; }
+  .compare, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: 100% !important; }
+  .compare thead { display: none; }
+  .compare tr { border-bottom: 1px solid var(--line); padding: 6px 0; }
+  .compare tr:last-child { border-bottom: 0; }
+  .compare th, .compare td { border: 0; padding: 4px 16px; }
+  .compare td.v1::before { content: "Version 1: "; font-weight: 600; }
+  .compare td.v2::before { content: "Version 2: "; font-weight: 600; color: var(--ink); }
+  main section { padding: 48px 0; }
+}
+@media (max-width: 480px) { .wrap { padding: 0 16px; } .specimen .a { font-size: 17px; } }
+</style>
+</head>
+<body>
+<div class="banner"><div class="wrap">This website was developed as part of Amrina's master's thesis. <a href="https://sayamrina.github.io/" target="_blank" rel="noopener">View the portfolio →</a></div></div>
+
+<header>
+  <div class="wrap hero">
+    <div>
+      <div class="brand"><img src="img/logo.png" alt="ERM Tutor-AI logo">Master's thesis project, M.Sc. Educational Technology</div>
+      <h1>ERM Tutor-AI<span class="two" aria-label="version 2">2</span></h1>
+      <p class="lead">A virtual assistant for the <em>Empirical Research Methods</em> course. It answers from the twelve lecture units, points every statement to the slide it comes from, and lets students practise with feedback.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://erm-tutorai-2.onrender.com/">Try the live app</a>
+        <a class="btn" href="https://github.com/sayamrina/erm-tutorai-2">View code</a>
+        <a class="btn" href="#version-1">See version 1</a>
+      </div>
+      <div class="author">
+        <img src="img/amrina.jpg" alt="Photo of Amrina">
+        <div><b>Amrina</b>Saarland University. Supervisors: Dominik Thüs and Dr. Sarah Malone. <a href="https://www.linkedin.com/in/amrina-ali-487025119/">LinkedIn</a></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="specimen">
+        <div class="q">When do I use a t-test and when an ANOVA?</div>
+        <div class="a">
+          <p>If you're comparing the means of just two groups, a t-test is typically the way to go. It's straightforward and commonly used for this purpose<button class="cite" type="button" aria-expanded="true" aria-controls="passage" data-p="0">1</button>.</p>
+          <p>On the other hand, if you have more than two groups or levels to compare, ANOVA is your friend. […] This is particularly useful when you have one factor with more than two levels (one-way ANOVA) or multiple factors (two-way ANOVA)<button class="cite" type="button" aria-expanded="false" aria-controls="passage" data-p="1">4</button>.</p>
+        </div>
+        <div class="passage" id="passage" aria-live="polite">
+          <div class="where"><b>Unit 7: T-test and ANOVA</b>, page 51, “One-way ANOVA vs t-test”</div>
+          <blockquote>Comparing two levels (within the same factor): both are applicable and produce the same p-value, but t-test is more common.</blockquote>
+        </div>
+        <div class="foot">
+          <span class="rug" aria-label="Lecture unit 7 of 12 used"><i></i><i></i><i></i><i></i><i></i><i></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span>Unit 7 of 12</span><span class="from">From the course materials</span>
+        </div>
+      </div>
+      <p class="caption">Shortened from a real answer of the live app. Press a number to open the lecture passage it cites.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap">
+    <h2>What changed from version 1</h2>
+    <p class="sub">Same lecture materials, same model (GPT-4o) and the same tutor rules as the thesis app. Two next steps from the thesis shaped this version: citations at passage level and feedback on the student's own answers.</p>
+    <table class="compare">
+      <thead><tr><th scope="col"></th><th scope="col">Version 1 (thesis)</th><th scope="col">Version 2</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Sources</th><td class="v1">Name of one source file under the answer</td><td class="v2">A numbered citation after each statement; each opens the lecture passage with unit, page and slide title</td></tr>
+        <tr><th scope="row">Where an answer comes from</th><td class="v1">Label “course materials” or “general knowledge”</td><td class="v2">The same labels, now based on whether the answer cites a passage, plus a strip of twelve ticks for the units it used</td></tr>
+        <tr><th scope="row">Course focus</th><td class="v1">All units</td><td class="v2">All units, or one chosen unit</td></tr>
+        <tr><th scope="row">Practice</th><td class="v1">None</td><td class="v2">The tutor writes a question from a lecture slide, the student answers, the feedback gives a verdict and cites the slides to review</td></tr>
+        <tr><th scope="row">Follow-up question</th><td class="v1">Inside the answer text</td><td class="v2">Shown separately with a button to answer it; the last two turns go along so the tutor can follow</td></tr>
+        <tr><th scope="row">Research notes</th><td class="v1">PDF “About this app”</td><td class="v2">Side panel with the evaluation design, a ratings chart, answer length and limits</td></tr>
+        <tr><th scope="row">Also</th><td class="v1">Streamlit chat</td><td class="v2">Streaming answers, save the chat as Markdown, light and dark mode, phone layout</td></tr>
+      </tbody>
+    </table>
+
+    <div class="v1card" id="version-1">
+      <img src="img/v1.jpg" alt="Version 1 of ERM Tutor-AI: a Streamlit chat with the source label under the answer" loading="lazy">
+      <div>
+        <h3>Version 1, the thesis app</h3>
+        <p>The tutor as it was built and evaluated in the master's thesis: a Streamlit chat with LangChain and ChromaDB, designed in four interface iterations. It is still online.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://sayamrina.github.io/ERM_TutorAI_v4/">Version 1 project page</a>
+          <a class="btn" href="https://erm-tutorai.streamlit.app/">Version 1 live app</a>
+          <a class="btn" href="https://github.com/sayamrina/ERM_TutorAI_v4">Version 1 code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The interface</h2>
+    <p class="sub">Screenshots of the live app with real model answers.</p>
+    <figure><img class="shot" src="img/d-answer.jpg" alt="Answer about t-test and ANOVA with numbered citations; the source panel on the right shows the cited lecture passages with unit, page and slide title" loading="lazy">
+      <figcaption>An answer with numbered citations. The source panel shows the four passages the tutor read and which ones it cited.</figcaption></figure>
+    <div class="gallery">
+      <figure><img class="shot" src="img/d-practice.jpg" alt="Practice mode: a question on two-way ANOVA, the student's answer, and feedback marked correct with citations" loading="lazy">
+        <figcaption>Practice mode: a question from a unit 7 slide, the student's answer, and feedback with a verdict and the slides to review.</figcaption></figure>
+      <figure><img class="shot" src="img/m-answer.jpg" alt="The app on a phone, answering a question about sphericity" loading="lazy">
+        <figcaption>On a phone.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">Retrieval-augmented generation: find the relevant lecture passages first, then let the model answer from them and cite them.</p>
+    <div class="how">
+      <ol class="steps">
+        <li><b>Index the course</b><span>The 12 lecture PDFs are read page by page and split into 354 chunks of up to 1,500 characters. Each chunk keeps its unit, page and slide title.</span></li>
+        <li><b>Retrieve</b><span>The question is embedded with OpenAI text-embedding-3-small; the 4 most relevant and varied passages are chosen from 10 candidates (maximal marginal relevance), optionally within one unit.</span></li>
+        <li><b>Answer and cite</b><span>GPT-4o (temperature 0) gets the numbered passages and the version 1 tutor prompt: course materials first, general methods knowledge second, a polite refusal for unrelated questions. It cites passages as [1], [2].</span></li>
+        <li><b>Show the evidence</b><span>The answer streams to the browser; each number opens its passage in the source panel.</span></li>
+      </ol>
+      <div>
+        <table class="stack">
+          <thead><tr><th scope="col">Layer</th><th scope="col">Version 1</th><th scope="col">Version 2</th></tr></thead>
+          <tbody>
+            <tr><td>Interface</td><td>Streamlit</td><td>React, TypeScript</td></tr>
+            <tr><td>API</td><td>–</td><td>FastAPI, server-sent events</td></tr>
+            <tr><td>Model</td><td>GPT-4o</td><td>GPT-4o</td></tr>
+            <tr><td>Retrieval</td><td>LangChain, ChromaDB</td><td>NumPy (cosine, MMR)</td></tr>
+            <tr><td>PDF parsing</td><td>Markitdown</td><td>pdfminer.six, per page</td></tr>
+            <tr><td>Delivery</td><td>Streamlit Cloud</td><td>pytest, GitHub Actions, Docker, Render</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:14px">Version 2 calls the OpenAI API directly because streaming and numbered citations need control over the prompt and the passages. Without an API key it runs in a demo mode with keyword search over the same passages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What the thesis found</h2>
+    <p class="sub">The evaluation is about version 1. Two course instructors rated the answers of ERM Tutor-AI and of ChatGPT-4o (without the course materials) to 20 questions from the weekly assignments, on a 7-point rubric adapted from Lee (2024). Version 2 has not been evaluated yet.</p>
+    <div class="eval">
+      <div>
+        <p class="reported">The thesis reports a mean score of <b>6.75 ± 0.44</b> for ERM Tutor-AI against <b>6.00 ± 0.76</b> for ChatGPT-4o, and answers that were shorter: <b>198</b> against 280 words on average.</p>
+        <p>Re-computed from the raw ratings, the tutor scored 6.33 on average (two-way ANOVA, p = .038), and the two instructors disagreed on which system was better: one rated every tutor answer 7, the other preferred ChatGPT-4o. The quality result is therefore preliminary.</p>
+        <h3>Limits and next steps</h3>
+        <ul class="lim">
+          <li>20 questions and two raters, who were not blind to the system.</li>
+          <li>No students took part, so the study measured answer quality, not learning.</li>
+          <li>Version 2's citations and practice feedback have not been evaluated. A study with students could compare both versions: do page-level citations change how often students check an answer and how much they trust it?</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="t">Mean score per rater, re-computed</div>
+        <div class="legend"><span><i style="background:var(--s-tutor)"></i>ERM Tutor-AI</span><span><i style="background:var(--s-gpt)"></i>ChatGPT-4o</span></div>
+        <svg class="dots" viewBox="0 0 420 200" role="img" aria-label="Mean rubric scores on a scale from 4 to 7. Both instructors: ERM Tutor-AI 6.33, ChatGPT-4o 6.00. Instructor 1: 7.00 and 5.60. Instructor 2: 5.65 and 6.40.">
+          <g class="axis">
+            <line x1="150" y1="20" x2="150" y2="168"/><line x1="236" y1="20" x2="236" y2="168"/><line x1="322" y1="20" x2="322" y2="168"/><line x1="408" y1="20" x2="408" y2="168"/>
+          </g>
+          <text x="150" y="190" text-anchor="middle">4</text><text x="236" y="190" text-anchor="middle">5</text><text x="322" y="190" text-anchor="middle">6</text><text x="408" y="190" text-anchor="middle">7</text>
+          <text x="0" y="50">Both instructors</text>
+          <line x1="322" y1="45" x2="350.4" y2="45" stroke="var(--line)" stroke-width="3"/>
+          <circle cx="322" cy="45" r="6" fill="var(--s-gpt)"/><circle cx="350.4" cy="45" r="6" fill="var(--s-tutor)"/>
+          <text x="0" y="100">Instructor 1</text>
+          <line x1="287.6" y1="95" x2="408" y2="95" stroke="var(--line)" stroke-width="3"/>
+          <circle cx="287.6" cy="95" r="6" fill="var(--s-gpt)"/><circle cx="408" cy="95" r="6" fill="var(--s-tutor)"/>
+          <text x="0" y="150">Instructor 2</text>
+          <line x1="292" y1="145" x2="356.4" y2="145" stroke="var(--line)" stroke-width="3"/>
+          <circle cx="292" cy="145" r="6" fill="var(--s-tutor)"/><circle cx="356.4" cy="145" r="6" fill="var(--s-gpt)"/>
+        </svg>
+        <p class="note" style="margin:8px 0 0">Scale 1 to 7; the axis starts at 4. Full thesis: <a href="https://doi.org/10.5281/zenodo.23749487">doi.org/10.5281/zenodo.23749487</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Code: <a href="https://github.com/sayamrina/erm-tutorai-2">github.com/sayamrina/erm-tutorai-2</a>. Version 1: <a href="https://sayamrina.github.io/ERM_TutorAI_v4/">project page</a> and <a href="https://github.com/sayamrina/ERM_TutorAI_v4">code</a>. <a href="https://sayamrina.github.io/">Portfolio</a>.</p>
+    <p>Lecture materials: Empirical Research Methods course, Saarland University. Built by Amrina, with AI as a supporting tool for coding. © 2025–2026 Amrina</p>
+  </div>
+</footer>
+
+<script>
+// The two citations in the specimen open their passages, as in the app.
+const passages = [
+  { where: "<b>Unit 7: T-test and ANOVA</b>, page 51, “One-way ANOVA vs t-test”",
+    text: "Comparing two levels (within the same factor): both are applicable and produce the same p-value, but t-test is more common." },
+  { where: "<b>Unit 7: T-test and ANOVA</b>, page 48, “ANOVA?”",
+    text: "Unlike a t-test, with an ANOVA we can compare the means of >2 levels at once: One-way ANOVA: used when you have only 1 factor/IV with >2 levels and only 1 DV. Two-way ANOVA: a.k.a. “Factorial ANOVA”, used when you have >1 factor (with multiple levels each) and only 1 DV." }
+];
+const box = document.getElementById("passage");
+document.querySelectorAll(".cite").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll(".cite").forEach((o) => o.setAttribute("aria-expanded", String(o === b)));
+  const p = passages[Number(b.dataset.p)];
+  box.querySelector(".where").innerHTML = p.where;
+  box.querySelector("blockquote").textContent = p.text;
+}));
+</script>
+</body>
+</html>
