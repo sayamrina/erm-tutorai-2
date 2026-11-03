@@ -119,11 +119,11 @@ ol.steps span { color: var(--ink-2); }
 .eval { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
 .panel .t { font-weight: 600; margin-bottom: 4px; }
-.bar { display: grid; grid-template-columns: 104px minmax(0, 1fr) 96px; gap: 10px; align-items: center; margin: 10px 0; font-size: 15px; }
-.bar span { color: var(--ink-2); }
-.bar .track { height: 18px; background: var(--paper); border-radius: 3px; overflow: hidden; }
-.bar .track i { display: block; height: 100%; border-radius: 0 3px 3px 0; }
-.bar b { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+.legend { display: flex; gap: 16px; font-size: 14px; color: var(--ink-2); margin: 6px 0 4px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+.dots { width: 100%; height: auto; display: block; }
+.dots text { font: 14px var(--sans); fill: var(--ink-2); }
+.dots .axis { stroke: var(--line); }
 .reported { font: 400 17px/1.55 var(--serif); }
 .reported b { font-weight: 600; }
 ul.lim { padding-left: 20px; margin: 0; } ul.lim li { margin-bottom: 8px; }
@@ -272,23 +272,34 @@ footer p { margin: 0 0 6px; }
     <p class="sub">The evaluation is about version 1. Two course instructors rated the answers of ERM Tutor-AI and of ChatGPT-4o (without the course materials) to 20 questions from the weekly assignments, on a 7-point rubric adapted from Lee (2024). Version 2 has not been evaluated yet.</p>
     <div class="eval">
       <div>
-        <p class="reported">Instructors rated ERM Tutor-AI <b>6.75 ± 0.44</b> on average, against <b>6.00 ± 0.76</b> for ChatGPT-4o. Its answers were also shorter: <b>198</b> against 280 words on average, and more consistent in length.</p>
-        <p>A two-way ANOVA showed a significant effect of the system (F(1, 76) ≈ 32.8, p &lt; .001) and no significant effect of the instructor or of the interaction.</p>
+        <p class="reported">The thesis reports a mean score of <b>6.75 ± 0.44</b> for ERM Tutor-AI against <b>6.00 ± 0.76</b> for ChatGPT-4o, and answers that were shorter: <b>198</b> against 280 words on average.</p>
+        <p>Re-computed from the raw ratings, the tutor scored 6.33 on average (two-way ANOVA, p = .038), and the two instructors disagreed on which system was better: one rated every tutor answer 7, the other preferred ChatGPT-4o. The quality result is therefore preliminary.</p>
         <h3>Limits and next steps</h3>
         <ul class="lim">
-          <li>20 questions and two raters; inter-rater reliability not reported; ratings not blind to the system; likely ceiling effects.</li>
+          <li>20 questions and two raters, who were not blind to the system.</li>
           <li>No students took part, so the study measured answer quality, not learning.</li>
           <li>Version 2's citations and practice feedback have not been evaluated. A study with students could compare both versions: do page-level citations change how often students check an answer and how much they trust it?</li>
         </ul>
       </div>
       <div class="panel">
-        <div class="t">Mean rubric score (1–7), 40 ratings per system</div>
-        <div class="bar"><span>ERM Tutor-AI</span><div class="track"><i style="width:96.4%;background:var(--s-tutor)"></i></div><b>6.75 ± 0.44</b></div>
-        <div class="bar"><span>ChatGPT-4o</span><div class="track"><i style="width:85.7%;background:var(--s-gpt)"></i></div><b>6.00 ± 0.76</b></div>
-        <div class="t" style="margin-top:20px">Mean answer length (words)</div>
-        <div class="bar"><span>ERM Tutor-AI</span><div class="track"><i style="width:66.1%;background:var(--s-tutor)"></i></div><b>198</b></div>
-        <div class="bar"><span>ChatGPT-4o</span><div class="track"><i style="width:93.3%;background:var(--s-gpt)"></i></div><b>280</b></div>
-        <p class="note" style="margin:12px 0 0">Figures as reported in the thesis. Full thesis: <a href="https://doi.org/10.5281/zenodo.23749487">doi.org/10.5281/zenodo.23749487</a></p>
+        <div class="t">Mean score per rater, re-computed</div>
+        <div class="legend"><span><i style="background:var(--s-tutor)"></i>ERM Tutor-AI</span><span><i style="background:var(--s-gpt)"></i>ChatGPT-4o</span></div>
+        <svg class="dots" viewBox="0 0 420 200" role="img" aria-label="Mean rubric scores on a scale from 4 to 7. Both instructors: ERM Tutor-AI 6.33, ChatGPT-4o 6.00. Instructor 1: 7.00 and 5.60. Instructor 2: 5.65 and 6.40.">
+          <g class="axis">
+            <line x1="150" y1="20" x2="150" y2="168"/><line x1="236" y1="20" x2="236" y2="168"/><line x1="322" y1="20" x2="322" y2="168"/><line x1="408" y1="20" x2="408" y2="168"/>
+          </g>
+          <text x="150" y="190" text-anchor="middle">4</text><text x="236" y="190" text-anchor="middle">5</text><text x="322" y="190" text-anchor="middle">6</text><text x="408" y="190" text-anchor="middle">7</text>
+          <text x="0" y="50">Both instructors</text>
+          <line x1="322" y1="45" x2="350.4" y2="45" stroke="var(--line)" stroke-width="3"/>
+          <circle cx="322" cy="45" r="6" fill="var(--s-gpt)"/><circle cx="350.4" cy="45" r="6" fill="var(--s-tutor)"/>
+          <text x="0" y="100">Instructor 1</text>
+          <line x1="287.6" y1="95" x2="408" y2="95" stroke="var(--line)" stroke-width="3"/>
+          <circle cx="287.6" cy="95" r="6" fill="var(--s-gpt)"/><circle cx="408" cy="95" r="6" fill="var(--s-tutor)"/>
+          <text x="0" y="150">Instructor 2</text>
+          <line x1="292" y1="145" x2="356.4" y2="145" stroke="var(--line)" stroke-width="3"/>
+          <circle cx="292" cy="145" r="6" fill="var(--s-tutor)"/><circle cx="356.4" cy="145" r="6" fill="var(--s-gpt)"/>
+        </svg>
+        <p class="note" style="margin:8px 0 0">Scale 1 to 7; the axis starts at 4. Full thesis: <a href="https://doi.org/10.5281/zenodo.23749487">doi.org/10.5281/zenodo.23749487</a></p>
       </div>
     </div>
   </div>

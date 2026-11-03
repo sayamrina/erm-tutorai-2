@@ -72,20 +72,21 @@ Version 2 has not been evaluated yet. The thesis evaluated version 1:
 - **Systems:** ERM Tutor-AI vs. ChatGPT-4o (without retrieval) as the baseline.
 - **Raters:** two course instructors, using a 7-point rubric adapted from Lee (2024): accuracy, relevance, excessive or insufficient information, user perception, and tutoring behaviour.
 
-| | ERM Tutor-AI | ChatGPT-4o |
-|---|---|---|
-| Mean rubric score (± SD), 40 ratings each | **6.75 ± 0.44** | 6.00 ± 0.76 |
-| Mean answer length (words) | **198** | 280 |
-| Median answer length (words) | 185 | 265 |
+The thesis reports a mean rubric score of **6.75 ± 0.44** for ERM Tutor-AI and **6.00 ± 0.76** for ChatGPT-4o. Re-computed from the raw ratings, per rater:
 
-A two-way ANOVA showed a significant effect of the system (F(1, 76) ≈ 32.8, p < .001) and no significant effect of the instructor or of the interaction. ERM Tutor-AI's answers were rated higher and were more concise and more consistent in length.
+| Rater | ERM Tutor-AI | ChatGPT-4o |
+|---|---|---|
+| Both instructors (n = 40) | 6.33 ± 1.00 | 6.00 ± 0.75 |
+| Instructor 1 (n = 20) | 7.00 ± 0.00 | 5.60 ± 0.50 |
+| Instructor 2 (n = 20) | 5.65 ± 1.04 | 6.40 ± 0.75 |
+
+On average the tutor was rated higher (two-way ANOVA on the raw ratings, system F(1, 76) = 4.44, p = .038), but the two instructors disagreed on which system was better (interaction F(1, 76) = 48.6, p < .001), so the quality result is preliminary. The tutor's answers were shorter (198 vs. 280 words on average) and more consistent in length.
 
 ![Research notes panel](docs/img/t-notes.jpg)
 
 ## Limitations
 
-- The evaluation used 20 questions and two raters. Inter-rater reliability was not reported, and the ratings were not blind to the system.
-- One rater gave the maximum score to almost all ERM Tutor-AI answers, so ceiling effects are likely.
+- The evaluation used 20 questions and two raters who were not blind to the system and who disagreed.
 - There was no study with students, so effects on learning and engagement are unknown.
 - The knowledge base is limited to the course materials, and the system was not compared with other architectures.
 - Version 2's citations and practice feedback have not been evaluated. The model can still cite a passage that only partly supports a statement, so the source panel is there for students to check.
