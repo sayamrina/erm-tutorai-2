@@ -61,7 +61,7 @@ def test_prompt_keeps_v4_rules_and_history(api, chat):
         {"role": "user", "content": "What is a t-test?"},
         {"role": "assistant", "content": "It compares two means. Do you know the paired version?"}]})
     messages = chat.calls[0]["messages"]
-    assert REFUSAL in messages[0]["content"] and "[1] Unit" in messages[0]["content"]
+    assert REFUSAL in messages[0]["content"] and "[1] Unit" in messages[-1]["content"]
     assert [m["role"] for m in messages] == ["system", "user", "assistant", "user"]
     assert chat.calls[0]["temperature"] == 0
 

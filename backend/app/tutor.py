@@ -24,12 +24,16 @@ CRITICAL RULES:
 "{REFUSAL}"
 
 CITATIONS:
+- Each student question comes with numbered course passages. Every sentence that uses a passage ends with its number.
 - Put the passage number in square brackets right after each statement that uses it, e.g. "... compares two group means [2]." Several passages: [1][3].
 - Cite only passages you actually used. Never cite a passage for knowledge that is not in it.
 - No citations in greetings, refusals, or statements from general knowledge.
 
 STYLE:
 Provide a natural, conversational, and cohesive response in paragraphs. Include an empathetic reflection, the factual answer, and an engaging follow-up question at the end, but DO NOT use labels, headings, or bullet points like 'Reflection:', 'Answer:', or 'Follow-up:'. Keep it focused and approachable, like talking to a student one-on-one."""
+
+QUESTION_NOTE = ("Answer the student question below as the ERM tutor. Where your answer uses a course passage, "
+                 "put its number in square brackets right after that sentence, e.g. [1].")
 
 PRACTICE_QUESTION_PROMPT = """You write one practice question for a student of the Empirical Research Methods course.
 Base it only on the course passage below. The student should be able to answer it in two to four sentences.
@@ -99,9 +103,11 @@ class Tutor:
                    "words": len(text.split())}
             return
 
-        messages = [{"role": "system", "content": TUTOR_PROMPT + "\n\nCourse passages:\n" + format_passages(passages)}]
+        # Passages and the citation reminder sit next to the question; at the end of a long
+        # system prompt GPT-4o used the passages but often left out the [n] markers.
+        messages = [{"role": "system", "content": TUTOR_PROMPT}]
         messages += [{"role": m["role"], "content": m["content"]} for m in history if m["role"] in ("user", "assistant")]
-        messages.append({"role": "user", "content": question})
+        messages.append({"role": "user", "content": f"{QUESTION_NOTE}\n\nCourse passages:\n{format_passages(passages)}\n\nStudent question: {question}"})
         answer = ""
         for piece in self._stream(messages):
             answer += piece
