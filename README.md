@@ -15,7 +15,7 @@ ERM Tutor-AI is a virtual assistant for students in the *Empirical Research Meth
 
 Version 2 keeps the same lecture materials and model, tightens the tutor rules (the slides first, a citation for every sentence, general knowledge only for gaps and marked as such) and makes the answers easier to check and to learn from: every statement points to the lecture slide it is based on, shown as the slide itself with the supporting lines marked; a practice mode gives feedback on the student's own answers; a "Behind the answer" panel shows what retrieval found, how long each step took and what the answer cost; and an evaluation script measures the tutor on the 20 thesis questions.
 
-![Answer with numbered citations, the syllabus strip and the source panel](docs/img/d-answer.jpg)
+![Answer with numbered citations, a marked general-knowledge sentence and the cited slide with supporting lines highlighted](docs/img/d-answer.jpg)
 
 ---
 
