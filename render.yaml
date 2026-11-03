@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: erm-tutorai-2
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Without a key the app runs in demo mode (keyword search, passages only, no cost).
+      # Add OPENAI_API_KEY in the Render dashboard for tutor answers and practice.
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CHAT_MODEL
+        value: gpt-4o
+      - key: SESSION_LIMIT_PER_HOUR
+        value: "20"
+      - key: GLOBAL_LIMIT_PER_DAY
+        value: "300"

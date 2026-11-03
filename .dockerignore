@@ -1,0 +1,9 @@
+.git
+.venv
+**/node_modules
+**/__pycache__
+backend/static
+backend/tests
+docs
+backend/data/materials
+backend/data/embeddings.npy
