@@ -2,18 +2,27 @@
 
 const STOP = new Set(("the and for are but not you your with that this from have has was were can will what when which " +
   "into than then them they their there these those its it's also more most such only each other some any about " +
-  "between does use used using how why who all one two may might could would should our out very just like").split(" "));
+  "between does use used using how why who all may might could would should our out very just like").split(" "));
 
 export function words(text: string): Set<string> {
   return new Set((text.toLowerCase().match(/[a-z][a-z-]{2,}/g) ?? []).filter((w) => !STOP.has(w)));
 }
 
+const sentences = (text: string) => text.split(/(?<=[.!?])\s+|\n+/).filter((s) => s.trim());
+const bare = (s: string) => s.replace(/\s*\[\d+\]/g, "").trim();
+
 /** The sentences of an answer that cite passage n, without their citation markers. */
 export function statementsCiting(text: string, n: number): string[] {
-  return text.split(/(?<=[.!?])\s+|\n+/)
-    .filter((s) => s.includes(`[${n}]`))
-    .map((s) => s.replace(/\s*\[\d+\]/g, "").trim())
-    .filter(Boolean);
+  return sentences(text).filter((s) => s.includes(`[${n}]`)).map(bare).filter(Boolean);
+}
+
+/** The same sentences for matching; a short one ("It is common [1].") takes the sentence before it as context. */
+export function claimsCiting(text: string, n: number): string[] {
+  const all = sentences(text);
+  return all.flatMap((s, i) => {
+    if (!s.includes(`[${n}]`)) return [];
+    return words(s).size < 6 && i > 0 ? [bare(all[i - 1]), bare(s)] : [bare(s)];
+  });
 }
 
 /** Indices of the passage lines that share the most content words with the statements (at most two). */

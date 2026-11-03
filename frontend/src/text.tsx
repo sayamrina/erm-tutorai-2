@@ -51,7 +51,7 @@ export function inline(line: string, { onCite, onHover, available, passages }: C
             <span className="cite-pop" aria-hidden="true">
               <b>Unit {p.unit}, page {p.page}</b>
               {p.section && <span className="pop-section">{p.section}</span>}
-              <span className="pop-snip">{snippet(p.text)}</span>
+              <span className="pop-snip">{snippet(p.text, p.section)}</span>
             </span>
           )}
         </span>
@@ -62,8 +62,9 @@ export function inline(line: string, { onCite, onHover, available, passages }: C
 }
 
 /** The first words of a slide after its title, for the citation preview. */
-function snippet(text: string): string {
-  const body = text.replace(/\s+/g, " ").trim();
+function snippet(text: string, title: string): string {
+  let body = text.replace(/\s+/g, " ").replace(/\s\d+$/, "").trim();
+  if (title && body.startsWith(title)) body = body.slice(title.length).trim();
   return body.length > 170 ? `${body.slice(0, 170).replace(/\s\S*$/, "")} …` : body;
 }
 

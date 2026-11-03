@@ -24,7 +24,7 @@ import httpx
 HERE = Path(__file__).resolve().parent
 STOP = set(("the and for are but not you your with that this from have has was were can will what when which into than "
             "then them they their there these those its it's also more most such only each other some any about between "
-            "does use used using how why who all one two may might could would should our out very just like").split())
+            "does use used using how why who all may might could would should our out very just like").split())
 
 
 def words(text: str) -> set[str]:
@@ -36,7 +36,7 @@ def statements(answer: str) -> list[str]:
     parts = [s.strip() for s in re.split(r"(?<=[.!?])\s+|\n+", answer) if s.strip()]
     if parts and parts[-1].endswith("?"):
         parts = parts[:-1]
-    return [s for s in parts if len(words(re.sub(r"\[\d+\]", "", s))) >= 3]
+    return [s for s in parts if re.search(r"\[\d+\]", s) or len(words(s)) >= 3]
 
 
 def ask(client: httpx.Client, url: str, question: str) -> dict:
@@ -66,10 +66,15 @@ def score(item: dict, res: dict) -> dict:
     sts = statements(res["text"])
     cited_sts = [s for s in sts if re.search(r"\[\d+\]", s)]
     supported = 0
-    for s in cited_sts:
+    for i, s in enumerate(sts):
+        if s not in cited_sts:
+            continue
         nums = [int(n) for n in re.findall(r"\[(\d+)\]", s) if 1 <= int(n) <= len(res["passages"])]
         passage_words = set().union(*(words(res["passages"][n - 1]["text"] + " " + res["passages"][n - 1]["section"]) for n in nums)) if nums else set()
-        if len(words(re.sub(r"\[\d+\]", "", s)) & passage_words) >= 2:
+        claim = words(re.sub(r"\[\d+\]", "", s))
+        if len(claim) < 6 and i > 0:  # a short sentence ("It is common [1].") is read with the one before, as in the app
+            claim |= words(re.sub(r"\[\d+\]", "", sts[i - 1]))
+        if len(claim & passage_words) >= 2:
             supported += 1
     cited = res["done"]["cited"] if res["done"] else []
     cited_units = sorted({res["passages"][n - 1]["unit"] for n in cited})

@@ -6,7 +6,7 @@ import {
 import Behind from "./Behind";
 import ResearchNotes from "./Notes";
 import { load, save as store, type Progress } from "./storage";
-import { statementsCiting, supportingLines } from "./support";
+import { claimsCiting, statementsCiting, supportingLines } from "./support";
 import { RichText, splitFollowUp, toMarkdown } from "./text";
 
 type Entry = {
@@ -161,7 +161,7 @@ function TutorEntry({ entry, units, onCite, onReply, onRate, onBehind }: {
 
 /** One passage line by line, with the lines that support the cited statements marked. */
 function PassageText({ text, statements }: { text: string; statements: string[] }) {
-  const lines = readable(text).split("\n").filter((line) => line.trim());
+  const lines = readable(text).split("\n").filter((line) => line.trim() && !/^\d+$/.test(line.trim()));
   const marked = supportingLines(lines, statements);
   return (
     <blockquote className="lines">
@@ -220,7 +220,7 @@ function SourcePanel({ entry, active, onSelect }: { entry: Entry | null; active:
             {isActive && statements.length > 0 && (
               <p className="supports"><span>Cited for</span> “{statements[0]}”{statements.length > 1 ? ` and ${statements.length - 1} more` : ""}</p>
             )}
-            {isActive ? <PassageText text={p.text} statements={statements} /> : <blockquote>{readable(p.text)}</blockquote>}
+            {isActive ? <PassageText text={p.text} statements={claimsCiting(entry.text, n)} /> : <blockquote>{readable(p.text)}</blockquote>}
           </section>
         );
       })}
