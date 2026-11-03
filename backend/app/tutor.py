@@ -41,9 +41,11 @@ Great question, choosing the right test is one of the first decisions in an anal
 STYLE:
 Provide a natural, conversational, and cohesive response in paragraphs. Include a short empathetic reflection, the factual answer, and an engaging follow-up question at the end, but DO NOT use labels, headings, or bullet points like 'Reflection:', 'Answer:', or 'Follow-up:'. Keep it focused and approachable, like talking to a student one-on-one."""
 
-QUESTION_NOTE = ("Answer the student question below as the ERM tutor, from the numbered course passages. End every "
-                 "sentence that uses a passage with its number, e.g. [1]. Use general knowledge only for what the "
-                 f"passages do not cover, and begin that part with \"{GENERAL_MARKER},\".")
+QUESTION_NOTE = ("Answer the student question below as the ERM tutor, from the numbered course passages.\n"
+                 "- Every sentence of the explanation ends with the number of the passage it comes from, e.g. [1], "
+                 "even when the sentence before cites the same passage.\n"
+                 "- Do not add steps, examples or consequences that the passages do not contain. If the student needs "
+                 f"them, put them at the end in a short part that begins with \"{GENERAL_MARKER},\".")
 
 PRACTICE_QUESTION_PROMPT = """You write one practice question for a student of the Empirical Research Methods course.
 Base it only on the course passage below. The student should be able to answer it in two to four sentences.
