@@ -34,9 +34,10 @@ export function RichText({ text, ...cite }: { text: string } & CiteProps) {
 }
 
 export function inline(line: string, { onCite, onHover, available, passages }: CiteProps): ReactNode[] {
-  return line.split(/(\*\*[^*]+\*\*|\[\d+\])/g).map((part, k) => {
+  return line.split(/(\*\*[^*]+\*\*|\[\d+\]|Beyond the course slides,?)/g).map((part, k) => {
     const bold = part.match(/^\*\*(.+)\*\*$/);
     if (bold) return <strong key={k}>{bold[1]}</strong>;
+    if (part.startsWith("Beyond the course slides")) return <span key={k} className="general-mark">{part}</span>;
     const ref = part.match(/^\[(\d+)\]$/);
     if (ref && Number(ref[1]) <= available) {
       const n = Number(ref[1]);

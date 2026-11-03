@@ -123,6 +123,8 @@ a { color: var(--blue); }
 .entry-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 10px; font-size: 13px; color: var(--ink-2); }
 .origin.o-course { color: var(--evidence); font-weight: 600; }
 .origin.o-general { color: var(--general); font-style: italic; }
+.origin.o-mixed { color: var(--evidence); font-weight: 600; }
+.general-mark { font: 600 0.82em var(--sans); color: var(--general); background: var(--grid); border-radius: 4px; padding: 1px 6px; }
 .words { color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .entry-meta .link-button { margin-left: auto; }
 .link-button { border: 0; background: none; padding: 0; color: var(--blue); font-weight: 600; cursor: pointer; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }

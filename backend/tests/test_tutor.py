@@ -44,6 +44,7 @@ def test_citations_are_parsed_and_bounded():
     assert source_label("Means differ [2].", [2]) == "course"
     assert source_label("Generally speaking ...", []) == "general"
     assert source_label(REFUSAL, []) == "declined"
+    assert source_label("Means differ [2]. Beyond the course slides, effect sizes help.", [2]) == "mixed"
 
 
 def test_ask_streams_sources_tokens_and_label(api, chat):
@@ -55,13 +56,14 @@ def test_ask_streams_sources_tokens_and_label(api, chat):
     assert ev[-1] == {"type": "done", "label": "course", "cited": [1], "words": 14}
 
 
-def test_prompt_keeps_v4_rules_and_history(api, chat):
+def test_prompt_keeps_refusal_and_history(api, chat):
     chat.replies.append("Sure [1].")
     api.post("/api/ask", json={"question": "and for paired data?", "history": [
         {"role": "user", "content": "What is a t-test?"},
         {"role": "assistant", "content": "It compares two means. Do you know the paired version?"}]})
     messages = chat.calls[0]["messages"]
     assert REFUSAL in messages[0]["content"] and "[1] Unit" in messages[-1]["content"]
+    assert "Beyond the course slides" in messages[0]["content"] and "sentence by sentence" in messages[0]["content"]
     assert [m["role"] for m in messages] == ["system", "user", "assistant", "user"]
     assert chat.calls[0]["temperature"] == 0
 

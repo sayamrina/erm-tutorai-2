@@ -42,6 +42,7 @@ const STARTERS: Record<number, string> = {
 
 const LABELS: Record<Label, string> = {
   course: "From the course materials",
+  mixed: "From the course materials; general knowledge is marked",
   general: "From general research-methods knowledge, not the course materials",
   declined: "",
   demo: "Demo mode: matching passages only",

@@ -1,8 +1,9 @@
 """The tutor: grounded answers with numbered citations, and a practice mode with feedback.
 
-Prompt rules are those of ERM Tutor-AI v4 (course materials first, general ERM knowledge second,
-refusal for unrelated questions, reflection + answer + follow-up woven into one reply).
-New in v2: passages are numbered and the model cites them as [1], [2] …
+Version 1 (the thesis app) let the model use course materials first and general ERM knowledge second.
+Version 2 tightens this: the course passages are the source, every sentence that uses one cites it,
+and general knowledge is allowed only for what the passages do not cover, introduced with a fixed marker
+so the interface can show it. Refusal sentence and tutor style (reflection, answer, follow-up) are kept.
 """
 import json
 import random
@@ -16,26 +17,29 @@ from .retrieval import Retriever
 REFUSAL = ("Sorry, I cannot answer that, because I am ERM Tutor, "
            "I only want you to ask questions related to that.")
 
+# Sentences from general knowledge start with this marker, so the interface can label them.
+GENERAL_MARKER = "Beyond the course slides"
+
 TUTOR_PROMPT = f"""You're an AI mentor and tutor for the Empirical Research Methods (ERM) course. When a student asks a question, reply like a supportive human mentor — friendly, encouraging, and natural.
 
 CRITICAL RULES:
-1. FIRST PRIORITY: Always check the numbered course passages below. If the answer can be found or inferred from them, you MUST use them as your primary source and base your explanation on them.
-2. SECOND PRIORITY: If the information is NOT in the passages, but the question is related to general Empirical Research Methods (ERM) or academic research, you may answer using your reliable academic knowledge.
+1. THE COURSE PASSAGES ARE YOUR SOURCE: Each question comes with numbered passages from the course slides. Build your explanation from them. If the passages contain or clearly imply the answer, use only them, even if you know more.
+2. GENERAL KNOWLEDGE ONLY FOR GAPS: Only if the passages do not cover the question, or a part the student needs, may you add reliable general ERM or academic knowledge. Keep that part short and begin it with "{GENERAL_MARKER}," so the student knows it is not from the course. Never present general knowledge as if it came from the slides.
 3. GENERAL IDENTITY: If the student greets you or asks about your identity (e.g., "Who are you?"), reply warmly and conversationally as an ERM tutor.
 4. REFUSAL: Only if the question is completely unrelated to academics, research methods, or your role as an ERM tutor, reply strictly with this exact sentence:
 "{REFUSAL}"
 
 CITATIONS:
-- Each student question comes with numbered course passages. Every sentence that uses a passage ends with its number.
-- Put the passage number in square brackets right after each statement that uses it, e.g. "... compares two group means [2]." Several passages: [1][3].
-- Cite only passages you actually used. Never cite a passage for knowledge that is not in it.
-- No citations in greetings, refusals, or statements from general knowledge.
+- Every sentence that states something from a passage ends with that passage's number in square brackets, e.g. "... compares two group means [2]." Several passages: [1][3]. Cite sentence by sentence, not once per paragraph.
+- Cite only passages that really say what the sentence says. Never cite a passage for general knowledge.
+- The opening reflection, the closing follow-up question and sentences after "{GENERAL_MARKER}," carry no citation.
 
 STYLE:
-Provide a natural, conversational, and cohesive response in paragraphs. Include an empathetic reflection, the factual answer, and an engaging follow-up question at the end, but DO NOT use labels, headings, or bullet points like 'Reflection:', 'Answer:', or 'Follow-up:'. Keep it focused and approachable, like talking to a student one-on-one."""
+Provide a natural, conversational, and cohesive response in paragraphs. Include a short empathetic reflection, the factual answer, and an engaging follow-up question at the end, but DO NOT use labels, headings, or bullet points like 'Reflection:', 'Answer:', or 'Follow-up:'. Keep it focused and approachable, like talking to a student one-on-one."""
 
-QUESTION_NOTE = ("Answer the student question below as the ERM tutor. Where your answer uses a course passage, "
-                 "put its number in square brackets right after that sentence, e.g. [1].")
+QUESTION_NOTE = ("Answer the student question below as the ERM tutor, from the numbered course passages. End every "
+                 "sentence that uses a passage with its number, e.g. [1]. Use general knowledge only for what the "
+                 f"passages do not cover, and begin that part with \"{GENERAL_MARKER},\".")
 
 PRACTICE_QUESTION_PROMPT = """You write one practice question for a student of the Empirical Research Methods course.
 Base it only on the course passage below. The student should be able to answer it in two to four sentences.
@@ -71,7 +75,9 @@ def cited_numbers(answer: str, available: int) -> list[int]:
 def source_label(answer: str, cited: list[int]) -> str:
     if REFUSAL.lower()[:28] in answer.lower():
         return "declined"
-    return "course" if cited else "general"
+    if not cited:
+        return "general"
+    return "mixed" if GENERAL_MARKER.lower() in answer.lower() else "course"
 
 
 def public(p: dict) -> dict:

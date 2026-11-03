@@ -3,7 +3,7 @@ export type Passage = {
 };
 export type Unit = { unit: number; title: string; chunks: number };
 export type Health = { status: string; mode: "tutor" | "demo"; retrieval: string };
-export type Label = "course" | "general" | "declined" | "demo";
+export type Label = "course" | "mixed" | "general" | "declined" | "demo";
 export type Verdict = "correct" | "partly correct" | "not yet";
 export type Candidate = {
   id: string; unit: number; page: number; section: string; score: number; chosen: boolean; rank: number | null;

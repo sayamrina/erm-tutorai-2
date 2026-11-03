@@ -103,7 +103,8 @@ def summarise(rows: list[dict], off: list[dict]) -> dict:
     times = [r["total_ms"] for r in rows if r["total_ms"]]
     return {
         "questions": len(rows),
-        "answers_from_course": sum(r["label"] == "course" for r in rows),
+        "answers_from_course": sum(r["label"] in ("course", "mixed") for r in rows),
+        "answers_with_marked_general_knowledge": sum(r["label"] == "mixed" for r in rows),
         "citation_coverage": round(cited / sts, 3) if sts else None,
         "lexical_support": round(sum(r["supported_statements"] for r in rows) / cited, 3) if cited else None,
         "unit_match": sum(bool(r["unit_match"]) for r in rows),
@@ -126,6 +127,7 @@ def report(summary: dict, rows: list[dict], off: list[dict], url: str) -> str:
         f"| Statements with a citation | {s['citation_coverage']:.0%} |",
         f"| Cited statements sharing ≥ 2 content words with the cited passage | {s['lexical_support']:.0%} |",
         f"| A passage from the question's own unit cited | {s['unit_match']} of {s['questions']} |",
+        f"| …of which add general knowledge, marked \"Beyond the course slides\" | {s['answers_with_marked_general_knowledge']} |",
         f"| Off-topic questions declined | {s['refusals']} |",
         f"| Answer length | {s['words_mean']} ± {s['words_sd']} words |",
         f"| Median time to full answer | {s['latency_median_s']} s |",
@@ -143,6 +145,7 @@ def report(summary: dict, rows: list[dict], off: list[dict], url: str) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8096")
+    parser.add_argument("--name", help="file name for the results (default: today's date)")
     args = parser.parse_args()
     items = json.loads((HERE / "questions.json").read_text(encoding="utf-8"))
     rows, off = [], []
@@ -157,7 +160,7 @@ def main():
     summary = summarise(rows, off)
     out = HERE / "results"
     out.mkdir(exist_ok=True)
-    stamp = date.today().isoformat()
+    stamp = args.name or date.today().isoformat()
     (out / f"{stamp}.json").write_text(json.dumps({"url": args.url, "summary": summary, "questions": rows, "off_topic": off},
                                                   ensure_ascii=False, indent=1), encoding="utf-8")
     (out / f"{stamp}.md").write_text(report(summary, rows, off, args.url), encoding="utf-8")
