@@ -1,6 +1,7 @@
 """API of ERM Tutor-AI 2. The React frontend is served from the same origin."""
 import json
 import logging
+import mimetypes
 import time
 from collections import defaultdict, deque
 from pathlib import Path
@@ -19,6 +20,7 @@ from .tutor import Tutor
 
 STATIC = Path(__file__).resolve().parent.parent / "static"
 RATINGS = DATA / "ratings.jsonl"
+mimetypes.add_type("image/webp", ".webp")  # slim images have no mime.types file
 log = logging.getLogger("uvicorn.error")
 
 
