@@ -283,7 +283,10 @@ export default function App() {
       <header className="topbar">
         <a className="brand" href="/" aria-label="ERM Tutor-AI, start page">
           <img src="/logo.png" alt="" width={34} height={34} />
-          <span>ERM Tutor-AI <small>2</small></span>
+          <span className="brand-text">
+            <span>ERM Tutor-AI <small>2</small></span>
+            <em>Virtual assistant for the Empirical Research Methods course</em>
+          </span>
         </a>
         <nav className="modes" aria-label="Mode">
           <button type="button" aria-pressed={mode === "ask"} onClick={() => switchMode("ask")}>Ask</button>
@@ -297,7 +300,7 @@ export default function App() {
 
       <aside className="project-popup" aria-label="Portfolio project">
         <span className="project-popup-badge" aria-hidden="true">★</span>
-        <span>This app was developed by Amrina as part of a portfolio.</span>
+        <span>This app was developed as part of Amrina's master's thesis.</span>
         <a href="https://sayamrina.github.io/" target="_blank" rel="noopener">View the portfolio →</a>
       </aside>
 
