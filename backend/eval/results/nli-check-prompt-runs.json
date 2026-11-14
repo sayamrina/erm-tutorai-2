@@ -1,0 +1,2615 @@
+{
+ "model": "cross-encoder/nli-deberta-v3-base",
+ "runs": {
+  "2026-11-03-v1-prompt": {
+   "summary": {
+    "cited_statements": 44,
+    "entailment": 0.341,
+    "neutral": 0.591,
+    "contradiction": 0.068
+   },
+   "pairs": [
+    {
+     "q": "Q1",
+     "statement": "The course covers both parametric and non-parametric data analysis approaches, as well as multi-level analysis.",
+     "passages": [
+      {
+       "id": "u01-p002-0",
+       "unit": 1,
+       "page": 2,
+       "section": "What is ERM1 all about?",
+       "text": "What is ERM1 all about?\n\n• Empirical Research Methods =\n\nsystematic collection and analysis of data\n(i.e. observation and evidence)\n\n• In this course, you will learn about...\n\n• Basic empirical concepts and research philosophy\n• Developing an experiment design\n• Quality aspects of scientific texts\n• Designing questionnaires and measuring their validity & reliability\n• Using SPSS and preparing datasets\n• Parametric and non-parametric approaches to data analysis\n• Multi-level analysis\n• ..."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.998,
+       "neutral": 0.002
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.998
+    },
+    {
+     "q": "Q1",
+     "statement": "It's a fascinating area because it equips you with the skills to conduct research that is objective and reliable, avoiding personal biases that could affect the results.",
+     "passages": [
+      {
+       "id": "u03-p019-0",
+       "unit": 3,
+       "page": 19,
+       "section": "Quality criteria: Objectivity",
+       "text": "Quality criteria: Objectivity\n\n1.\n\nIf data has not been collected and analyzed objectively, any results are\ndue to personal biases and therefore cannot be reliable or valid.\n\nExample: for measuring a table, we could use our hand (e.g. “2 hands long,\n1.5 hands width”) but that varies from person to person. Therefore, an\nobjective measure could be a ruler\n\nMaybe let’s use\nthis instead…\n\n13"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q2",
+     "statement": "This means that the results should not be influenced by the researcher's personal feelings or opinions.",
+     "passages": [
+      {
+       "id": "u03-p017-0",
+       "unit": 3,
+       "page": 17,
+       "section": "QUALITY CRITERIA: OBJECTIVITY,",
+       "text": "QUALITY CRITERIA: OBJECTIVITY,\nRELIABILITY, VALIDITY\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q2",
+     "statement": "Reliability is about consistency; it ensures that if the research were repeated under the same conditions, it would yield the same results.",
+     "passages": [
+      {
+       "id": "u03-p017-0",
+       "unit": 3,
+       "page": 17,
+       "section": "QUALITY CRITERIA: OBJECTIVITY,",
+       "text": "QUALITY CRITERIA: OBJECTIVITY,\nRELIABILITY, VALIDITY\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q2",
+     "statement": "For example, if you're using a ruler to measure something in centimeters, the ruler must actually be marked in centimeters, not inches, to ensure validity.",
+     "passages": [
+      {
+       "id": "u02-p017-0",
+       "unit": 2,
+       "page": 17,
+       "section": "Quality criteria: Validity",
+       "text": "Quality criteria: Validity\n\n3.\n\nFinally, even if data is objective and reliable, it may still not be valid. For\nthat, we need to ensure to measure what we truly intend to measure; do\njustice to the underlying construct.\n\nExample: using a ruler that is well calibrated (correct spacings). If we’re claiming\nto be measuring in cm, then the ruler must be in centimeters and not inches\n\nI want to\nmeasure in cm\nand the ruler is\nin cm!\n\n10\n\n20\n\n30\n\n40\n\n50\n\ncentimeters\n\nThere are more types of\nvalidity, e.g. construct\nvalidity, predictive\nvalidity. Here we’re\nlearning about the main\ntype of validity\n\n17"
+      },
+      {
+       "id": "u03-p022-0",
+       "unit": 3,
+       "page": 22,
+       "section": "Quality criteria: Validity",
+       "text": "Quality criteria: Validity\n\n3. Finally, even if data is objective and reliable, it may still not be valid. For\n\nthat, we need to ensure that measure what we truly intend to measure;\ndo justice to the underlying construct.\n\nExample: using a ruler that is well calibrated (correct spacings). If we’re\nmeasuring in cm then that the ruler is in centimeters and not inches\n\nI measure\nin cm!\n\n10\n\n20\n\n30\n\n40\n\n50\n\ncentimeters\n\n16"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.996,
+       "neutral": 0.004
+      },
+      {
+       "contradiction": 0.0,
+       "entailment": 0.998,
+       "neutral": 0.002
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.998
+    },
+    {
+     "q": "Q3",
+     "statement": "A p-value, for instance, helps you assess this by indicating the probability that the observed data would occur if the null hypothesis were true.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.002,
+       "entailment": 0.0,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q4",
+     "statement": "It's the variable that you manipulate in your experiment to observe its effect on the dependent variable (DV).",
+     "passages": [
+      {
+       "id": "u07-p046-0",
+       "unit": 7,
+       "page": 46,
+       "section": "So far on ERM1…",
+       "text": "So far on ERM1…\n\nIndependent Variable: a.k.a. IV, factor, input variable, experimental variable, and predictor (variable). Is\nthe variable that is manipulated in our experiment. We expect the IV to have an effect on the dependent\nvariable\n\nFactors = IV\n\nLevels: the possible values within a factor. If a factor is a category, a level is a sub-category\n\nDependent Variable: a.k.a. DV, outcome variable, response variable. Is the variable that we measure\nwithin our experiment. We expect the DV to be affected, or depend of, the independent variable\n\nCategorical Variable: Nominal scale variable with labels used for distinguishing the levels of a factor. The\nlabels can be numerical but won’t be treated as such!\n\nNull hypothesis: Hypothesis that states no difference or change between factors and/or levels\n\nAlternative hypothesis: Hypothesis that states the existence of a difference or change between factors\nand/or levels. Can either be directional or non-directional.\n\nSignificance level: a.k.a. p-value, measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as possible.\n\n5"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.005,
+       "neutral": 0.995
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.005
+    },
+    {
+     "q": "Q4",
+     "statement": "If you think of a factor as a category, then the levels are the sub-categories within it.",
+     "passages": [
+      {
+       "id": "u07-p046-0",
+       "unit": 7,
+       "page": 46,
+       "section": "So far on ERM1…",
+       "text": "So far on ERM1…\n\nIndependent Variable: a.k.a. IV, factor, input variable, experimental variable, and predictor (variable). Is\nthe variable that is manipulated in our experiment. We expect the IV to have an effect on the dependent\nvariable\n\nFactors = IV\n\nLevels: the possible values within a factor. If a factor is a category, a level is a sub-category\n\nDependent Variable: a.k.a. DV, outcome variable, response variable. Is the variable that we measure\nwithin our experiment. We expect the DV to be affected, or depend of, the independent variable\n\nCategorical Variable: Nominal scale variable with labels used for distinguishing the levels of a factor. The\nlabels can be numerical but won’t be treated as such!\n\nNull hypothesis: Hypothesis that states no difference or change between factors and/or levels\n\nAlternative hypothesis: Hypothesis that states the existence of a difference or change between factors\nand/or levels. Can either be directional or non-directional.\n\nSignificance level: a.k.a. p-value, measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as possible.\n\n5"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.007,
+       "neutral": 0.993
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.007
+    },
+    {
+     "q": "Q5",
+     "statement": "This type of test is often used in selection processes at the administrative and clerical level, where the ability to quickly process straightforward information is key.",
+     "passages": [
+      {
+       "id": "u04-p014-0",
+       "unit": 4,
+       "page": 14,
+       "section": "Types of tests: speed and power",
+       "text": "Types of tests: speed and power\n\nSpeed test\n\nPower test\n\nDistinguishing\nfeature\n\nHow many questions can\nbe answered in the alloted\ntime\n\nHow well each (complex)\nquestion can be answered in\nthe alloted time\n\nItems\n\nExpected\nanswer\n\nUse case\nexample\n\nContains lots of (simple)\nitems of limited scope\n\nContains a small set of\n(complex) items of practically\nunlimited scope\n\nThe methods to answer are\nclear\n\nThe methods to answer are not\nobvious\n\nFor selection processes at\nthe administrative and\nclerical level\n\nFor selection processes on\ngraduate, professional or\nmanagerial level\n\nAdapted from the slides from Muhammad Foysal Mubarak, 2019\n\n15"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.985,
+       "entailment": 0.0,
+       "neutral": 0.015
+      }
+     ],
+     "label": "contradiction",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q5",
+     "statement": "Power tests are commonly used for selection processes at the graduate, professional, or managerial level, where the ability to tackle complex problems is more important.",
+     "passages": [
+      {
+       "id": "u04-p014-0",
+       "unit": 4,
+       "page": 14,
+       "section": "Types of tests: speed and power",
+       "text": "Types of tests: speed and power\n\nSpeed test\n\nPower test\n\nDistinguishing\nfeature\n\nHow many questions can\nbe answered in the alloted\ntime\n\nHow well each (complex)\nquestion can be answered in\nthe alloted time\n\nItems\n\nExpected\nanswer\n\nUse case\nexample\n\nContains lots of (simple)\nitems of limited scope\n\nContains a small set of\n(complex) items of practically\nunlimited scope\n\nThe methods to answer are\nclear\n\nThe methods to answer are not\nobvious\n\nFor selection processes at\nthe administrative and\nclerical level\n\nFor selection processes on\ngraduate, professional or\nmanagerial level\n\nAdapted from the slides from Muhammad Foysal Mubarak, 2019\n\n15"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.525,
+       "entailment": 0.0,
+       "neutral": 0.475
+      }
+     ],
+     "label": "contradiction",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q6",
+     "statement": "This can be particularly useful when you need to gather data from a large number of people efficiently and want to ensure that the data is comparable.",
+     "passages": [
+      {
+       "id": "u04-p004-0",
+       "unit": 4,
+       "page": 4,
+       "section": "Common ground: Questionnaires, tests,",
+       "text": "Common ground: Questionnaires, tests,\nsurveys, and instruments\n\nMeasure: a procedure for obtaining data\n\nConstruct: “abstract idea, underlying theme, or subject matter that one wishes to measure using survey\nquestions” (Lavrakas, 2008, p. 133)\n\nItem: the basic building block (or element) of an instrument\n\nScale: a group of items that are seek to measure one dimension of the variable of interest.\n\n(Research) Instrument: a tool or procedure used to measure (and quantify) subject characteristics\n\nQuestionnaire: a written set of questions that a respondent completes typically used for research\npurposes which can be both qualitative as well as quantitative in nature.\n\nTest: an instrument meant to assess the ability to present a correct answer to a specific item/question, i.e.\nit measures performance\n\nSurvey: a research method composed of instruments (e.g. tests, questionnaires, interviews) and it’s also\na broader concept that describes content, method, and analysis of the data obtained from the instruments\n\nLavrakas, P. J. (2008). Encyclopedia of survey research methods (Vols. 1-0). Sage Publications, Inc.\nhttps://dx.doi.org/10.4135/9781412963947.n91\n\n5"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q7",
+     "statement": "In SPSS, the Data Editor window is where you'll find both the Data View and the Variable View, each serving a distinct purpose.",
+     "passages": [
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q7",
+     "statement": "You'd use the Data View when you want to input data, check for data entry errors, or simply get a quick look at your dataset.",
+     "passages": [
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q7",
+     "statement": "Here, you can define and modify the properties of your variables, such as their name, type, width, decimals, and more.",
+     "passages": [
+      {
+       "id": "u05-p022-0",
+       "unit": 5,
+       "page": 22,
+       "section": "Variables in Data View",
+       "text": "Variables in Data View\n\nName: name of the variable\n\nType: type of variable (e.g.: string, numeric, comma, date)\n\nWidth: number of digits displayed (for numeric values) or the number of characters (for a\nstring)\n\nDecimals: number of decimal digits to be shown\n\nColumns: the width of the actual column in the Data View (not the number of digits).\n\nAlign: the alignment of content of the cell.\n\nMeasure: level of measurement for the variable nominal, ordinal, or scale (interval or\nratio). This setting affects everything from graphs to internal algorithms for statistical\nanalysis.\n\nRole: how the variable will be used in your analysis (e.g.: input for IV or target for DV)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n22"
+      },
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.996,
+       "neutral": 0.004
+      },
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.996
+    },
+    {
+     "q": "Q7",
+     "statement": "You'd switch to the Variable View when you need to set up or adjust these properties, which is essential before running any analyses to ensure your data is correctly interpreted by SPSS.",
+     "passages": [
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q8",
+     "statement": "In SPSS, each variable must have a unique name, and there are specific guidelines for naming them, such as keeping them up to 64 characters long and avoiding spaces and reserved keywords.",
+     "passages": [
+      {
+       "id": "u05-p021-0",
+       "unit": 5,
+       "page": 21,
+       "section": "Variables",
+       "text": "Variables\n\nBest practices for naming variables in SPSS:\n\nEach variable name must be unique\nKeep variable names up to 64 characters long.\nNo spaces, you may include alphanumeric characters, non-\npunctuation characters. Also periods and underscores within (not\nat the end).\nYou can use upper and lower cases (Camel case - e.g. typeOfcar).\nSPSS has reserved keywords, you can’t use them as a variable\nname (i.e.: ALL, AND, BY, NOT, OR, TO or WITH).\nYou can add any type of character and quantity at the “Label”, but\nalso keep it short to keep the output more “readable”.\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.998,
+       "neutral": 0.002
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.998
+    },
+    {
+     "q": "Q8",
+     "statement": "For instance, instead of just seeing numbers in your dataset, you can label them with meaningful descriptions, making it easier to interpret the results.",
+     "passages": [
+      {
+       "id": "u05-p019-0",
+       "unit": 5,
+       "page": 19,
+       "section": "SPSS: VARIABLES",
+       "text": "SPSS: VARIABLES\n\nVariables in Data and Variable view & Value labels\n\n19"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.003,
+       "neutral": 0.997
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.003
+    },
+    {
+     "q": "Q8",
+     "statement": "Properly defined variables also facilitate the manipulation and analysis of statistical data, which is the primary purpose of using SPSS in a quantitative research context.",
+     "passages": [
+      {
+       "id": "u01-p009-0",
+       "unit": 1,
+       "page": 9,
+       "section": "About SPSS",
+       "text": "About SPSS\n\n• Statistical Package for the Social Sciences (aka IBM SPSS Statistics)\n• Software package used for manipulation and analysis of statistical data\n• In a quantitative\nresearch context:"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q9",
+     "statement": "Interestingly, a dataset can have more than one mode, which is referred to as bimodal or multimodal if there are two or more frequent values.",
+     "passages": [
+      {
+       "id": "u06-p024-0",
+       "unit": 6,
+       "page": 24,
+       "section": "Measures of central tendency- Understanding the MODE",
+       "text": "Measures of central tendency- Understanding the MODE\n\n• Mode: the value that appears most frequently in a dataset\n• Specially useful for nominal and ordinal scale data\n• Several modes? Yes!\n• More than one mode is possible Visual depictions of modes: Single mode,\n\nbi modal, multi-modal (>2 peaks)\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.986,
+       "neutral": 0.013
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.986
+    },
+    {
+     "q": "Q9",
+     "statement": "The median is a better representative of a dataset when there are extreme scores, as it isn't affected by them.",
+     "passages": [
+      {
+       "id": "u06-p023-0",
+       "unit": 6,
+       "page": 23,
+       "section": "Measures of central tendency- Understanding the MEDIAN",
+       "text": "Measures of central tendency- Understanding the MEDIAN\n\nMedian = midpoint\nThe median is a better representative of a sample when scores are extreme, not\nsensitive to extreme scores\n\nHow to determine the median:\n1. From all the values of a varaible in your dataset, order them from lowest to\n\nhighest\n\n2. Once ordered, the median is the value in the middle\n\nIf you have an odd amount of values, the value in the middle is the median\na)\nb) b) If you have an even amount of values, the average of the two values in the\n\nmiddle is the median\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.98,
+       "neutral": 0.02
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.98
+    },
+    {
+     "q": "Q10",
+     "statement": "In simpler terms, you take each data point, subtract the mean, square the result, and then average those squared differences.",
+     "passages": [
+      {
+       "id": "u06-p026-0",
+       "unit": 6,
+       "page": 26,
+       "section": "Measures – dispersion: Key definitions of variance and standard",
+       "text": "Measures – dispersion: Key definitions of variance and standard\ndeviation (SD)\n\n Variance (s²) = sum of the squared deviations of the mean, divided by N\n Standard deviation (SD or s) = square root of the variance. Normally\n\nreported in publications\n\n The variance describes dispersion of data points from the mean value\n It is the average of the squared differences from the mean\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.016,
+       "entailment": 0.002,
+       "neutral": 0.982
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.002
+    },
+    {
+     "q": "Q10",
+     "statement": "This means that while variance gives us a measure in squared units, standard deviation brings it back to the original units of the data, making it more interpretable and easier to relate to the data itself.",
+     "passages": [
+      {
+       "id": "u06-p026-0",
+       "unit": 6,
+       "page": 26,
+       "section": "Measures – dispersion: Key definitions of variance and standard",
+       "text": "Measures – dispersion: Key definitions of variance and standard\ndeviation (SD)\n\n Variance (s²) = sum of the squared deviations of the mean, divided by N\n Standard deviation (SD or s) = square root of the variance. Normally\n\nreported in publications\n\n The variance describes dispersion of data points from the mean value\n It is the average of the squared differences from the mean\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q11",
+     "statement": "Essentially, it's a way to test the strength of the evidence against the null hypothesis, which is the assumption that there is no effect or no difference.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.001,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q11",
+     "statement": "This means there's strong evidence against the null hypothesis, suggesting that the observed results are unlikely to be due to random chance alone.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.0,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q11",
+     "statement": "However, it's important to remember that a p-value doesn't tell us the probability that the research hypothesis is true; it only indicates the likelihood of the null hypothesis being correct if the observed data is due to chance.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.002,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.002
+    },
+    {
+     "q": "Q12",
+     "statement": "This p-value helps you decide whether the difference between the group means is statistically significant.",
+     "passages": [
+      {
+       "id": "u07-p021-0",
+       "unit": 7,
+       "page": 21,
+       "section": "T-test family of tests",
+       "text": "T-test family of tests\n\nT-test family of tests: When you want to find out if 2, and only 2, means are\nstatistically significantly different\n\nThis is a family of parametric tests!\n\nThree members of the t-test family: independent-samples, repeated-samples, and\none-sample\n\nRegardless if it’s an independent-samples, repeated-samples, or one-sample, any t-\ntest we do:\n\na)\n\nb)\n\nconsists of comparing the difference between 2 means, accounting for its variability,\nand\n\nthe output of such comparison will produce a t-value that can be charted on a t-\ndistribution and from this we will obtain a p-value to determine if our test was\nsignificant or not\n\nThe focus of this topic - independent-samples t-test, which we will see in\na moment, but before that we will learn about t-values and t-distributions.\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.008,
+       "neutral": 0.991
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.008
+    },
+    {
+     "q": "Q12",
+     "statement": "If you're using SPSS, you can perform this test by navigating to Analyze > Compare Means > Independent-Samples T Test, and you can practice with the file \"topic-8.indep-t-test.sav\" provided in your course materials.",
+     "passages": [
+      {
+       "id": "u07-p033-0",
+       "unit": 7,
+       "page": 33,
+       "section": "Indep.-samples t-test in SPSS",
+       "text": "Indep.-samples t-test in SPSS\n\nAnalyze > Compare Means > Independent-Samples T Test…\n\nWant to try it out? Use the file\n“topic-8.indep-t-test.sav”\nprovided in the moodle\n\n33"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.97,
+       "neutral": 0.03
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.97
+    },
+    {
+     "q": "Q12",
+     "statement": "It requires certain assumptions to be met, such as having categorical independent variables, a continuous dependent variable, independence of observations, no outliers, normality, and homogeneity of variances.",
+     "passages": [
+      {
+       "id": "u07-p066-0",
+       "unit": 7,
+       "page": 66,
+       "section": "Two-way ANOVA. Assumptions in detail",
+       "text": "Two-way ANOVA. Assumptions in detail\nAssumptions\n\nNum.\n\nName\n\nDescription\n\nHow to check for that?\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n25\n\nCategorical\nindependent variables\n\nTwo or more IVs which are on a\nnominal/categorical scale level.\n\nEnsure the data from your independent variables\ncorresponds to a nominal/categorical scale level\n\nContinuous dependent\nvariable\n\n(Single) Dependent variable is either\nratio or interval level.\n\nEnsure the data from your dependent variable\ncorresponds to a ratio or interval level\n\nIndependence of\nobservations\n\nNo outliers\n\nNormality\n\nThe measurement of each observation\nwas independent and didn’t affect the\nmeasurement of the other\nobservations.\n\nNo outliers on any of the levels of the\nIVs regarding the DV. Removal or\ncorrection of outliers.\n\nData from the dependent variable\nshould follow a normal distribution\ncurve.\n\nWhen collecting the data, ensure each\ncollected/measured datapoint is independent\nfrom each other\n\nCreate boxplots for each level of your IVs\nmeasuring your DV. Visual inspection of the\nboxplots, ensure there are no indvidual outlier\ndatapoints. If there are, exclude them from the\nanalysis.\n\nShapiro-Wilk test for the dependent variable.\nTest should be not-significant!\n\nHomogeneity of\nvariances\n\nThe variances of the 2 compared\ngroups are statistically the same, if not\nvery similar.\n\nLevene’s test for equality/homogeneity of\nvariances. Test should be not-significant! Test is\npart of the output of the ANOVA analysis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.992,
+       "neutral": 0.007
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.992
+    },
+    {
+     "q": "Q13",
+     "statement": "For example, in a study, multiple regression might be used to see how different personality traits predict levels of aggression, as mentioned in your course.",
+     "passages": [
+      {
+       "id": "u08-p009-0",
+       "unit": 8,
+       "page": 9,
+       "section": "Reporting multiple regression",
+       "text": "Reporting multiple regression\n\nMultiple regression analysis was used to test if the personality traits\nsignificantly predicted participants' ratings of aggression. The results of the\nregression indicated the two predictors explained 35.8% of the variance (R\n=.38, F(2,55)=5.56, p<.01)."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q14",
+     "statement": "When predictors are highly correlated, it can inflate the variance of the coefficient estimates and make the model's predictions less reliable.",
+     "passages": [
+      {
+       "id": "u09-p016-0",
+       "unit": 9,
+       "page": 16,
+       "section": "4. Multicollinearity",
+       "text": "4. Multicollinearity\n\n• Correlation tells you what happens to the other variable\n\nas variable increases or decreases in value\n\n• Correlation values\n\n0.3-05 low correlation\n05-0-7 moderate\n0.7 and above is considered as a high value\n\n• Covariance"
+      },
+      {
+       "id": "u08-p007-0",
+       "unit": 8,
+       "page": 7,
+       "section": "Assumptions of the linear model",
+       "text": "Assumptions of the linear model\n\nAssumptions of the model:\n\n4. Variable types: Predictors must be quantitative or categorical (two\ncategories)\n\n5. No perfect multicollinearity: bad because it limits the size of R\n\ncan conduct a variance inflation factor VIF: Bad news if it is greater\nthan 10 but a value of 1 already points to bias in regression.\n\n6. Non-zero variance: predictors should have variation"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      },
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q14",
+     "statement": "In terms of how it affects the model, multicollinearity can limit the size of R, which is the coefficient of determination that tells us how well the predictors explain the variability of the outcome variable.",
+     "passages": [
+      {
+       "id": "u08-p007-0",
+       "unit": 8,
+       "page": 7,
+       "section": "Assumptions of the linear model",
+       "text": "Assumptions of the linear model\n\nAssumptions of the model:\n\n4. Variable types: Predictors must be quantitative or categorical (two\ncategories)\n\n5. No perfect multicollinearity: bad because it limits the size of R\n\ncan conduct a variance inflation factor VIF: Bad news if it is greater\nthan 10 but a value of 1 already points to bias in regression.\n\n6. Non-zero variance: predictors should have variation"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.027,
+       "neutral": 0.973
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.027
+    },
+    {
+     "q": "Q14",
+     "statement": "A VIF value greater than 10 is a red flag, indicating a high level of multicollinearity, although even a value of 1 can suggest some bias in the regression.",
+     "passages": [
+      {
+       "id": "u08-p007-0",
+       "unit": 8,
+       "page": 7,
+       "section": "Assumptions of the linear model",
+       "text": "Assumptions of the linear model\n\nAssumptions of the model:\n\n4. Variable types: Predictors must be quantitative or categorical (two\ncategories)\n\n5. No perfect multicollinearity: bad because it limits the size of R\n\ncan conduct a variance inflation factor VIF: Bad news if it is greater\nthan 10 but a value of 1 already points to bias in regression.\n\n6. Non-zero variance: predictors should have variation"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.995,
+       "neutral": 0.005
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.995
+    },
+    {
+     "q": "Q15",
+     "statement": "While ANOVA is used when you have one dependent variable and you want to test for differences between groups, MANOVA allows you to test multiple dependent variables simultaneously.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.99,
+       "neutral": 0.01
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.99
+    },
+    {
+     "q": "Q15",
+     "statement": "This can be particularly useful when your dependent variables are related, such as when you're examining constructs like motivation, interest, and curiosity across different groups.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q15",
+     "statement": "By testing all dependent variables together, MANOVA reduces the risk of these errors that might arise from repeated testing on the same data.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.994,
+       "entailment": 0.001,
+       "neutral": 0.005
+      }
+     ],
+     "label": "contradiction",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q16",
+     "statement": "For the homogeneity of variance-covariance matrices, you would check that the Box’s M test is non-significant at α =.001, indicating that this assumption is met.",
+     "passages": [
+      {
+       "id": "u09-p022-0",
+       "unit": 9,
+       "page": 22,
+       "section": "6. Homogeneity of variance-covariance matrices",
+       "text": "6. Homogeneity of variance-covariance matrices\n\nLook at literature\nIn order to satisfy this assumption, the Box’s M value should be\nnon-significant at α = .001\n\n•\n\n•\n\n•"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.995,
+       "neutral": 0.005
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.995
+    },
+    {
+     "q": "Q16",
+     "statement": "For example, if you have a small sample size and more than two levels of independent variables, Pillai’s Trace might be the most robust choice.",
+     "passages": [
+      {
+       "id": "u09-p024-0",
+       "unit": 9,
+       "page": 24,
+       "section": "7. Before you conduct a MANOVA",
+       "text": "7. Before you conduct a MANOVA\n\nBased on your data please select the `right`test\n\nMultivariate\nTest\n\nSample\nSize\n\nLevels\nof IVs\n\nUneven\nCell Sizes\n\nUnequal\nvariance\n\nNon-normal\nData\n\nCollinearity\n\nRobustness\n\nPillai’s Trace\n\nSmall\n\n> 2\n\nWilk’s\nLambda\n\nMedium to\nlarge\n\nHotelling’s\nTrace\n\nMedium to\nlarge\n\nRoy’s Largest\nRoot\n\nMedium to\nlarge\n\n> 2\n\n= 2\n\n> 2\n\nY\n\nN\n\nN\n\nN\n\nY\n\nN\n\nN\n\nN\n\nY\n\nN\n\nN\n\nN\n\nLow to\nmedium\n\nLow to\nmedium\n\nLow to\nmedium\n\nMedium to\nhigh"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q17",
+     "statement": "Common corrections include the Greenhouse-Geisser and Huynh-Feldt corrections, which help to provide a more accurate F-ratio by adjusting for the lack of sphericity.",
+     "passages": [
+      {
+       "id": "u10-p017-0",
+       "unit": 10,
+       "page": 17,
+       "section": "The following decision chart allows us to",
+       "text": "Paired samples ANOVA in SPSS. Output\n\nThe following decision chart allows us to\ndecide which sphericity correction to pick\nwhen interpreting our ANOVA results (slide\n56).\n\nWe start by defining if our Mauchly’s test\nwas significant or not. If it was significant,\nwhich was our case (p = 0.047), we need to\nlook at the value of Greenhouse-Geisser\ncorrection. In our case, this value was\n0.871. Because this value is >0.75, then\naccording to our decision chart we should\ntake the “Huynh-Feldt” correction.\n\nP.S. The other side of the decision chart\nindicates the choice of using the\n“Greenhouse-Geisser results” or the\n“multivariate results”. These multivariate\nresults are the ones from the “Multivariate\nTests” table in our output (slide 52).\n\nImage: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/\n\n54"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.002,
+       "neutral": 0.997
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.002
+    },
+    {
+     "q": "Q18",
+     "statement": "For instance, if the Greenhouse-Geisser value is greater than 0.75, the Huynh-Feldt correction is recommended, as was the case in the example where the value was 0.871.",
+     "passages": [
+      {
+       "id": "u10-p017-0",
+       "unit": 10,
+       "page": 17,
+       "section": "The following decision chart allows us to",
+       "text": "Paired samples ANOVA in SPSS. Output\n\nThe following decision chart allows us to\ndecide which sphericity correction to pick\nwhen interpreting our ANOVA results (slide\n56).\n\nWe start by defining if our Mauchly’s test\nwas significant or not. If it was significant,\nwhich was our case (p = 0.047), we need to\nlook at the value of Greenhouse-Geisser\ncorrection. In our case, this value was\n0.871. Because this value is >0.75, then\naccording to our decision chart we should\ntake the “Huynh-Feldt” correction.\n\nP.S. The other side of the decision chart\nindicates the choice of using the\n“Greenhouse-Geisser results” or the\n“multivariate results”. These multivariate\nresults are the ones from the “Multivariate\nTests” table in our output (slide 52).\n\nImage: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/\n\n54"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.996,
+       "neutral": 0.004
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.996
+    },
+    {
+     "q": "Q19",
+     "statement": "Non-parametric tests are also known as \"assumption-free tests\" because they don't require the assumptions that parametric tests do, such as normal distribution of the data.",
+     "passages": [
+      {
+       "id": "u11-p004-0",
+       "unit": 11,
+       "page": 4,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Non-parametric tests or the assumption-free tests\n\n• Do not make the assumptions that you find in parametric tests\n\n• Technically parametric tests are more powerful\n\n• The range of robust tests in SPSS is quite limited\n\n• Non-parametric tests a nice option to test a hypothesis by still\n\nclaiming to use a statistical test"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q19",
+     "statement": "This makes them particularly useful when your data doesn't meet these assumptions and there's no way to fix the issues.",
+     "passages": [
+      {
+       "id": "u11-p003-0",
+       "unit": 11,
+       "page": 3,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Sometimes the data you have violates the assumptions of parametric\n\ntests\n\n• No matter how hard you may want to try there is simply no way\n\npossible for you to fix the problems in your data\n\n• Good news though\n\n•The family of non-parametric tests is there for you"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.964,
+       "neutral": 0.036
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.964
+    },
+    {
+     "q": "Q20",
+     "statement": "Specifically, they assume that the data follows a normal distribution, that there is homogeneity of variance, that the data is measured at the interval or ratio level, and that the observations are independent.",
+     "passages": [
+      {
+       "id": "u06-p008-0",
+       "unit": 6,
+       "page": 8,
+       "section": "Parametric tests",
+       "text": "Parametric tests\n\nWe mentioned that we want normal data because we want (to use)\nparametric tests. But what are parametric tests?\n1. A parametric test is a statistical test which makes certain assumptions\n\nabout the distribution of the unknown parameter of interest and thus the\ntest statistic is valid under these assumptions.\n\n2. Parametric tests need to ensure four basic assumptions for the test to be\n\naccurate:\n\n1. A normally sampling distribution\n2. Homogeneity of variance\n3. Interval or ratio data\n4. Independence\n\nWhy do we want parametric tests? Because they have more power."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q20",
+     "statement": "Examples of parametric tests include the t-test and ANOVA, which are used to compare means between groups.",
+     "passages": [
+      {
+       "id": "u07-p021-0",
+       "unit": 7,
+       "page": 21,
+       "section": "T-test family of tests",
+       "text": "T-test family of tests\n\nT-test family of tests: When you want to find out if 2, and only 2, means are\nstatistically significantly different\n\nThis is a family of parametric tests!\n\nThree members of the t-test family: independent-samples, repeated-samples, and\none-sample\n\nRegardless if it’s an independent-samples, repeated-samples, or one-sample, any t-\ntest we do:\n\na)\n\nb)\n\nconsists of comparing the difference between 2 means, accounting for its variability,\nand\n\nthe output of such comparison will produce a t-value that can be charted on a t-\ndistribution and from this we will obtain a p-value to determine if our test was\nsignificant or not\n\nThe focus of this topic - independent-samples t-test, which we will see in\na moment, but before that we will learn about t-values and t-distributions.\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.001,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q20",
+     "statement": "For instance, the Wilcoxon rank-sum test and the Mann-Whitney test are non-parametric tests used to compare differences between two groups, similar to t-tests, but without the need for normally distributed data.",
+     "passages": [
+      {
+       "id": "u11-p003-0",
+       "unit": 11,
+       "page": 3,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Sometimes the data you have violates the assumptions of parametric\n\ntests\n\n• No matter how hard you may want to try there is simply no way\n\npossible for you to fix the problems in your data\n\n• Good news though\n\n•The family of non-parametric tests is there for you"
+      },
+      {
+       "id": "u11-p006-0",
+       "unit": 11,
+       "page": 6,
+       "section": "2. The Wilcoxon rank-sum test & Mann-Whitney test",
+       "text": "2. The Wilcoxon rank-sum test & Mann-Whitney test\n\n• If you want to test for differences between two groups\n\n• Similar logic to t-tests\n\n• Both tests will do the job for you"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      },
+      {
+       "contradiction": 0.012,
+       "entailment": 0.001,
+       "neutral": 0.987
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    }
+   ]
+  },
+  "2026-11-03-v2-prompt": {
+   "summary": {
+    "cited_statements": 71,
+    "entailment": 0.479,
+    "neutral": 0.507,
+    "contradiction": 0.014
+   },
+   "pairs": [
+    {
+     "q": "Q1",
+     "statement": "ERM involves the systematic collection and analysis of data, which means gathering observations and evidence in a structured way.",
+     "passages": [
+      {
+       "id": "u01-p002-0",
+       "unit": 1,
+       "page": 2,
+       "section": "What is ERM1 all about?",
+       "text": "What is ERM1 all about?\n\n• Empirical Research Methods =\n\nsystematic collection and analysis of data\n(i.e. observation and evidence)\n\n• In this course, you will learn about...\n\n• Basic empirical concepts and research philosophy\n• Developing an experiment design\n• Quality aspects of scientific texts\n• Designing questionnaires and measuring their validity & reliability\n• Using SPSS and preparing datasets\n• Parametric and non-parametric approaches to data analysis\n• Multi-level analysis\n• ..."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.986,
+       "neutral": 0.014
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.986
+    },
+    {
+     "q": "Q1",
+     "statement": "In this course, you'll dive into various aspects of empirical research, such as basic empirical concepts, research philosophy, and experiment design.",
+     "passages": [
+      {
+       "id": "u01-p002-0",
+       "unit": 1,
+       "page": 2,
+       "section": "What is ERM1 all about?",
+       "text": "What is ERM1 all about?\n\n• Empirical Research Methods =\n\nsystematic collection and analysis of data\n(i.e. observation and evidence)\n\n• In this course, you will learn about...\n\n• Basic empirical concepts and research philosophy\n• Developing an experiment design\n• Quality aspects of scientific texts\n• Designing questionnaires and measuring their validity & reliability\n• Using SPSS and preparing datasets\n• Parametric and non-parametric approaches to data analysis\n• Multi-level analysis\n• ..."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.998,
+       "neutral": 0.002
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.998
+    },
+    {
+     "q": "Q1",
+     "statement": "You'll also learn about the quality aspects of scientific texts, designing questionnaires, and ensuring their validity and reliability.",
+     "passages": [
+      {
+       "id": "u01-p002-0",
+       "unit": 1,
+       "page": 2,
+       "section": "What is ERM1 all about?",
+       "text": "What is ERM1 all about?\n\n• Empirical Research Methods =\n\nsystematic collection and analysis of data\n(i.e. observation and evidence)\n\n• In this course, you will learn about...\n\n• Basic empirical concepts and research philosophy\n• Developing an experiment design\n• Quality aspects of scientific texts\n• Designing questionnaires and measuring their validity & reliability\n• Using SPSS and preparing datasets\n• Parametric and non-parametric approaches to data analysis\n• Multi-level analysis\n• ..."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.996,
+       "neutral": 0.004
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.996
+    },
+    {
+     "q": "Q1",
+     "statement": "Additionally, the course covers using SPSS for data preparation, as well as parametric and non-parametric data analysis approaches, and even multi-level analysis.",
+     "passages": [
+      {
+       "id": "u01-p002-0",
+       "unit": 1,
+       "page": 2,
+       "section": "What is ERM1 all about?",
+       "text": "What is ERM1 all about?\n\n• Empirical Research Methods =\n\nsystematic collection and analysis of data\n(i.e. observation and evidence)\n\n• In this course, you will learn about...\n\n• Basic empirical concepts and research philosophy\n• Developing an experiment design\n• Quality aspects of scientific texts\n• Designing questionnaires and measuring their validity & reliability\n• Using SPSS and preparing datasets\n• Parametric and non-parametric approaches to data analysis\n• Multi-level analysis\n• ..."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.138,
+       "neutral": 0.862
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.138
+    },
+    {
+     "q": "Q2",
+     "statement": "In your course, three main quality criteria are highlighted: objectivity, reliability, and validity.",
+     "passages": [
+      {
+       "id": "u03-p017-0",
+       "unit": 3,
+       "page": 17,
+       "section": "QUALITY CRITERIA: OBJECTIVITY,",
+       "text": "QUALITY CRITERIA: OBJECTIVITY,\nRELIABILITY, VALIDITY\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q2",
+     "statement": "This is often achieved through methods like blind or double-blind experimental designs, where either the participant or both the participant and the experimenter are unaware of the conditions to which participants are assigned, thus preventing biases.",
+     "passages": [
+      {
+       "id": "u02-p010-0",
+       "unit": 2,
+       "page": 10,
+       "section": "Blind and double-blind experimental",
+       "text": "Blind and double-blind experimental\ndesigns\n\nWhy? For preventing biases on our research\nstudy\n\n•Blind study: the participant doesn’t know to\nwhich condition they were assigned to, but\nthe experimenter knows ;-)\n\n•Double blind: neither the experimenter nor the\nparticipant know the condition to which the\nparticipant was assigned\n\n10"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.36,
+       "neutral": 0.639
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.36
+    },
+    {
+     "q": "Q2",
+     "statement": "This consistency is key to ensuring that the findings are dependable and not just a one-time occurrence.",
+     "passages": [
+      {
+       "id": "u03-p017-0",
+       "unit": 3,
+       "page": 17,
+       "section": "QUALITY CRITERIA: OBJECTIVITY,",
+       "text": "QUALITY CRITERIA: OBJECTIVITY,\nRELIABILITY, VALIDITY\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q2",
+     "statement": "For example, if you're using a ruler to measure length, it must be calibrated correctly and in the right units (e.g., centimeters if you're measuring in centimeters) to ensure validity.",
+     "passages": [
+      {
+       "id": "u02-p017-0",
+       "unit": 2,
+       "page": 17,
+       "section": "Quality criteria: Validity",
+       "text": "Quality criteria: Validity\n\n3.\n\nFinally, even if data is objective and reliable, it may still not be valid. For\nthat, we need to ensure to measure what we truly intend to measure; do\njustice to the underlying construct.\n\nExample: using a ruler that is well calibrated (correct spacings). If we’re claiming\nto be measuring in cm, then the ruler must be in centimeters and not inches\n\nI want to\nmeasure in cm\nand the ruler is\nin cm!\n\n10\n\n20\n\n30\n\n40\n\n50\n\ncentimeters\n\nThere are more types of\nvalidity, e.g. construct\nvalidity, predictive\nvalidity. Here we’re\nlearning about the main\ntype of validity\n\n17"
+      },
+      {
+       "id": "u03-p022-0",
+       "unit": 3,
+       "page": 22,
+       "section": "Quality criteria: Validity",
+       "text": "Quality criteria: Validity\n\n3. Finally, even if data is objective and reliable, it may still not be valid. For\n\nthat, we need to ensure that measure what we truly intend to measure;\ndo justice to the underlying construct.\n\nExample: using a ruler that is well calibrated (correct spacings). If we’re\nmeasuring in cm then that the ruler is in centimeters and not inches\n\nI measure\nin cm!\n\n10\n\n20\n\n30\n\n40\n\n50\n\ncentimeters\n\n16"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.082,
+       "neutral": 0.918
+      },
+      {
+       "contradiction": 0.0,
+       "entailment": 0.99,
+       "neutral": 0.01
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.99
+    },
+    {
+     "q": "Q3",
+     "statement": "The null hypothesis, often denoted as H0, is a statement that there is no effect or no difference, and it serves as the default or starting assumption in statistical testing.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.004,
+       "entailment": 0.0,
+       "neutral": 0.996
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q3",
+     "statement": "If the evidence is strong enough, we reject the null hypothesis in favor of the alternative hypothesis, denoted as H1, which suggests that there is an effect or a difference.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.0,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q3",
+     "statement": "In the context of p-values, a small p-value indicates strong evidence against the null hypothesis, leading us to reject it and accept the alternative hypothesis.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.007,
+       "neutral": 0.993
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.007
+    },
+    {
+     "q": "Q3",
+     "statement": "However, it's important to remember that rejecting the null hypothesis doesn't mean the alternative hypothesis is true with certainty; it just means the data provides enough evidence to favor it over the null.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q4",
+     "statement": "It's the variable that you manipulate to observe its effect on the dependent variable (DV).",
+     "passages": [
+      {
+       "id": "u07-p046-0",
+       "unit": 7,
+       "page": 46,
+       "section": "So far on ERM1…",
+       "text": "So far on ERM1…\n\nIndependent Variable: a.k.a. IV, factor, input variable, experimental variable, and predictor (variable). Is\nthe variable that is manipulated in our experiment. We expect the IV to have an effect on the dependent\nvariable\n\nFactors = IV\n\nLevels: the possible values within a factor. If a factor is a category, a level is a sub-category\n\nDependent Variable: a.k.a. DV, outcome variable, response variable. Is the variable that we measure\nwithin our experiment. We expect the DV to be affected, or depend of, the independent variable\n\nCategorical Variable: Nominal scale variable with labels used for distinguishing the levels of a factor. The\nlabels can be numerical but won’t be treated as such!\n\nNull hypothesis: Hypothesis that states no difference or change between factors and/or levels\n\nAlternative hypothesis: Hypothesis that states the existence of a difference or change between factors\nand/or levels. Can either be directional or non-directional.\n\nSignificance level: a.k.a. p-value, measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as possible.\n\n5"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.01,
+       "neutral": 0.989
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.01
+    },
+    {
+     "q": "Q4",
+     "statement": "If your factor is a category, then a level is a sub-category within that factor.",
+     "passages": [
+      {
+       "id": "u07-p046-0",
+       "unit": 7,
+       "page": 46,
+       "section": "So far on ERM1…",
+       "text": "So far on ERM1…\n\nIndependent Variable: a.k.a. IV, factor, input variable, experimental variable, and predictor (variable). Is\nthe variable that is manipulated in our experiment. We expect the IV to have an effect on the dependent\nvariable\n\nFactors = IV\n\nLevels: the possible values within a factor. If a factor is a category, a level is a sub-category\n\nDependent Variable: a.k.a. DV, outcome variable, response variable. Is the variable that we measure\nwithin our experiment. We expect the DV to be affected, or depend of, the independent variable\n\nCategorical Variable: Nominal scale variable with labels used for distinguishing the levels of a factor. The\nlabels can be numerical but won’t be treated as such!\n\nNull hypothesis: Hypothesis that states no difference or change between factors and/or levels\n\nAlternative hypothesis: Hypothesis that states the existence of a difference or change between factors\nand/or levels. Can either be directional or non-directional.\n\nSignificance level: a.k.a. p-value, measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as possible.\n\n5"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.002,
+       "neutral": 0.997
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.002
+    },
+    {
+     "q": "Q5",
+     "statement": "It typically contains many simple items with clear methods for answering, making it suitable for selection processes at the administrative and clerical level.",
+     "passages": [
+      {
+       "id": "u04-p014-0",
+       "unit": 4,
+       "page": 14,
+       "section": "Types of tests: speed and power",
+       "text": "Types of tests: speed and power\n\nSpeed test\n\nPower test\n\nDistinguishing\nfeature\n\nHow many questions can\nbe answered in the alloted\ntime\n\nHow well each (complex)\nquestion can be answered in\nthe alloted time\n\nItems\n\nExpected\nanswer\n\nUse case\nexample\n\nContains lots of (simple)\nitems of limited scope\n\nContains a small set of\n(complex) items of practically\nunlimited scope\n\nThe methods to answer are\nclear\n\nThe methods to answer are not\nobvious\n\nFor selection processes at\nthe administrative and\nclerical level\n\nFor selection processes on\ngraduate, professional or\nmanagerial level\n\nAdapted from the slides from Muhammad Foysal Mubarak, 2019\n\n15"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.004,
+       "entailment": 0.962,
+       "neutral": 0.034
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.962
+    },
+    {
+     "q": "Q5",
+     "statement": "It includes a smaller set of complex items where the methods to answer are not obvious, making it more appropriate for selection processes at the graduate, professional, or managerial level.",
+     "passages": [
+      {
+       "id": "u04-p014-0",
+       "unit": 4,
+       "page": 14,
+       "section": "Types of tests: speed and power",
+       "text": "Types of tests: speed and power\n\nSpeed test\n\nPower test\n\nDistinguishing\nfeature\n\nHow many questions can\nbe answered in the alloted\ntime\n\nHow well each (complex)\nquestion can be answered in\nthe alloted time\n\nItems\n\nExpected\nanswer\n\nUse case\nexample\n\nContains lots of (simple)\nitems of limited scope\n\nContains a small set of\n(complex) items of practically\nunlimited scope\n\nThe methods to answer are\nclear\n\nThe methods to answer are not\nobvious\n\nFor selection processes at\nthe administrative and\nclerical level\n\nFor selection processes on\ngraduate, professional or\nmanagerial level\n\nAdapted from the slides from Muhammad Foysal Mubarak, 2019\n\n15"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.003,
+       "entailment": 0.98,
+       "neutral": 0.017
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.98
+    },
+    {
+     "q": "Q6",
+     "statement": "Standardized questionnaires are structured tools that consist of a written set of questions completed by respondents, often used for research purposes.",
+     "passages": [
+      {
+       "id": "u04-p004-0",
+       "unit": 4,
+       "page": 4,
+       "section": "Common ground: Questionnaires, tests,",
+       "text": "Common ground: Questionnaires, tests,\nsurveys, and instruments\n\nMeasure: a procedure for obtaining data\n\nConstruct: “abstract idea, underlying theme, or subject matter that one wishes to measure using survey\nquestions” (Lavrakas, 2008, p. 133)\n\nItem: the basic building block (or element) of an instrument\n\nScale: a group of items that are seek to measure one dimension of the variable of interest.\n\n(Research) Instrument: a tool or procedure used to measure (and quantify) subject characteristics\n\nQuestionnaire: a written set of questions that a respondent completes typically used for research\npurposes which can be both qualitative as well as quantitative in nature.\n\nTest: an instrument meant to assess the ability to present a correct answer to a specific item/question, i.e.\nit measures performance\n\nSurvey: a research method composed of instruments (e.g. tests, questionnaires, interviews) and it’s also\na broader concept that describes content, method, and analysis of the data obtained from the instruments\n\nLavrakas, P. J. (2008). Encyclopedia of survey research methods (Vols. 1-0). Sage Publications, Inc.\nhttps://dx.doi.org/10.4135/9781412963947.n91\n\n5"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q6",
+     "statement": "They are efficient for collecting data from a large number of people and allow for objective comparisons across respondents.",
+     "passages": [
+      {
+       "id": "u04-p015-0",
+       "unit": 4,
+       "page": 15,
+       "section": "Types of tests: performance and aptitude",
+       "text": "Types of tests: performance and aptitude\n\nPerformance/ability test\n\nAptitude test\n\nDistinguishing\nfeature\n\nDesigned to determine achieved\nknowledge in certain subject\n\nDesigned to determine potential for\nsuccess in a certain area\n\nAdvantages\n\nEfficient way to get an idea of\nhow well\nstudents are performing\n\nDisadvantages\n\nToo much emphasis on passing a\ntest\nignoring critical and creative\nthinking\n\nTests offer objective comparisons,\nimprove the quality of hiring\nthrough\ntraining needs assessment\n\nCostly & tailored to the various\npositions\nFocus of Test?\n\nUse case\nexample\n\nTo test if students have met\nspecific learning\ngoals or not at each grade level.\n\nTo determine which types of career\neach student might be best suited\nfor\n\nAdapted from the slides from Muhammad Foysal Mubarak, 2019\n\n16"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.004,
+       "neutral": 0.996
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.004
+    },
+    {
+     "q": "Q7",
+     "statement": "In SPSS, the Data Editor window is the default window where you can see your data in a spreadsheet format.",
+     "passages": [
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.996,
+       "neutral": 0.004
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.996
+    },
+    {
+     "q": "Q7",
+     "statement": "This window has two views: Data View and Variable View.",
+     "passages": [
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.998,
+       "neutral": 0.001
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.998
+    },
+    {
+     "q": "Q7",
+     "statement": "In Data View, columns represent variables, and rows represent cases.",
+     "passages": [
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q7",
+     "statement": "On the other hand, Variable View shows information about the variables themselves, not the data.",
+     "passages": [
+      {
+       "id": "u05-p011-0",
+       "unit": 5,
+       "page": 11,
+       "section": "SPSS Environment: Data Editor window",
+       "text": "SPSS Environment: Data Editor window\n\nDefault window\n\nDisplayed in spreadsheet format\n\nContains 2 views: Data and Variable\n\nData View: columns represent variables, rows represent\ncases\n\nVariable View: Shows information about variables present\nin the open data (but not the data itself)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n11"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.965,
+       "entailment": 0.002,
+       "neutral": 0.033
+      }
+     ],
+     "label": "contradiction",
+     "entailment": 0.002
+    },
+    {
+     "q": "Q7",
+     "statement": "Here, you can define and modify the properties of each variable, such as the variable name, type, width, decimals, columns, alignment, measure, and role.",
+     "passages": [
+      {
+       "id": "u05-p022-0",
+       "unit": 5,
+       "page": 22,
+       "section": "Variables in Data View",
+       "text": "Variables in Data View\n\nName: name of the variable\n\nType: type of variable (e.g.: string, numeric, comma, date)\n\nWidth: number of digits displayed (for numeric values) or the number of characters (for a\nstring)\n\nDecimals: number of decimal digits to be shown\n\nColumns: the width of the actual column in the Data View (not the number of digits).\n\nAlign: the alignment of content of the cell.\n\nMeasure: level of measurement for the variable nominal, ordinal, or scale (interval or\nratio). This setting affects everything from graphs to internal algorithms for statistical\nanalysis.\n\nRole: how the variable will be used in your analysis (e.g.: input for IV or target for DV)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n22"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q7",
+     "statement": "This view is essential for setting up your data correctly before analysis, as it affects everything from graphs to the internal algorithms used for statistical analysis.",
+     "passages": [
+      {
+       "id": "u05-p022-0",
+       "unit": 5,
+       "page": 22,
+       "section": "Variables in Data View",
+       "text": "Variables in Data View\n\nName: name of the variable\n\nType: type of variable (e.g.: string, numeric, comma, date)\n\nWidth: number of digits displayed (for numeric values) or the number of characters (for a\nstring)\n\nDecimals: number of decimal digits to be shown\n\nColumns: the width of the actual column in the Data View (not the number of digits).\n\nAlign: the alignment of content of the cell.\n\nMeasure: level of measurement for the variable nominal, ordinal, or scale (interval or\nratio). This setting affects everything from graphs to internal algorithms for statistical\nanalysis.\n\nRole: how the variable will be used in your analysis (e.g.: input for IV or target for DV)\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n22"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q8",
+     "statement": "Each variable name in SPSS must be unique and can be up to 64 characters long, allowing you to clearly identify and differentiate between different data points.",
+     "passages": [
+      {
+       "id": "u05-p021-0",
+       "unit": 5,
+       "page": 21,
+       "section": "Variables",
+       "text": "Variables\n\nBest practices for naming variables in SPSS:\n\nEach variable name must be unique\nKeep variable names up to 64 characters long.\nNo spaces, you may include alphanumeric characters, non-\npunctuation characters. Also periods and underscores within (not\nat the end).\nYou can use upper and lower cases (Camel case - e.g. typeOfcar).\nSPSS has reserved keywords, you can’t use them as a variable\nname (i.e.: ALL, AND, BY, NOT, OR, TO or WITH).\nYou can add any type of character and quantity at the “Label”, but\nalso keep it short to keep the output more “readable”.\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.002,
+       "entailment": 0.0,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q8",
+     "statement": "By following best practices for naming variables, such as avoiding spaces and using alphanumeric characters, you maintain clarity and prevent errors during analysis.",
+     "passages": [
+      {
+       "id": "u05-p021-0",
+       "unit": 5,
+       "page": 21,
+       "section": "Variables",
+       "text": "Variables\n\nBest practices for naming variables in SPSS:\n\nEach variable name must be unique\nKeep variable names up to 64 characters long.\nNo spaces, you may include alphanumeric characters, non-\npunctuation characters. Also periods and underscores within (not\nat the end).\nYou can use upper and lower cases (Camel case - e.g. typeOfcar).\nSPSS has reserved keywords, you can’t use them as a variable\nname (i.e.: ALL, AND, BY, NOT, OR, TO or WITH).\nYou can add any type of character and quantity at the “Label”, but\nalso keep it short to keep the output more “readable”.\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.0,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q8",
+     "statement": "Additionally, using labels can make your output more readable, which is particularly helpful when dealing with large datasets.",
+     "passages": [
+      {
+       "id": "u05-p021-0",
+       "unit": 5,
+       "page": 21,
+       "section": "Variables",
+       "text": "Variables\n\nBest practices for naming variables in SPSS:\n\nEach variable name must be unique\nKeep variable names up to 64 characters long.\nNo spaces, you may include alphanumeric characters, non-\npunctuation characters. Also periods and underscores within (not\nat the end).\nYou can use upper and lower cases (Camel case - e.g. typeOfcar).\nSPSS has reserved keywords, you can’t use them as a variable\nname (i.e.: ALL, AND, BY, NOT, OR, TO or WITH).\nYou can add any type of character and quantity at the “Label”, but\nalso keep it short to keep the output more “readable”.\n\nAdapted from the slides from Claudio Alves da Silva, 2020\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.071,
+       "entailment": 0.0,
+       "neutral": 0.929
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q9",
+     "statement": "Interestingly, a dataset can have more than one mode, which is referred to as bimodal or multimodal if there are more than two peaks.",
+     "passages": [
+      {
+       "id": "u06-p024-0",
+       "unit": 6,
+       "page": 24,
+       "section": "Measures of central tendency- Understanding the MODE",
+       "text": "Measures of central tendency- Understanding the MODE\n\n• Mode: the value that appears most frequently in a dataset\n• Specially useful for nominal and ordinal scale data\n• Several modes? Yes!\n• More than one mode is possible Visual depictions of modes: Single mode,\n\nbi modal, multi-modal (>2 peaks)\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.993,
+       "neutral": 0.007
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.993
+    },
+    {
+     "q": "Q9",
+     "statement": "The median is a better representative of a sample when there are extreme scores because it is not sensitive to them.",
+     "passages": [
+      {
+       "id": "u06-p023-0",
+       "unit": 6,
+       "page": 23,
+       "section": "Measures of central tendency- Understanding the MEDIAN",
+       "text": "Measures of central tendency- Understanding the MEDIAN\n\nMedian = midpoint\nThe median is a better representative of a sample when scores are extreme, not\nsensitive to extreme scores\n\nHow to determine the median:\n1. From all the values of a varaible in your dataset, order them from lowest to\n\nhighest\n\n2. Once ordered, the median is the value in the middle\n\nIf you have an odd amount of values, the value in the middle is the median\na)\nb) b) If you have an even amount of values, the average of the two values in the\n\nmiddle is the median\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.589,
+       "neutral": 0.411
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.589
+    },
+    {
+     "q": "Q10",
+     "statement": "Variance and standard deviation are both measures of dispersion, which describe how data points spread out from the mean value.",
+     "passages": [
+      {
+       "id": "u06-p026-0",
+       "unit": 6,
+       "page": 26,
+       "section": "Measures – dispersion: Key definitions of variance and standard",
+       "text": "Measures – dispersion: Key definitions of variance and standard\ndeviation (SD)\n\n Variance (s²) = sum of the squared deviations of the mean, divided by N\n Standard deviation (SD or s) = square root of the variance. Normally\n\nreported in publications\n\n The variance describes dispersion of data points from the mean value\n It is the average of the squared differences from the mean\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.966,
+       "neutral": 0.034
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.966
+    },
+    {
+     "q": "Q10",
+     "statement": "Variance is calculated as the sum of the squared deviations from the mean, divided by the number of observations (N).",
+     "passages": [
+      {
+       "id": "u06-p026-0",
+       "unit": 6,
+       "page": 26,
+       "section": "Measures – dispersion: Key definitions of variance and standard",
+       "text": "Measures – dispersion: Key definitions of variance and standard\ndeviation (SD)\n\n Variance (s²) = sum of the squared deviations of the mean, divided by N\n Standard deviation (SD or s) = square root of the variance. Normally\n\nreported in publications\n\n The variance describes dispersion of data points from the mean value\n It is the average of the squared differences from the mean\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q10",
+     "statement": "It essentially gives you the average of these squared differences from the mean.",
+     "passages": [
+      {
+       "id": "u06-p026-0",
+       "unit": 6,
+       "page": 26,
+       "section": "Measures – dispersion: Key definitions of variance and standard",
+       "text": "Measures – dispersion: Key definitions of variance and standard\ndeviation (SD)\n\n Variance (s²) = sum of the squared deviations of the mean, divided by N\n Standard deviation (SD or s) = square root of the variance. Normally\n\nreported in publications\n\n The variance describes dispersion of data points from the mean value\n It is the average of the squared differences from the mean\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.986,
+       "neutral": 0.013
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.986
+    },
+    {
+     "q": "Q10",
+     "statement": "Standard deviation, on the other hand, is simply the square root of the variance.",
+     "passages": [
+      {
+       "id": "u06-p026-0",
+       "unit": 6,
+       "page": 26,
+       "section": "Measures – dispersion: Key definitions of variance and standard",
+       "text": "Measures – dispersion: Key definitions of variance and standard\ndeviation (SD)\n\n Variance (s²) = sum of the squared deviations of the mean, divided by N\n Standard deviation (SD or s) = square root of the variance. Normally\n\nreported in publications\n\n The variance describes dispersion of data points from the mean value\n It is the average of the squared differences from the mean\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q10",
+     "statement": "It's often reported in publications because it is in the same units as the data, making it more interpretable than variance.",
+     "passages": [
+      {
+       "id": "u06-p026-0",
+       "unit": 6,
+       "page": 26,
+       "section": "Measures – dispersion: Key definitions of variance and standard",
+       "text": "Measures – dispersion: Key definitions of variance and standard\ndeviation (SD)\n\n Variance (s²) = sum of the squared deviations of the mean, divided by N\n Standard deviation (SD or s) = square root of the variance. Normally\n\nreported in publications\n\n The variance describes dispersion of data points from the mean value\n It is the average of the squared differences from the mean\n\nAdapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.004,
+       "entailment": 0.0,
+       "neutral": 0.996
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q11",
+     "statement": "A p-value is a measure of the probability that an observed difference could have occurred just by random chance.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.002,
+       "entailment": 0.0,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q11",
+     "statement": "Essentially, it provides evidence against the null hypothesis by indicating the probability that the null hypothesis is correct and the results are random.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.004,
+       "neutral": 0.996
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.004
+    },
+    {
+     "q": "Q11",
+     "statement": "In the social sciences, a p-value of ≤ 0.05 is typically considered statistically significant, meaning there is strong evidence against the null hypothesis, as there is less than a 5% probability that the null is correct.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q11",
+     "statement": "However, it's important to note that a p-value does not mean there is a 95% probability that the research hypothesis is true; it is conditional upon the null hypothesis being true and is unrelated to the truth or falsity of the research hypothesis.",
+     "passages": [
+      {
+       "id": "u06-p011-0",
+       "unit": 6,
+       "page": 11,
+       "section": "P value",
+       "text": "P value\n\n A p-value is a measure of the probability that an observed difference could have\noccurred just by random chance. That’s why we want p-values to be as small as\npossible.\n\n A p-value indicates evidence against the null hypothesis, indicating the probability\n\nthe null is correct (and the results are random).\n\n In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant\nresult. It indicates strong evidence against the null hypothesis, as there is less\nthan a 5% probability the null is correct (and the results are random).\n\n Therefore, we reject the null hypothesis, and accept the alternative hypothesis.\n However, this does not mean that there is a 95% probability that the research\n\nhypothesis is true. The p-value is conditional upon the null hypothesis being true\nis unrelated to the truth or falsity of the research hypothesis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.954,
+       "neutral": 0.046
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.954
+    },
+    {
+     "q": "Q12",
+     "statement": "The independent-samples t-test is part of the t-test family, which is used when you want to determine if there are statistically significant differences between the means of two groups.",
+     "passages": [
+      {
+       "id": "u07-p021-0",
+       "unit": 7,
+       "page": 21,
+       "section": "T-test family of tests",
+       "text": "T-test family of tests\n\nT-test family of tests: When you want to find out if 2, and only 2, means are\nstatistically significantly different\n\nThis is a family of parametric tests!\n\nThree members of the t-test family: independent-samples, repeated-samples, and\none-sample\n\nRegardless if it’s an independent-samples, repeated-samples, or one-sample, any t-\ntest we do:\n\na)\n\nb)\n\nconsists of comparing the difference between 2 means, accounting for its variability,\nand\n\nthe output of such comparison will produce a t-value that can be charted on a t-\ndistribution and from this we will obtain a p-value to determine if our test was\nsignificant or not\n\nThe focus of this topic - independent-samples t-test, which we will see in\na moment, but before that we will learn about t-values and t-distributions.\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.025,
+       "neutral": 0.974
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.025
+    },
+    {
+     "q": "Q12",
+     "statement": "The independent-samples t-test specifically compares the means of two independent groups to see if they are significantly different from each other.",
+     "passages": [
+      {
+       "id": "u07-p021-0",
+       "unit": 7,
+       "page": 21,
+       "section": "T-test family of tests",
+       "text": "T-test family of tests\n\nT-test family of tests: When you want to find out if 2, and only 2, means are\nstatistically significantly different\n\nThis is a family of parametric tests!\n\nThree members of the t-test family: independent-samples, repeated-samples, and\none-sample\n\nRegardless if it’s an independent-samples, repeated-samples, or one-sample, any t-\ntest we do:\n\na)\n\nb)\n\nconsists of comparing the difference between 2 means, accounting for its variability,\nand\n\nthe output of such comparison will produce a t-value that can be charted on a t-\ndistribution and from this we will obtain a p-value to determine if our test was\nsignificant or not\n\nThe focus of this topic - independent-samples t-test, which we will see in\na moment, but before that we will learn about t-values and t-distributions.\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.002,
+       "neutral": 0.997
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.002
+    },
+    {
+     "q": "Q12",
+     "statement": "The process involves calculating a t-value, which is then used to find a p-value from a t-distribution to determine the significance of the results.",
+     "passages": [
+      {
+       "id": "u07-p021-0",
+       "unit": 7,
+       "page": 21,
+       "section": "T-test family of tests",
+       "text": "T-test family of tests\n\nT-test family of tests: When you want to find out if 2, and only 2, means are\nstatistically significantly different\n\nThis is a family of parametric tests!\n\nThree members of the t-test family: independent-samples, repeated-samples, and\none-sample\n\nRegardless if it’s an independent-samples, repeated-samples, or one-sample, any t-\ntest we do:\n\na)\n\nb)\n\nconsists of comparing the difference between 2 means, accounting for its variability,\nand\n\nthe output of such comparison will produce a t-value that can be charted on a t-\ndistribution and from this we will obtain a p-value to determine if our test was\nsignificant or not\n\nThe focus of this topic - independent-samples t-test, which we will see in\na moment, but before that we will learn about t-values and t-distributions.\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.977,
+       "neutral": 0.023
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.977
+    },
+    {
+     "q": "Q12",
+     "statement": "In SPSS, you can perform this test by navigating to Analyze > Compare Means > Independent-Samples T Test.",
+     "passages": [
+      {
+       "id": "u07-p033-0",
+       "unit": 7,
+       "page": 33,
+       "section": "Indep.-samples t-test in SPSS",
+       "text": "Indep.-samples t-test in SPSS\n\nAnalyze > Compare Means > Independent-Samples T Test…\n\nWant to try it out? Use the file\n“topic-8.indep-t-test.sav”\nprovided in the moodle\n\n33"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.995,
+       "neutral": 0.005
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.995
+    },
+    {
+     "q": "Q12",
+     "statement": "A two-way ANOVA, for example, involves two or more independent variables that are categorical, and a single dependent variable that is continuous, either at the ratio or interval level.",
+     "passages": [
+      {
+       "id": "u07-p066-0",
+       "unit": 7,
+       "page": 66,
+       "section": "Two-way ANOVA. Assumptions in detail",
+       "text": "Two-way ANOVA. Assumptions in detail\nAssumptions\n\nNum.\n\nName\n\nDescription\n\nHow to check for that?\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n25\n\nCategorical\nindependent variables\n\nTwo or more IVs which are on a\nnominal/categorical scale level.\n\nEnsure the data from your independent variables\ncorresponds to a nominal/categorical scale level\n\nContinuous dependent\nvariable\n\n(Single) Dependent variable is either\nratio or interval level.\n\nEnsure the data from your dependent variable\ncorresponds to a ratio or interval level\n\nIndependence of\nobservations\n\nNo outliers\n\nNormality\n\nThe measurement of each observation\nwas independent and didn’t affect the\nmeasurement of the other\nobservations.\n\nNo outliers on any of the levels of the\nIVs regarding the DV. Removal or\ncorrection of outliers.\n\nData from the dependent variable\nshould follow a normal distribution\ncurve.\n\nWhen collecting the data, ensure each\ncollected/measured datapoint is independent\nfrom each other\n\nCreate boxplots for each level of your IVs\nmeasuring your DV. Visual inspection of the\nboxplots, ensure there are no indvidual outlier\ndatapoints. If there are, exclude them from the\nanalysis.\n\nShapiro-Wilk test for the dependent variable.\nTest should be not-significant!\n\nHomogeneity of\nvariances\n\nThe variances of the 2 compared\ngroups are statistically the same, if not\nvery similar.\n\nLevene’s test for equality/homogeneity of\nvariances. Test should be not-significant! Test is\npart of the output of the ANOVA analysis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.856,
+       "neutral": 0.143
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.856
+    },
+    {
+     "q": "Q12",
+     "statement": "The assumptions for a two-way ANOVA include independence of observations, no outliers, normality of the dependent variable, and homogeneity of variances.",
+     "passages": [
+      {
+       "id": "u07-p066-0",
+       "unit": 7,
+       "page": 66,
+       "section": "Two-way ANOVA. Assumptions in detail",
+       "text": "Two-way ANOVA. Assumptions in detail\nAssumptions\n\nNum.\n\nName\n\nDescription\n\nHow to check for that?\n\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n25\n\nCategorical\nindependent variables\n\nTwo or more IVs which are on a\nnominal/categorical scale level.\n\nEnsure the data from your independent variables\ncorresponds to a nominal/categorical scale level\n\nContinuous dependent\nvariable\n\n(Single) Dependent variable is either\nratio or interval level.\n\nEnsure the data from your dependent variable\ncorresponds to a ratio or interval level\n\nIndependence of\nobservations\n\nNo outliers\n\nNormality\n\nThe measurement of each observation\nwas independent and didn’t affect the\nmeasurement of the other\nobservations.\n\nNo outliers on any of the levels of the\nIVs regarding the DV. Removal or\ncorrection of outliers.\n\nData from the dependent variable\nshould follow a normal distribution\ncurve.\n\nWhen collecting the data, ensure each\ncollected/measured datapoint is independent\nfrom each other\n\nCreate boxplots for each level of your IVs\nmeasuring your DV. Visual inspection of the\nboxplots, ensure there are no indvidual outlier\ndatapoints. If there are, exclude them from the\nanalysis.\n\nShapiro-Wilk test for the dependent variable.\nTest should be not-significant!\n\nHomogeneity of\nvariances\n\nThe variances of the 2 compared\ngroups are statistically the same, if not\nvery similar.\n\nLevene’s test for equality/homogeneity of\nvariances. Test should be not-significant! Test is\npart of the output of the ANOVA analysis."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.987,
+       "neutral": 0.012
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.987
+    },
+    {
+     "q": "Q13",
+     "statement": "In multiple regression, there are various methods to enter predictors into the model, such as hierarchical (block-wise entry), forced entry, and stepwise methods, although the latter is not very well liked by researchers.",
+     "passages": [
+      {
+       "id": "u08-p008-0",
+       "unit": 8,
+       "page": 8,
+       "section": "Multiple regression",
+       "text": "Multiple regression\n\nMethods of regression\n\n1. Hierarchical (block wise entry)\n\n1. Based on past research\n\n2. Forced entry\n\n3. Stepwise  methods: non very well liked by researchers\n\n1. Forward method:\n\n2. Stepwise method: each time a new predictor is added one is omitted that is considered\n\nunusual\n\n3. Backward method: add all predictors then calculating the contribution of each of them no\n\nremoval\n\n4. Removal"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.002
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q13",
+     "statement": "For example, a study might report that two predictors explained 35.8% of the variance in participants' ratings of aggression, with specific statistical values provided to support this finding.",
+     "passages": [
+      {
+       "id": "u08-p009-0",
+       "unit": 8,
+       "page": 9,
+       "section": "Reporting multiple regression",
+       "text": "Reporting multiple regression\n\nMultiple regression analysis was used to test if the personality traits\nsignificantly predicted participants' ratings of aggression. The results of the\nregression indicated the two predictors explained 35.8% of the variance (R\n=.38, F(2,55)=5.56, p<.01)."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.004,
+       "neutral": 0.996
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.004
+    },
+    {
+     "q": "Q14",
+     "statement": "This means that as one variable increases or decreases, the other does as well, which can make it difficult to determine the individual effect of each predictor on the outcome variable.",
+     "passages": [
+      {
+       "id": "u09-p016-0",
+       "unit": 9,
+       "page": 16,
+       "section": "4. Multicollinearity",
+       "text": "4. Multicollinearity\n\n• Correlation tells you what happens to the other variable\n\nas variable increases or decreases in value\n\n• Correlation values\n\n0.3-05 low correlation\n05-0-7 moderate\n0.7 and above is considered as a high value\n\n• Covariance"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.0,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q14",
+     "statement": "In terms of its impact on the model, multicollinearity can limit the size of R, which is a measure of how well the predictors explain the variability in the outcome variable.",
+     "passages": [
+      {
+       "id": "u08-p007-0",
+       "unit": 8,
+       "page": 7,
+       "section": "Assumptions of the linear model",
+       "text": "Assumptions of the linear model\n\nAssumptions of the model:\n\n4. Variable types: Predictors must be quantitative or categorical (two\ncategories)\n\n5. No perfect multicollinearity: bad because it limits the size of R\n\ncan conduct a variance inflation factor VIF: Bad news if it is greater\nthan 10 but a value of 1 already points to bias in regression.\n\n6. Non-zero variance: predictors should have variation"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.95,
+       "neutral": 0.05
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.95
+    },
+    {
+     "q": "Q14",
+     "statement": "A VIF value greater than 10 is considered problematic, but even a value of 1 can indicate potential bias in the regression model.",
+     "passages": [
+      {
+       "id": "u08-p007-0",
+       "unit": 8,
+       "page": 7,
+       "section": "Assumptions of the linear model",
+       "text": "Assumptions of the linear model\n\nAssumptions of the model:\n\n4. Variable types: Predictors must be quantitative or categorical (two\ncategories)\n\n5. No perfect multicollinearity: bad because it limits the size of R\n\ncan conduct a variance inflation factor VIF: Bad news if it is greater\nthan 10 but a value of 1 already points to bias in regression.\n\n6. Non-zero variance: predictors should have variation"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q15",
+     "statement": "MANOVA, or Multivariate Analysis of Variance, is essentially an extension of ANOVA.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.996,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.996
+    },
+    {
+     "q": "Q15",
+     "statement": "While ANOVA allows you to analyze one dependent variable at a time, MANOVA enables you to include multiple dependent variables in your model.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.998,
+       "neutral": 0.002
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.998
+    },
+    {
+     "q": "Q15",
+     "statement": "This is particularly useful when your dependent variables are related, either in the model you develop or as suggested by existing literature, such as when you're testing constructs like motivation, interest, and curiosity across different groups.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q15",
+     "statement": "One of the advantages of using MANOVA is that it helps avoid Type 1 errors, which occur when you incorrectly reject a true null hypothesis, by omitting repeated testing on the same variables.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.003,
+       "neutral": 0.997
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.003
+    },
+    {
+     "q": "Q15",
+     "statement": "Like ANOVA, MANOVA uses mean scores to test for group differences.",
+     "passages": [
+      {
+       "id": "u09-p004-0",
+       "unit": 9,
+       "page": 4,
+       "section": "An introduction to MANOVA",
+       "text": "An introduction to MANOVA\n\n• The Multivariate Analysis of Variance (MANOVA) is an extension of the\n\nANOVA\n\n• The ANOVA test allows us to select one Dependent Variable, but\n\nMANOVA enables us to use multiple Dependent Variables in our model\n\n• By omitting repeated testing on the same variables: No Type 1 Error\n\n• Wait! But what was the Type 1 Error?\n\n• Similar to ANOVA, the MANOVA test make use of the mean score to test\nfor group differences. It is suitable to test DVs that are linked to one\nanother either in the model you develop or in literature – e.g., testing\nmotivation, interest, and curiosity across different groups"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q16",
+     "statement": "A one-way MANOVA is used when you have one independent variable (IV) with two or more levels and multiple dependent variables (DVs).",
+     "passages": [
+      {
+       "id": "u09-p002-0",
+       "unit": 9,
+       "page": 2,
+       "section": "Agenda",
+       "text": "Agenda\n\n• An introduction to MANOVA\n\n• MANOVA assumptions\n\n• Testing for the assumptions\n\n• Conducting a MANOVA (one-way)\n\n• Reporting MANOVAs"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.009,
+       "entailment": 0.005,
+       "neutral": 0.986
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.005
+    },
+    {
+     "q": "Q16",
+     "statement": "This assumption is satisfied if the Box’s M test is non-significant at α =.001.",
+     "passages": [
+      {
+       "id": "u09-p022-0",
+       "unit": 9,
+       "page": 22,
+       "section": "6. Homogeneity of variance-covariance matrices",
+       "text": "6. Homogeneity of variance-covariance matrices\n\nLook at literature\nIn order to satisfy this assumption, the Box’s M value should be\nnon-significant at α = .001\n\n•\n\n•\n\n•"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.996,
+       "neutral": 0.004
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.996
+    },
+    {
+     "q": "Q16",
+     "statement": "Depending on these factors, you might choose different multivariate tests like Pillai’s Trace, Wilk’s Lambda, Hotelling’s Trace, or Roy’s Largest Root.",
+     "passages": [
+      {
+       "id": "u09-p024-0",
+       "unit": 9,
+       "page": 24,
+       "section": "7. Before you conduct a MANOVA",
+       "text": "7. Before you conduct a MANOVA\n\nBased on your data please select the `right`test\n\nMultivariate\nTest\n\nSample\nSize\n\nLevels\nof IVs\n\nUneven\nCell Sizes\n\nUnequal\nvariance\n\nNon-normal\nData\n\nCollinearity\n\nRobustness\n\nPillai’s Trace\n\nSmall\n\n> 2\n\nWilk’s\nLambda\n\nMedium to\nlarge\n\nHotelling’s\nTrace\n\nMedium to\nlarge\n\nRoy’s Largest\nRoot\n\nMedium to\nlarge\n\n> 2\n\n= 2\n\n> 2\n\nY\n\nN\n\nN\n\nN\n\nY\n\nN\n\nN\n\nN\n\nY\n\nN\n\nN\n\nN\n\nLow to\nmedium\n\nLow to\nmedium\n\nLow to\nmedium\n\nMedium to\nhigh"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.986,
+       "neutral": 0.014
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.986
+    },
+    {
+     "q": "Q16",
+     "statement": "After running the analysis, you'll need to report the results, which typically include the test statistic, degrees of freedom, and p-value.",
+     "passages": [
+      {
+       "id": "u09-p002-0",
+       "unit": 9,
+       "page": 2,
+       "section": "Agenda",
+       "text": "Agenda\n\n• An introduction to MANOVA\n\n• MANOVA assumptions\n\n• Testing for the assumptions\n\n• Conducting a MANOVA (one-way)\n\n• Reporting MANOVAs"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q17",
+     "statement": "In such cases, corrections like Greenhouse-Geisser or Huynh-Feldt are applied to adjust the degrees of freedom for the F-tests, which helps in maintaining the validity of the test results.",
+     "passages": [
+      {
+       "id": "u10-p017-0",
+       "unit": 10,
+       "page": 17,
+       "section": "The following decision chart allows us to",
+       "text": "Paired samples ANOVA in SPSS. Output\n\nThe following decision chart allows us to\ndecide which sphericity correction to pick\nwhen interpreting our ANOVA results (slide\n56).\n\nWe start by defining if our Mauchly’s test\nwas significant or not. If it was significant,\nwhich was our case (p = 0.047), we need to\nlook at the value of Greenhouse-Geisser\ncorrection. In our case, this value was\n0.871. Because this value is >0.75, then\naccording to our decision chart we should\ntake the “Huynh-Feldt” correction.\n\nP.S. The other side of the decision chart\nindicates the choice of using the\n“Greenhouse-Geisser results” or the\n“multivariate results”. These multivariate\nresults are the ones from the “Multivariate\nTests” table in our output (slide 52).\n\nImage: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/\n\n54"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q18",
+     "statement": "If this value is greater than 0.75, we should use the Huynh-Feldt correction.",
+     "passages": [
+      {
+       "id": "u10-p017-0",
+       "unit": 10,
+       "page": 17,
+       "section": "The following decision chart allows us to",
+       "text": "Paired samples ANOVA in SPSS. Output\n\nThe following decision chart allows us to\ndecide which sphericity correction to pick\nwhen interpreting our ANOVA results (slide\n56).\n\nWe start by defining if our Mauchly’s test\nwas significant or not. If it was significant,\nwhich was our case (p = 0.047), we need to\nlook at the value of Greenhouse-Geisser\ncorrection. In our case, this value was\n0.871. Because this value is >0.75, then\naccording to our decision chart we should\ntake the “Huynh-Feldt” correction.\n\nP.S. The other side of the decision chart\nindicates the choice of using the\n“Greenhouse-Geisser results” or the\n“multivariate results”. These multivariate\nresults are the ones from the “Multivariate\nTests” table in our output (slide 52).\n\nImage: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/\n\n54"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.969,
+       "neutral": 0.031
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.969
+    },
+    {
+     "q": "Q18",
+     "statement": "If the Greenhouse-Geisser value were less than or equal to 0.75, we would use the Greenhouse-Geisser results instead.",
+     "passages": [
+      {
+       "id": "u10-p017-0",
+       "unit": 10,
+       "page": 17,
+       "section": "The following decision chart allows us to",
+       "text": "Paired samples ANOVA in SPSS. Output\n\nThe following decision chart allows us to\ndecide which sphericity correction to pick\nwhen interpreting our ANOVA results (slide\n56).\n\nWe start by defining if our Mauchly’s test\nwas significant or not. If it was significant,\nwhich was our case (p = 0.047), we need to\nlook at the value of Greenhouse-Geisser\ncorrection. In our case, this value was\n0.871. Because this value is >0.75, then\naccording to our decision chart we should\ntake the “Huynh-Feldt” correction.\n\nP.S. The other side of the decision chart\nindicates the choice of using the\n“Greenhouse-Geisser results” or the\n“multivariate results”. These multivariate\nresults are the ones from the “Multivariate\nTests” table in our output (slide 52).\n\nImage: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/\n\n54"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.002,
+       "entailment": 0.001,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q18",
+     "statement": "Additionally, the decision chart also suggests using multivariate results from the \"Multivariate Tests\" table in the output as another option.",
+     "passages": [
+      {
+       "id": "u10-p017-0",
+       "unit": 10,
+       "page": 17,
+       "section": "The following decision chart allows us to",
+       "text": "Paired samples ANOVA in SPSS. Output\n\nThe following decision chart allows us to\ndecide which sphericity correction to pick\nwhen interpreting our ANOVA results (slide\n56).\n\nWe start by defining if our Mauchly’s test\nwas significant or not. If it was significant,\nwhich was our case (p = 0.047), we need to\nlook at the value of Greenhouse-Geisser\ncorrection. In our case, this value was\n0.871. Because this value is >0.75, then\naccording to our decision chart we should\ntake the “Huynh-Feldt” correction.\n\nP.S. The other side of the decision chart\nindicates the choice of using the\n“Greenhouse-Geisser results” or the\n“multivariate results”. These multivariate\nresults are the ones from the “Multivariate\nTests” table in our output (slide 52).\n\nImage: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/\n\n54"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q19",
+     "statement": "Non-parametric tests are also known as assumption-free tests.",
+     "passages": [
+      {
+       "id": "u11-p004-0",
+       "unit": 11,
+       "page": 4,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Non-parametric tests or the assumption-free tests\n\n• Do not make the assumptions that you find in parametric tests\n\n• Technically parametric tests are more powerful\n\n• The range of robust tests in SPSS is quite limited\n\n• Non-parametric tests a nice option to test a hypothesis by still\n\nclaiming to use a statistical test"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.996,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.996
+    },
+    {
+     "q": "Q19",
+     "statement": "This is because they do not require the assumptions that parametric tests do, such as normal distribution or homogeneity of variance.",
+     "passages": [
+      {
+       "id": "u11-p004-0",
+       "unit": 11,
+       "page": 4,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Non-parametric tests or the assumption-free tests\n\n• Do not make the assumptions that you find in parametric tests\n\n• Technically parametric tests are more powerful\n\n• The range of robust tests in SPSS is quite limited\n\n• Non-parametric tests a nice option to test a hypothesis by still\n\nclaiming to use a statistical test"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q19",
+     "statement": "It's nice to have these tests available, especially when your data doesn't meet those assumptions and there's no way to fix it.",
+     "passages": [
+      {
+       "id": "u11-p003-0",
+       "unit": 11,
+       "page": 3,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Sometimes the data you have violates the assumptions of parametric\n\ntests\n\n• No matter how hard you may want to try there is simply no way\n\npossible for you to fix the problems in your data\n\n• Good news though\n\n•The family of non-parametric tests is there for you"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.959,
+       "neutral": 0.041
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.959
+    },
+    {
+     "q": "Q20",
+     "statement": "Parametric tests are statistical tests that make specific assumptions about the distribution of the data, such as normality, homogeneity of variance, and the use of interval or ratio data.",
+     "passages": [
+      {
+       "id": "u06-p008-0",
+       "unit": 6,
+       "page": 8,
+       "section": "Parametric tests",
+       "text": "Parametric tests\n\nWe mentioned that we want normal data because we want (to use)\nparametric tests. But what are parametric tests?\n1. A parametric test is a statistical test which makes certain assumptions\n\nabout the distribution of the unknown parameter of interest and thus the\ntest statistic is valid under these assumptions.\n\n2. Parametric tests need to ensure four basic assumptions for the test to be\n\naccurate:\n\n1. A normally sampling distribution\n2. Homogeneity of variance\n3. Interval or ratio data\n4. Independence\n\nWhy do we want parametric tests? Because they have more power."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q20",
+     "statement": "These tests are powerful when their assumptions are met, which is why researchers often prefer them when possible.",
+     "passages": [
+      {
+       "id": "u06-p008-0",
+       "unit": 6,
+       "page": 8,
+       "section": "Parametric tests",
+       "text": "Parametric tests\n\nWe mentioned that we want normal data because we want (to use)\nparametric tests. But what are parametric tests?\n1. A parametric test is a statistical test which makes certain assumptions\n\nabout the distribution of the unknown parameter of interest and thus the\ntest statistic is valid under these assumptions.\n\n2. Parametric tests need to ensure four basic assumptions for the test to be\n\naccurate:\n\n1. A normally sampling distribution\n2. Homogeneity of variance\n3. Interval or ratio data\n4. Independence\n\nWhy do we want parametric tests? Because they have more power."
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.0,
+       "neutral": 1.0
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.0
+    },
+    {
+     "q": "Q20",
+     "statement": "For example, the t-test is a parametric test used to compare the means of two groups, assuming the data meets these criteria.",
+     "passages": [
+      {
+       "id": "u07-p021-0",
+       "unit": 7,
+       "page": 21,
+       "section": "T-test family of tests",
+       "text": "T-test family of tests\n\nT-test family of tests: When you want to find out if 2, and only 2, means are\nstatistically significantly different\n\nThis is a family of parametric tests!\n\nThree members of the t-test family: independent-samples, repeated-samples, and\none-sample\n\nRegardless if it’s an independent-samples, repeated-samples, or one-sample, any t-\ntest we do:\n\na)\n\nb)\n\nconsists of comparing the difference between 2 means, accounting for its variability,\nand\n\nthe output of such comparison will produce a t-value that can be charted on a t-\ndistribution and from this we will obtain a p-value to determine if our test was\nsignificant or not\n\nThe focus of this topic - independent-samples t-test, which we will see in\na moment, but before that we will learn about t-values and t-distributions.\n\n21"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.001,
+       "entailment": 0.001,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q20",
+     "statement": "However, sometimes your data might not meet these assumptions, no matter how much you try to adjust it.",
+     "passages": [
+      {
+       "id": "u11-p003-0",
+       "unit": 11,
+       "page": 3,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Sometimes the data you have violates the assumptions of parametric\n\ntests\n\n• No matter how hard you may want to try there is simply no way\n\npossible for you to fix the problems in your data\n\n• Good news though\n\n•The family of non-parametric tests is there for you"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.997,
+       "neutral": 0.003
+      }
+     ],
+     "label": "entailment",
+     "entailment": 0.997
+    },
+    {
+     "q": "Q20",
+     "statement": "They don't require the same strict assumptions about the data distribution, making them a flexible alternative when parametric test assumptions are violated.",
+     "passages": [
+      {
+       "id": "u11-p003-0",
+       "unit": 11,
+       "page": 3,
+       "section": "1. Introduction to non-parametric tests",
+       "text": "1. Introduction to non-parametric tests\n\n• Sometimes the data you have violates the assumptions of parametric\n\ntests\n\n• No matter how hard you may want to try there is simply no way\n\npossible for you to fix the problems in your data\n\n• Good news though\n\n•The family of non-parametric tests is there for you"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.0,
+       "entailment": 0.001,
+       "neutral": 0.999
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    },
+    {
+     "q": "Q20",
+     "statement": "For instance, the Wilcoxon rank-sum test and the Mann-Whitney test are non-parametric tests that can be used to test for differences between two groups, similar to the t-test, but without the need for normally distributed data.",
+     "passages": [
+      {
+       "id": "u11-p006-0",
+       "unit": 11,
+       "page": 6,
+       "section": "2. The Wilcoxon rank-sum test & Mann-Whitney test",
+       "text": "2. The Wilcoxon rank-sum test & Mann-Whitney test\n\n• If you want to test for differences between two groups\n\n• Similar logic to t-tests\n\n• Both tests will do the job for you"
+      }
+     ],
+     "nli": [
+      {
+       "contradiction": 0.002,
+       "entailment": 0.001,
+       "neutral": 0.998
+      }
+     ],
+     "label": "neutral",
+     "entailment": 0.001
+    }
+   ]
+  }
+ }
+}

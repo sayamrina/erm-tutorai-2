@@ -75,6 +75,8 @@ class Question(BaseModel):
     question: str = Field(min_length=1, max_length=800)
     unit: int | None = Field(default=None, ge=1, le=12)
     history: list[Turn] = Field(default_factory=list, max_length=12)
+    # "structured" is used by the evaluation script; the interface always asks with "prompt".
+    citations: str = Field(default="prompt", pattern="^(prompt|structured)$")
 
 
 class PracticeRequest(BaseModel):
@@ -138,7 +140,7 @@ def create_app(tutor: Tutor | None = None) -> FastAPI:
     @app.post("/api/ask")
     def ask(q: Question, request: Request):
         guard(request)
-        return sse(tutor.ask(q.question, q.unit, [t.model_dump() for t in q.history]))
+        return sse(tutor.ask(q.question, q.unit, [t.model_dump() for t in q.history], q.citations))
 
     @app.post("/api/practice/question")
     def practice_question(p: PracticeRequest, request: Request):

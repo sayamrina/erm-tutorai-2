@@ -1,0 +1,720 @@
+id,statement,cited passage(s),supported? (yes / partly / no)
+1,"Here, you can define and modify the properties of your variables, such as their name, type, width, decimals, and more.","Variables in Data View: Variables in Data View
+
+Name: name of the variable
+
+Type: type of variable (e.g.: string, numeric, comma, date)
+
+Width: number of digits displayed (for numeric values) or the number of characters (for a
+string)
+
+Decimals: number of decimal digits to be shown
+
+Columns: the width of the actual column in the Data View (not the number of digits).
+
+Align: the alignment of content of the cell.
+
+Measure: level of measurement for the variable nominal, ordinal, or scale (interval or
+ratio). This setting affects everything from graphs to internal algorithms for statistical
+analysis.
+
+Role: how the variable will be used in your analysis (e.g.: input for IV or target for DV)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+22
+---
+SPSS Environment: Data Editor window: SPSS Environment: Data Editor window
+
+Default window
+
+Displayed in spreadsheet format
+
+Contains 2 views: Data and Variable
+
+Data View: columns represent variables, rows represent
+cases
+
+Variable View: Shows information about variables present
+in the open data (but not the data itself)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+11",
+2,A p-value is a measure of the probability that an observed difference could have occurred just by random chance.,"P value: P value
+
+ A p-value is a measure of the probability that an observed difference could have
+occurred just by random chance. That’s why we want p-values to be as small as
+possible.
+
+ A p-value indicates evidence against the null hypothesis, indicating the probability
+
+the null is correct (and the results are random).
+
+ In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant
+result. It indicates strong evidence against the null hypothesis, as there is less
+than a 5% probability the null is correct (and the results are random).
+
+ Therefore, we reject the null hypothesis, and accept the alternative hypothesis.
+ However, this does not mean that there is a 95% probability that the research
+
+hypothesis is true. The p-value is conditional upon the null hypothesis being true
+is unrelated to the truth or falsity of the research hypothesis.",
+3,"For example, a study might report that two predictors explained 35.8% of the variance in participants' ratings of aggression, with specific statistical values provided to support this finding.","Reporting multiple regression: Reporting multiple regression
+
+Multiple regression analysis was used to test if the personality traits
+significantly predicted participants' ratings of aggression. The results of the
+regression indicated the two predictors explained 35.8% of the variance (R
+=.38, F(2,55)=5.56, p<.01).",
+4,"One of the advantages of using MANOVA is that it helps avoid Type 1 errors, which occur when you incorrectly reject a true null hypothesis, by omitting repeated testing on the same variables.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+5,The independent-samples t-test specifically compares the means of two independent groups to see if they are significantly different from each other.,"T-test family of tests: T-test family of tests
+
+T-test family of tests: When you want to find out if 2, and only 2, means are
+statistically significantly different
+
+This is a family of parametric tests!
+
+Three members of the t-test family: independent-samples, repeated-samples, and
+one-sample
+
+Regardless if it’s an independent-samples, repeated-samples, or one-sample, any t-
+test we do:
+
+a)
+
+b)
+
+consists of comparing the difference between 2 means, accounting for its variability,
+and
+
+the output of such comparison will produce a t-value that can be charted on a t-
+distribution and from this we will obtain a p-value to determine if our test was
+significant or not
+
+The focus of this topic - independent-samples t-test, which we will see in
+a moment, but before that we will learn about t-values and t-distributions.
+
+21",
+6,"This view is essential for setting up your data correctly before analysis, as it affects everything from graphs to the internal algorithms used for statistical analysis.","Variables in Data View: Variables in Data View
+
+Name: name of the variable
+
+Type: type of variable (e.g.: string, numeric, comma, date)
+
+Width: number of digits displayed (for numeric values) or the number of characters (for a
+string)
+
+Decimals: number of decimal digits to be shown
+
+Columns: the width of the actual column in the Data View (not the number of digits).
+
+Align: the alignment of content of the cell.
+
+Measure: level of measurement for the variable nominal, ordinal, or scale (interval or
+ratio). This setting affects everything from graphs to internal algorithms for statistical
+analysis.
+
+Role: how the variable will be used in your analysis (e.g.: input for IV or target for DV)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+22",
+7,"A VIF value greater than 10 is a red flag, indicating a high level of multicollinearity, although even a value of 1 can suggest some bias in the regression.","Assumptions of the linear model: Assumptions of the linear model
+
+Assumptions of the model:
+
+4. Variable types: Predictors must be quantitative or categorical (two
+categories)
+
+5. No perfect multicollinearity: bad because it limits the size of R
+
+can conduct a variance inflation factor VIF: Bad news if it is greater
+than 10 but a value of 1 already points to bias in regression.
+
+6. Non-zero variance: predictors should have variation",
+8,"By testing all dependent variables together, MANOVA reduces the risk of these errors that might arise from repeated testing on the same data.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+9,"While ANOVA allows you to analyze one dependent variable at a time, MANOVA enables you to include multiple dependent variables in your model.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+10,"While ANOVA is used when you have one dependent variable and you want to test for differences between groups, MANOVA allows you to test multiple dependent variables simultaneously.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+11,"Common corrections include the Greenhouse-Geisser and Huynh-Feldt corrections, which help to provide a more accurate F-ratio by adjusting for the lack of sphericity.","The following decision chart allows us to: Paired samples ANOVA in SPSS. Output
+
+The following decision chart allows us to
+decide which sphericity correction to pick
+when interpreting our ANOVA results (slide
+56).
+
+We start by defining if our Mauchly’s test
+was significant or not. If it was significant,
+which was our case (p = 0.047), we need to
+look at the value of Greenhouse-Geisser
+correction. In our case, this value was
+0.871. Because this value is >0.75, then
+according to our decision chart we should
+take the “Huynh-Feldt” correction.
+
+P.S. The other side of the decision chart
+indicates the choice of using the
+“Greenhouse-Geisser results” or the
+“multivariate results”. These multivariate
+results are the ones from the “Multivariate
+Tests” table in our output (slide 52).
+
+Image: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/
+
+54",
+12,"MANOVA, or Multivariate Analysis of Variance, is essentially an extension of ANOVA.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+13,"Power tests are commonly used for selection processes at the graduate, professional, or managerial level, where the ability to tackle complex problems is more important.","Types of tests: speed and power: Types of tests: speed and power
+
+Speed test
+
+Power test
+
+Distinguishing
+feature
+
+How many questions can
+be answered in the alloted
+time
+
+How well each (complex)
+question can be answered in
+the alloted time
+
+Items
+
+Expected
+answer
+
+Use case
+example
+
+Contains lots of (simple)
+items of limited scope
+
+Contains a small set of
+(complex) items of practically
+unlimited scope
+
+The methods to answer are
+clear
+
+The methods to answer are not
+obvious
+
+For selection processes at
+the administrative and
+clerical level
+
+For selection processes on
+graduate, professional or
+managerial level
+
+Adapted from the slides from Muhammad Foysal Mubarak, 2019
+
+15",
+14,"The process involves calculating a t-value, which is then used to find a p-value from a t-distribution to determine the significance of the results.","T-test family of tests: T-test family of tests
+
+T-test family of tests: When you want to find out if 2, and only 2, means are
+statistically significantly different
+
+This is a family of parametric tests!
+
+Three members of the t-test family: independent-samples, repeated-samples, and
+one-sample
+
+Regardless if it’s an independent-samples, repeated-samples, or one-sample, any t-
+test we do:
+
+a)
+
+b)
+
+consists of comparing the difference between 2 means, accounting for its variability,
+and
+
+the output of such comparison will produce a t-value that can be charted on a t-
+distribution and from this we will obtain a p-value to determine if our test was
+significant or not
+
+The focus of this topic - independent-samples t-test, which we will see in
+a moment, but before that we will learn about t-values and t-distributions.
+
+21",
+15,"If your factor is a category, then a level is a sub-category within that factor.","So far on ERM1…: So far on ERM1…
+
+Independent Variable: a.k.a. IV, factor, input variable, experimental variable, and predictor (variable). Is
+the variable that is manipulated in our experiment. We expect the IV to have an effect on the dependent
+variable
+
+Factors = IV
+
+Levels: the possible values within a factor. If a factor is a category, a level is a sub-category
+
+Dependent Variable: a.k.a. DV, outcome variable, response variable. Is the variable that we measure
+within our experiment. We expect the DV to be affected, or depend of, the independent variable
+
+Categorical Variable: Nominal scale variable with labels used for distinguishing the levels of a factor. The
+labels can be numerical but won’t be treated as such!
+
+Null hypothesis: Hypothesis that states no difference or change between factors and/or levels
+
+Alternative hypothesis: Hypothesis that states the existence of a difference or change between factors
+and/or levels. Can either be directional or non-directional.
+
+Significance level: a.k.a. p-value, measure of the probability that an observed difference could have
+occurred just by random chance. That’s why we want p-values to be as small as possible.
+
+5",
+16,"For instance, if the Greenhouse-Geisser value is greater than 0.75, the Huynh-Feldt correction is recommended, as was the case in the example where the value was 0.871.","The following decision chart allows us to: Paired samples ANOVA in SPSS. Output
+
+The following decision chart allows us to
+decide which sphericity correction to pick
+when interpreting our ANOVA results (slide
+56).
+
+We start by defining if our Mauchly’s test
+was significant or not. If it was significant,
+which was our case (p = 0.047), we need to
+look at the value of Greenhouse-Geisser
+correction. In our case, this value was
+0.871. Because this value is >0.75, then
+according to our decision chart we should
+take the “Huynh-Feldt” correction.
+
+P.S. The other side of the decision chart
+indicates the choice of using the
+“Greenhouse-Geisser results” or the
+“multivariate results”. These multivariate
+results are the ones from the “Multivariate
+Tests” table in our output (slide 52).
+
+Image: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/
+
+54",
+17,"It includes a smaller set of complex items where the methods to answer are not obvious, making it more appropriate for selection processes at the graduate, professional, or managerial level.","Types of tests: speed and power: Types of tests: speed and power
+
+Speed test
+
+Power test
+
+Distinguishing
+feature
+
+How many questions can
+be answered in the alloted
+time
+
+How well each (complex)
+question can be answered in
+the alloted time
+
+Items
+
+Expected
+answer
+
+Use case
+example
+
+Contains lots of (simple)
+items of limited scope
+
+Contains a small set of
+(complex) items of practically
+unlimited scope
+
+The methods to answer are
+clear
+
+The methods to answer are not
+obvious
+
+For selection processes at
+the administrative and
+clerical level
+
+For selection processes on
+graduate, professional or
+managerial level
+
+Adapted from the slides from Muhammad Foysal Mubarak, 2019
+
+15",
+18,"The assumptions for a two-way ANOVA include independence of observations, no outliers, normality of the dependent variable, and homogeneity of variances.","Two-way ANOVA. Assumptions in detail: Two-way ANOVA. Assumptions in detail
+Assumptions
+
+Num.
+
+Name
+
+Description
+
+How to check for that?
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+25
+
+Categorical
+independent variables
+
+Two or more IVs which are on a
+nominal/categorical scale level.
+
+Ensure the data from your independent variables
+corresponds to a nominal/categorical scale level
+
+Continuous dependent
+variable
+
+(Single) Dependent variable is either
+ratio or interval level.
+
+Ensure the data from your dependent variable
+corresponds to a ratio or interval level
+
+Independence of
+observations
+
+No outliers
+
+Normality
+
+The measurement of each observation
+was independent and didn’t affect the
+measurement of the other
+observations.
+
+No outliers on any of the levels of the
+IVs regarding the DV. Removal or
+correction of outliers.
+
+Data from the dependent variable
+should follow a normal distribution
+curve.
+
+When collecting the data, ensure each
+collected/measured datapoint is independent
+from each other
+
+Create boxplots for each level of your IVs
+measuring your DV. Visual inspection of the
+boxplots, ensure there are no indvidual outlier
+datapoints. If there are, exclude them from the
+analysis.
+
+Shapiro-Wilk test for the dependent variable.
+Test should be not-significant!
+
+Homogeneity of
+variances
+
+The variances of the 2 compared
+groups are statistically the same, if not
+very similar.
+
+Levene’s test for equality/homogeneity of
+variances. Test should be not-significant! Test is
+part of the output of the ANOVA analysis.",
+19,This consistency is key to ensuring that the findings are dependable and not just a one-time occurrence.,"QUALITY CRITERIA: OBJECTIVITY,: QUALITY CRITERIA: OBJECTIVITY,
+RELIABILITY, VALIDITY
+
+11",
+20,"For example, the t-test is a parametric test used to compare the means of two groups, assuming the data meets these criteria.","T-test family of tests: T-test family of tests
+
+T-test family of tests: When you want to find out if 2, and only 2, means are
+statistically significantly different
+
+This is a family of parametric tests!
+
+Three members of the t-test family: independent-samples, repeated-samples, and
+one-sample
+
+Regardless if it’s an independent-samples, repeated-samples, or one-sample, any t-
+test we do:
+
+a)
+
+b)
+
+consists of comparing the difference between 2 means, accounting for its variability,
+and
+
+the output of such comparison will produce a t-value that can be charted on a t-
+distribution and from this we will obtain a p-value to determine if our test was
+significant or not
+
+The focus of this topic - independent-samples t-test, which we will see in
+a moment, but before that we will learn about t-values and t-distributions.
+
+21",
+21,"In SPSS, each variable must have a unique name, and there are specific guidelines for naming them, such as keeping them up to 64 characters long and avoiding spaces and reserved keywords.","Variables: Variables
+
+Best practices for naming variables in SPSS:
+
+Each variable name must be unique
+Keep variable names up to 64 characters long.
+No spaces, you may include alphanumeric characters, non-
+punctuation characters. Also periods and underscores within (not
+at the end).
+You can use upper and lower cases (Camel case - e.g. typeOfcar).
+SPSS has reserved keywords, you can’t use them as a variable
+name (i.e.: ALL, AND, BY, NOT, OR, TO or WITH).
+You can add any type of character and quantity at the “Label”, but
+also keep it short to keep the output more “readable”.
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+21",
+22,"This can be particularly useful when your dependent variables are related, such as when you're examining constructs like motivation, interest, and curiosity across different groups.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+23,"For example, in a study, multiple regression might be used to see how different personality traits predict levels of aggression, as mentioned in your course.","Reporting multiple regression: Reporting multiple regression
+
+Multiple regression analysis was used to test if the personality traits
+significantly predicted participants' ratings of aggression. The results of the
+regression indicated the two predictors explained 35.8% of the variance (R
+=.38, F(2,55)=5.56, p<.01).",
+24,This makes them particularly useful when your data doesn't meet these assumptions and there's no way to fix the issues.,"1. Introduction to non-parametric tests: 1. Introduction to non-parametric tests
+
+• Sometimes the data you have violates the assumptions of parametric
+
+tests
+
+• No matter how hard you may want to try there is simply no way
+
+possible for you to fix the problems in your data
+
+• Good news though
+
+•The family of non-parametric tests is there for you",
+25,"In this course, you'll dive into various aspects of empirical research, such as basic empirical concepts, research philosophy, and experiment design.","What is ERM1 all about?: What is ERM1 all about?
+
+• Empirical Research Methods =
+
+systematic collection and analysis of data
+(i.e. observation and evidence)
+
+• In this course, you will learn about...
+
+• Basic empirical concepts and research philosophy
+• Developing an experiment design
+• Quality aspects of scientific texts
+• Designing questionnaires and measuring their validity & reliability
+• Using SPSS and preparing datasets
+• Parametric and non-parametric approaches to data analysis
+• Multi-level analysis
+• ...",
+26,"If this value is greater than 0.75, we should use the Huynh-Feldt correction.","The following decision chart allows us to: Paired samples ANOVA in SPSS. Output
+
+The following decision chart allows us to
+decide which sphericity correction to pick
+when interpreting our ANOVA results (slide
+56).
+
+We start by defining if our Mauchly’s test
+was significant or not. If it was significant,
+which was our case (p = 0.047), we need to
+look at the value of Greenhouse-Geisser
+correction. In our case, this value was
+0.871. Because this value is >0.75, then
+according to our decision chart we should
+take the “Huynh-Feldt” correction.
+
+P.S. The other side of the decision chart
+indicates the choice of using the
+“Greenhouse-Geisser results” or the
+“multivariate results”. These multivariate
+results are the ones from the “Multivariate
+Tests” table in our output (slide 52).
+
+Image: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/
+
+54",
+27,"You'll also learn about the quality aspects of scientific texts, designing questionnaires, and ensuring their validity and reliability.","What is ERM1 all about?: What is ERM1 all about?
+
+• Empirical Research Methods =
+
+systematic collection and analysis of data
+(i.e. observation and evidence)
+
+• In this course, you will learn about...
+
+• Basic empirical concepts and research philosophy
+• Developing an experiment design
+• Quality aspects of scientific texts
+• Designing questionnaires and measuring their validity & reliability
+• Using SPSS and preparing datasets
+• Parametric and non-parametric approaches to data analysis
+• Multi-level analysis
+• ...",
+28,"In the social sciences, a p-value of ≤ 0.05 is typically considered statistically significant, meaning there is strong evidence against the null hypothesis, as there is less than a 5% probability that the null is correct.","P value: P value
+
+ A p-value is a measure of the probability that an observed difference could have
+occurred just by random chance. That’s why we want p-values to be as small as
+possible.
+
+ A p-value indicates evidence against the null hypothesis, indicating the probability
+
+the null is correct (and the results are random).
+
+ In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant
+result. It indicates strong evidence against the null hypothesis, as there is less
+than a 5% probability the null is correct (and the results are random).
+
+ Therefore, we reject the null hypothesis, and accept the alternative hypothesis.
+ However, this does not mean that there is a 95% probability that the research
+
+hypothesis is true. The p-value is conditional upon the null hypothesis being true
+is unrelated to the truth or falsity of the research hypothesis.",
+29,"Like ANOVA, MANOVA uses mean scores to test for group differences.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+30,"Here, you can define and modify the properties of each variable, such as the variable name, type, width, decimals, columns, alignment, measure, and role.","Variables in Data View: Variables in Data View
+
+Name: name of the variable
+
+Type: type of variable (e.g.: string, numeric, comma, date)
+
+Width: number of digits displayed (for numeric values) or the number of characters (for a
+string)
+
+Decimals: number of decimal digits to be shown
+
+Columns: the width of the actual column in the Data View (not the number of digits).
+
+Align: the alignment of content of the cell.
+
+Measure: level of measurement for the variable nominal, ordinal, or scale (interval or
+ratio). This setting affects everything from graphs to internal algorithms for statistical
+analysis.
+
+Role: how the variable will be used in your analysis (e.g.: input for IV or target for DV)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+22",

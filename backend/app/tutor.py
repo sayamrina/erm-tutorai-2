@@ -47,6 +47,52 @@ QUESTION_NOTE = ("Answer the student question below as the ERM tutor, from the n
                  "- Do not add steps, examples or consequences that the passages do not contain. If the student needs "
                  f"them, put them at the end in a short part that begins with \"{GENERAL_MARKER},\".")
 
+# Structured citations: instead of asking for [n] markers in free text, the answer is a list of statements,
+# and the response schema makes every statement name its source, a passage number or "general".
+STRUCTURED_NOTE = ("Answer the student question below as the ERM tutor, from the numbered course passages, "
+                   "by filling the fields of the response format:\n"
+                   "- reflection: one short, warm sentence about the question, without facts.\n"
+                   "- statements: the explanation, one sentence per item, each with the number of the passage it comes "
+                   "from as source. Use \"general\" only for a sentence that no passage supports, and only if the student "
+                   "needs it; put such sentences last. Do not write [n] markers in the text.\n"
+                   "- follow_up: one question that keeps the student thinking.\n"
+                   "- off_topic: true only if the question is completely unrelated to academics, research methods or "
+                   "your role as ERM tutor; then leave the other fields empty.")
+
+
+def answer_schema(n_passages: int) -> dict:
+    sources = [str(n) for n in range(1, n_passages + 1)] + ["general"]
+    statement = {"type": "object", "additionalProperties": False, "required": ["text", "source"],
+                 "properties": {"text": {"type": "string"}, "source": {"type": "string", "enum": sources}}}
+    return {"type": "json_schema", "json_schema": {"name": "tutor_answer", "strict": True, "schema": {
+        "type": "object", "additionalProperties": False,
+        "required": ["off_topic", "reflection", "statements", "follow_up"],
+        "properties": {"off_topic": {"type": "boolean"}, "reflection": {"type": "string"},
+                       "statements": {"type": "array", "items": statement}, "follow_up": {"type": "string"}}}}}
+
+
+def render_structured(data: dict) -> str:
+    """Writes a structured answer in the same form as a prompted one: [n] before the full stop,
+    general knowledge last and introduced with the marker."""
+    if data.get("off_topic"):
+        return REFUSAL
+
+    def cite(text: str, source: str) -> str:
+        text = CITATION.sub("", text).strip()
+        end = text[-1] if text and text[-1] in ".!?" else "."
+        return f"{text.rstrip('.!? ')} [{source}]{end}"
+
+    course = [cite(s["text"], s["source"]) for s in data["statements"] if s["source"] != "general"]
+    general = [CITATION.sub("", s["text"]).strip() for s in data["statements"] if s["source"] == "general"]
+    if general:
+        first = general[0]
+        if len(first) > 1 and first[1].islower():
+            first = first[0].lower() + first[1:]
+        general[0] = f"{GENERAL_MARKER}, {first}"
+    parts = [data.get("reflection", "").strip(), *course, *general, data.get("follow_up", "").strip()]
+    return " ".join(p for p in parts if p)
+
+
 PRACTICE_QUESTION_PROMPT = """You write one practice question for a student of the Empirical Research Methods course.
 Base it only on the course passage below. The student should be able to answer it in two to four sentences.
 Ask about understanding (why, when, what is the difference), not about slide wording or names of people.
@@ -128,7 +174,8 @@ class Tutor:
                 meter.setdefault("first_token_ms", ms(start))
                 yield event.choices[0].delta.content
 
-    def ask(self, question: str, unit: int | None = None, history: list[dict] | None = None) -> Iterator[dict]:
+    def ask(self, question: str, unit: int | None = None, history: list[dict] | None = None,
+            citations: str = "prompt") -> Iterator[dict]:
         history = (history or [])[-4:]
         # When the student replies to the tutor's follow-up, the follow-up carries the topic.
         context_query = " ".join([m["content"][-300:] for m in history[-1:] if m["role"] == "assistant"] + [question])
@@ -149,11 +196,22 @@ class Tutor:
         # system prompt GPT-4o used the passages but often left out the [n] markers.
         messages = [{"role": "system", "content": TUTOR_PROMPT}]
         messages += [{"role": m["role"], "content": m["content"]} for m in history if m["role"] in ("user", "assistant")]
-        messages.append({"role": "user", "content": f"{QUESTION_NOTE}\n\nCourse passages:\n{format_passages(passages)}\n\nStudent question: {question}"})
+        note = STRUCTURED_NOTE if citations == "structured" else QUESTION_NOTE
+        messages.append({"role": "user", "content": f"{note}\n\nCourse passages:\n{format_passages(passages)}\n\nStudent question: {question}"})
         answer, meter = "", {}
-        for piece in self._stream(messages, meter):
-            answer += piece
-            yield {"type": "token", "text": piece}
+        if citations == "structured":
+            # Not streamed: the answer is a JSON object that is only usable once complete.
+            start = time.perf_counter()
+            response = self.client.chat.completions.create(
+                model=self.model, messages=messages, temperature=0, response_format=answer_schema(len(passages)))
+            meter["usage"] = getattr(response, "usage", None)
+            meter["first_token_ms"] = ms(start)
+            answer = render_structured(json.loads(response.choices[0].message.content))
+            yield {"type": "token", "text": answer}
+        else:
+            for piece in self._stream(messages, meter):
+                answer += piece
+                yield {"type": "token", "text": piece}
         yield trace_event(retrieval, retrieval_ms, meter, started, self.model)
         cited = cited_numbers(answer, len(passages))
         yield {"type": "done", "label": source_label(answer, cited), "cited": cited, "words": len(answer.split())}

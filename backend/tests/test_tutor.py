@@ -1,3 +1,4 @@
+import json
 import random
 
 from app.ingest import split_text
@@ -54,6 +55,26 @@ def test_ask_streams_sources_tokens_and_label(api, chat):
     text = "".join(e["text"] for e in ev if e["type"] == "token")
     assert text.startswith("Great question!")
     assert ev[-1] == {"type": "done", "label": "course", "cited": [1], "words": 14}
+
+
+def test_structured_citations_give_every_statement_a_source(api, chat):
+    chat.replies.append(json.dumps({"off_topic": False, "reflection": "Good question.", "follow_up": "Which test fits your data?",
+                                    "statements": [{"text": "ANOVA compares more than two means [3].", "source": "1"},
+                                                   {"text": "It uses the F-value", "source": "2"},
+                                                   {"text": "Effect sizes are often reported too.", "source": "general"}]}))
+    ev = events(api.post("/api/ask", json={"question": "What is an ANOVA?", "citations": "structured"}))
+    text = "".join(e["text"] for e in ev if e["type"] == "token")
+    assert text == ("Good question. ANOVA compares more than two means [1]. It uses the F-value [2]. "
+                    "Beyond the course slides, effect sizes are often reported too. Which test fits your data?")
+    schema = chat.calls[0]["response_format"]["json_schema"]["schema"]
+    assert schema["properties"]["statements"]["items"]["properties"]["source"]["enum"] == ["1", "2", "3", "4", "general"]
+    assert ev[-1]["label"] == "mixed" and ev[-1]["cited"] == [1, 2]
+
+
+def test_structured_off_topic_gives_the_refusal(api, chat):
+    chat.replies.append(json.dumps({"off_topic": True, "reflection": "", "statements": [], "follow_up": ""}))
+    ev = events(api.post("/api/ask", json={"question": "Best pizza in town?", "citations": "structured"}))
+    assert ev[-1]["label"] == "declined"
 
 
 def test_prompt_keeps_refusal_and_history(api, chat):

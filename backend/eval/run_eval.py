@@ -44,11 +44,11 @@ def statements(answer: str) -> list[str]:
     return [s for s in parts if re.search(r"\[\d+\]", s) or len(words(s)) >= 3]
 
 
-def ask(client: httpx.Client, url: str, question: str) -> dict:
+def ask(client: httpx.Client, url: str, question: str, citations: str = "prompt") -> dict:
     out = {"text": "", "passages": [], "trace": None, "done": None}
     # One session id per question, so the evaluation is not stopped by the per-session demo limit.
     headers = {"X-Session-Id": f"eval-{uuid.uuid4()}"}
-    with client.stream("POST", f"{url}/api/ask", json={"question": question}, headers=headers, timeout=120) as r:
+    with client.stream("POST", f"{url}/api/ask", json={"question": question, "citations": citations}, headers=headers, timeout=120) as r:
         r.raise_for_status()
         for line in r.iter_lines():
             if not line.startswith("data: "):
@@ -153,6 +153,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", default="http://127.0.0.1:8096")
     parser.add_argument("--name", help="file name for the results (default: today's date)")
+    parser.add_argument("--citations", default="prompt", choices=["prompt", "structured"],
+                        help="prompt: [n] markers asked for in the prompt; structured: a response schema that gives every statement a source")
     parser.add_argument("--only", help="comma-separated question ids for a quick check, e.g. Q6,Q9 (no files written)")
     args = parser.parse_args()
     items = json.loads((HERE / "questions.json").read_text(encoding="utf-8"))
@@ -162,11 +164,11 @@ def main():
     rows, off = [], []
     with httpx.Client() as client:
         for item in items["course"]:
-            rows.append(score(item, ask(client, args.url, item["text"])))
+            rows.append(score(item, ask(client, args.url, item["text"], args.citations)))
             print(rows[-1]["q"], rows[-1]["label"], rows[-1]["words"], f"{rows[-1]['cited_statements']}/{rows[-1]['statements']}")
             time.sleep(1)
         for item in items["off_topic"]:
-            off.append(score(item, ask(client, args.url, item["text"])))
+            off.append(score(item, ask(client, args.url, item["text"], args.citations)))
             print(off[-1]["q"], off[-1]["label"])
     if args.only:
         for r in rows:
@@ -176,7 +178,7 @@ def main():
     out = HERE / "results"
     out.mkdir(exist_ok=True)
     stamp = args.name or date.today().isoformat()
-    (out / f"{stamp}.json").write_text(json.dumps({"url": args.url, "summary": summary, "questions": rows, "off_topic": off},
+    (out / f"{stamp}.json").write_text(json.dumps({"url": args.url, "citations": args.citations, "summary": summary, "questions": rows, "off_topic": off},
                                                   ensure_ascii=False, indent=1), encoding="utf-8")
     (out / f"{stamp}.md").write_text(report(summary, rows, off, args.url), encoding="utf-8")
     print(json.dumps(summary, indent=1))

@@ -1,0 +1,4 @@
+transformers==5.20.2
+torch==2.14.1
+sentencepiece
+httpx==0.28.1
