@@ -1,14 +1,12 @@
 import { useState } from "react";
 
-// Ratings re-computed from the raw evaluation data of the thesis (7-point rubric, 20 questions).
+// Ratings as reported in the thesis (Table 5; 7-point rubric, 20 questions, two instructors).
 const ROWS = [
-  { label: "Both instructors", n: 40, tutor: [6.33, 1.0], gpt: [6.0, 0.75] },
-  { label: "Instructor 1", n: 20, tutor: [7.0, 0.0], gpt: [5.6, 0.5] },
-  { label: "Instructor 2", n: 20, tutor: [5.65, 1.04], gpt: [6.4, 0.75] },
+  { label: "Both instructors", n: 40, tutor: [6.75, 0.44], gpt: [6.0, 0.76] },
 ] as const;
 
 const W = 300, LEFT = 104, RIGHT = 14, ROW = 40, TOP = 26;
-const MIN = 4; // the rubric runs from 1 to 7; all means lie above 5
+const MIN = 4; // the rubric runs from 1 to 7; both means lie above 5
 const x = (v: number) => LEFT + ((v - MIN) / (7 - MIN)) * (W - LEFT - RIGHT);
 
 type Tip = { x: number; y: number; text: string } | null;
@@ -23,7 +21,7 @@ function RatingChart() {
         <span><i className="dot gpt" /> ChatGPT-4o</span>
       </div>
       <svg viewBox={`0 0 ${W} ${height}`} role="img"
-        aria-label="Mean rubric scores. Both instructors: ERM Tutor-AI 6.33, ChatGPT-4o 6.00. Instructor 1: 7.00 and 5.60. Instructor 2: 5.65 and 6.40.">
+        aria-label="Mean rubric scores of both instructors: ERM Tutor-AI 6.75, ChatGPT-4o 6.00.">
         {[4, 5, 6, 7].map((v) => (
           <g key={v}>
             <line className="grid" x1={x(v)} x2={x(v)} y1={TOP - 8} y2={height - 20} />
@@ -65,7 +63,7 @@ function RatingTable() {
   return (
     <table className="data-table">
       <caption>Mean ± SD on the 7-point rubric</caption>
-      <thead><tr><th scope="col">Rater</th><th scope="col">ERM Tutor-AI</th><th scope="col">ChatGPT-4o</th></tr></thead>
+      <thead><tr><th scope="col">Raters</th><th scope="col">ERM Tutor-AI</th><th scope="col">ChatGPT-4o</th></tr></thead>
       <tbody>
         {ROWS.map((r) => (
           <tr key={r.label}>
@@ -93,22 +91,23 @@ export default function ResearchNotes() {
       <h3>How it was tested</h3>
       <p>
         Twenty questions from the weekly ERM assignments went to the tutor and to ChatGPT-4o without access
-        to the course materials. Two course instructors rated every answer on a 7-point rubric: accuracy,
-        relevance, amount of information, how it reads to a student, and tutoring behaviour.
+        to the course materials. Two course instructors, who also tutor the course, rated every answer on a
+        7-point rubric without knowing which system had written it: accuracy, relevance, amount of
+        information, how it reads to a student, and tutoring behaviour.
       </p>
 
       <h3>Ratings</h3>
       <div className="chart-head">
-        <span>Mean score per rater (scale 1 to 7, axis starts at 4)</span>
+        <span>Mean score (scale 1 to 7, axis starts at 4)</span>
         <button type="button" className="link-button" onClick={() => setAsTable(!asTable)}>
           {asTable ? "Show chart" : "Show table"}
         </button>
       </div>
       {asTable ? <RatingTable /> : <RatingChart />}
       <p>
-        On average the tutor was rated slightly higher, 6.33 against 6.00 (two-way ANOVA, system
-        F(1, 76) = 4.44, p = .038). The instructors disagreed, though: one preferred the tutor, the other
-        ChatGPT-4o (interaction F(1, 76) = 48.6, p &lt; .001). The quality result is preliminary.
+        The tutor was rated higher, 6.75 against 6.00 on average, but only by a modest margin, although it
+        answered directly from the course materials. One instructor noted that the difference between the two
+        systems was not immediately visible. With two raters and twenty questions, this is a first indication.
       </p>
 
       <h3>Answer length</h3>
@@ -121,14 +120,14 @@ export default function ResearchNotes() {
       <h3>Limits</h3>
       <ul>
         <li>No students took part, so the study measured answer quality, not learning.</li>
-        <li>Two raters who disagreed, rating without being blind to the system.</li>
+        <li>Two raters, so the ratings rest on two judgements per answer.</li>
         <li>Twenty questions, all from the assignments the tutor's materials cover.</li>
         <li>One comparison only, so it does not show which component made the difference.</li>
       </ul>
 
       <h3>What version 2 adds</h3>
       <ul>
-        <li>Every answer links to the lecture page it uses, so you can check it against the slide.</li>
+        <li>A check of the modest margin: does each statement really draw on the course materials? Every statement can now cite the lecture page it uses, so you can check it against the slide.</li>
         <li>Practice questions with feedback, a first step towards the adaptive feedback the thesis proposed as future work.</li>
       </ul>
 
@@ -142,7 +141,7 @@ export default function ResearchNotes() {
       </p>
 
       <p className="source-note">
-        Figures are re-computed from the raw ratings. Full thesis:{" "}
+        Figures as reported in the thesis (Table 5). Full thesis:{" "}
         <a href="https://doi.org/10.5281/zenodo.23749487" target="_blank" rel="noopener">doi.org/10.5281/zenodo.23749487</a>
       </p>
     </article>

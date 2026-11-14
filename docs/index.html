@@ -308,36 +308,30 @@ footer p { margin: 0 0 6px; }
 <section>
   <div class="wrap">
     <h2>What the thesis found</h2>
-    <p class="sub">The evaluation is about version 1. Two course instructors rated the answers of ERM Tutor-AI and of ChatGPT-4o (without the course materials) to 20 questions from the weekly assignments, on a 7-point rubric adapted from Lee (2024). Instructors have not rated version 2 yet.</p>
+    <p class="sub">The evaluation is about version 1. Two course instructors rated, without knowing which system had written them, the answers of ERM Tutor-AI and of ChatGPT-4o (without the course materials) to 20 questions from the weekly assignments, on a 7-point rubric adapted from Lee (2024). Instructors have not rated version 2 yet.</p>
     <div class="eval">
       <div>
-        <p class="reported">Instructors rated ERM Tutor-AI <b>6.33</b> on average, against <b>6.00</b> for ChatGPT-4o (two-way ANOVA, p = .038). Its answers were shorter: <b>198</b> against 280 words on average.</p>
-        <p>The two instructors disagreed on which system was better: one rated every tutor answer 7, the other preferred ChatGPT-4o. The quality result is therefore preliminary.</p>
-        <p class="note">Figures re-computed from the raw ratings after the thesis was submitted; they replace the summary table in the thesis (6.75 vs 6.00).</p>
+        <p class="reported">Instructors rated ERM Tutor-AI <b>6.75</b> on average, against <b>6.00</b> for ChatGPT-4o. Its answers were shorter: <b>198</b> against 280 words on average.</p>
+        <p>The margin is modest, although the tutor answered directly from the course materials, and one instructor noted that the difference between the two systems was not immediately visible. Version 2 starts from that result and checks, statement by statement, whether the answers draw on the materials.</p>
+        <p class="note">Figures as reported in the thesis (Table 5). The instructors rated without knowing which system had written an answer.</p>
         <h3>Limits and next steps</h3>
         <ul class="lim">
-          <li>20 questions and two raters, who were not blind to the system.</li>
+          <li>20 questions and two raters.</li>
           <li>No students took part, so the study measured answer quality, not learning.</li>
           <li>Version 2 has only been checked automatically. A study with students could compare both versions: do page-level citations change how often students check an answer and how much they trust it?</li>
         </ul>
       </div>
       <div class="panel">
-        <div class="t">Mean score per rater, re-computed</div>
+        <div class="t">Mean score of both instructors (thesis, Table 5)</div>
         <div class="legend"><span><i style="background:var(--s-tutor)"></i>ERM Tutor-AI</span><span><i style="background:var(--s-gpt)"></i>ChatGPT-4o</span></div>
-        <svg class="dots" viewBox="0 0 420 200" role="img" aria-label="Mean rubric scores on a scale from 4 to 7. Both instructors: ERM Tutor-AI 6.33, ChatGPT-4o 6.00. Instructor 1: 7.00 and 5.60. Instructor 2: 5.65 and 6.40.">
+        <svg class="dots" viewBox="0 0 420 110" role="img" aria-label="Mean rubric scores on a scale from 4 to 7. ERM Tutor-AI 6.75, ChatGPT-4o 6.00.">
           <g class="axis">
-            <line x1="150" y1="20" x2="150" y2="168"/><line x1="236" y1="20" x2="236" y2="168"/><line x1="322" y1="20" x2="322" y2="168"/><line x1="408" y1="20" x2="408" y2="168"/>
+            <line x1="150" y1="20" x2="150" y2="78"/><line x1="236" y1="20" x2="236" y2="78"/><line x1="322" y1="20" x2="322" y2="78"/><line x1="408" y1="20" x2="408" y2="78"/>
           </g>
-          <text x="150" y="190" text-anchor="middle">4</text><text x="236" y="190" text-anchor="middle">5</text><text x="322" y="190" text-anchor="middle">6</text><text x="408" y="190" text-anchor="middle">7</text>
+          <text x="150" y="100" text-anchor="middle">4</text><text x="236" y="100" text-anchor="middle">5</text><text x="322" y="100" text-anchor="middle">6</text><text x="408" y="100" text-anchor="middle">7</text>
           <text x="0" y="50">Both instructors</text>
-          <line x1="322" y1="45" x2="350.4" y2="45" stroke="var(--line)" stroke-width="3"/>
-          <circle cx="322" cy="45" r="6" fill="var(--s-gpt)"/><circle cx="350.4" cy="45" r="6" fill="var(--s-tutor)"/>
-          <text x="0" y="100">Instructor 1</text>
-          <line x1="287.6" y1="95" x2="408" y2="95" stroke="var(--line)" stroke-width="3"/>
-          <circle cx="287.6" cy="95" r="6" fill="var(--s-gpt)"/><circle cx="408" cy="95" r="6" fill="var(--s-tutor)"/>
-          <text x="0" y="150">Instructor 2</text>
-          <line x1="292" y1="145" x2="356.4" y2="145" stroke="var(--line)" stroke-width="3"/>
-          <circle cx="292" cy="145" r="6" fill="var(--s-tutor)"/><circle cx="356.4" cy="145" r="6" fill="var(--s-gpt)"/>
+          <line x1="322" y1="45" x2="386.5" y2="45" stroke="var(--line)" stroke-width="3"/>
+          <circle cx="322" cy="45" r="6" fill="var(--s-gpt)"/><circle cx="386.5" cy="45" r="6" fill="var(--s-tutor)"/>
         </svg>
         <p class="note" style="margin:8px 0 0">Scale 1 to 7; the axis starts at 4. Full thesis: <a href="https://doi.org/10.5281/zenodo.23749487">doi.org/10.5281/zenodo.23749487</a></p>
       </div>

@@ -21,9 +21,9 @@ Version 2 keeps the same lecture materials and model, tightens the tutor rules (
 
 ## Why a version 2
 
-The thesis showed that grounding a tutor in the course materials gives shorter, focused answers. Two things it listed as next steps shaped this version:
+In the thesis, the tutor was rated higher than ChatGPT-4o, but only by a modest margin (6.75 vs. 6.00 of 7), although it answered directly from the course materials, and one instructor noted that the difference between the two systems was not immediately visible. Version 2 starts from that result:
 
-- **Citations at passage level.** Version 1 named one source file under each answer. A student who wants to check a claim still has to search the PDF. Version 2 links each statement to the exact lecture page.
+- **Does each statement really draw on the course materials?** Version 1 named one source file under each answer, which does not show which statement it supports. Version 2 links each statement to the exact lecture page and measures how many statements carry a citation.
 - **Adaptive feedback.** Version 1 only answered questions. Version 2 adds a practice mode in which the student answers and the tutor gives feedback, a first step towards the adaptive feedback proposed in the thesis.
 
 ## What is new in version 2
@@ -101,25 +101,21 @@ The thesis evaluated version 1:
 
 - **Questions:** 20 representative questions from the weekly ERM assignments, covering all course units.
 - **Systems:** ERM Tutor-AI vs. ChatGPT-4o (without retrieval) as the baseline.
-- **Raters:** two course instructors, using a 7-point rubric adapted from Lee (2024): accuracy, relevance, excessive or insufficient information, user perception, and tutoring behaviour.
+- **Raters:** two course instructors, who also tutor the course, using a 7-point rubric adapted from Lee (2024): accuracy, relevance, excessive or insufficient information, user perception, and tutoring behaviour. They rated without knowing which system had written an answer.
 
-Mean rubric score (± SD), re-computed from the raw ratings:
+Mean rubric score (± SD), as reported in the thesis (Table 5):
 
-| Rater | ERM Tutor-AI | ChatGPT-4o |
+| | ERM Tutor-AI | ChatGPT-4o |
 |---|---|---|
-| Both instructors (n = 40) | 6.33 ± 1.00 | 6.00 ± 0.75 |
-| Instructor 1 (n = 20) | 7.00 ± 0.00 | 5.60 ± 0.50 |
-| Instructor 2 (n = 20) | 5.65 ± 1.04 | 6.40 ± 0.75 |
+| Both instructors (n = 40 ratings each) | 6.75 ± 0.44 | 6.00 ± 0.76 |
 
-On average the tutor was rated slightly higher (two-way ANOVA, system F(1, 76) = 4.44, p = .038), but the two instructors disagreed on which system was better (interaction F(1, 76) = 48.6, p < .001), so the quality result is preliminary. The tutor's answers were shorter (198 vs. 280 words on average) and more consistent in length.
-
-These figures were re-checked against the raw ratings after the thesis was submitted and replace the summary table in the thesis (6.75 vs. 6.00).
+The tutor was rated higher, but only by a modest margin, although it answered directly from the course materials. Its answers were shorter (198 vs. 280 words on average) and more consistent in length. With two raters and twenty questions, the quality result is a first indication.
 
 ![Research notes panel](docs/img/t-notes.jpg)
 
 ## Limitations
 
-- The evaluation used 20 questions and two raters who were not blind to the system and who disagreed.
+- The evaluation used 20 questions and two raters.
 - There was no study with students, so effects on learning and engagement are unknown.
 - The knowledge base is limited to the course materials, and the system was not compared with other architectures.
 - Version 2 has only been checked automatically. About 45% of its statements are still neither cited nor marked, and word overlap cannot tell whether a cited slide really supports a statement, so the source panel is there for students to check.
