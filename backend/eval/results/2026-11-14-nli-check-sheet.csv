@@ -1,0 +1,654 @@
+id,statement,cited passage(s),supported? (yes / partly / no)
+1,"It requires certain assumptions to be met, such as having categorical independent variables, a continuous dependent variable, independence of observations, no outliers, normality, and homogeneity of variances.","Two-way ANOVA. Assumptions in detail: Two-way ANOVA. Assumptions in detail
+Assumptions
+
+Num.
+
+Name
+
+Description
+
+How to check for that?
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+25
+
+Categorical
+independent variables
+
+Two or more IVs which are on a
+nominal/categorical scale level.
+
+Ensure the data from your independent variables
+corresponds to a nominal/categorical scale level
+
+Continuous dependent
+variable
+
+(Single) Dependent variable is either
+ratio or interval level.
+
+Ensure the data from your dependent variable
+corresponds to a ratio or interval level
+
+Independence of
+observations
+
+No outliers
+
+Normality
+
+The measurement of each observation
+was independent and didn’t affect the
+measurement of the other
+observations.
+
+No outliers on any of the levels of the
+IVs regarding the DV. Removal or
+correction of outliers.
+
+Data from the dependent variable
+should follow a normal distribution
+curve.
+
+When collecting the data, ensure each
+collected/measured datapoint is independent
+from each other
+
+Create boxplots for each level of your IVs
+measuring your DV. Visual inspection of the
+boxplots, ensure there are no indvidual outlier
+datapoints. If there are, exclude them from the
+analysis.
+
+Shapiro-Wilk test for the dependent variable.
+Test should be not-significant!
+
+Homogeneity of
+variances
+
+The variances of the 2 compared
+groups are statistically the same, if not
+very similar.
+
+Levene’s test for equality/homogeneity of
+variances. Test should be not-significant! Test is
+part of the output of the ANOVA analysis.",
+2,Regression analysis is a statistical method used to examine the relationship between a dependent variable and one or more independent variables.,"Multiple regression: Multiple regression
+
+Methods of regression
+
+1. Hierarchical (block wise entry)
+
+1. Based on past research
+
+2. Forced entry
+
+3. Stepwise  methods: non very well liked by researchers
+
+1. Forward method:
+
+2. Stepwise method: each time a new predictor is added one is omitted that is considered
+
+unusual
+
+3. Backward method: add all predictors then calculating the contribution of each of them no
+
+removal
+
+4. Removal",
+3,"Similar to ANOVA, MANOVA uses mean scores to test for group differences.","An introduction to MANOVA: An introduction to MANOVA
+
+• The Multivariate Analysis of Variance (MANOVA) is an extension of the
+
+ANOVA
+
+• The ANOVA test allows us to select one Dependent Variable, but
+
+MANOVA enables us to use multiple Dependent Variables in our model
+
+• By omitting repeated testing on the same variables: No Type 1 Error
+
+• Wait! But what was the Type 1 Error?
+
+• Similar to ANOVA, the MANOVA test make use of the mean score to test
+for group differences. It is suitable to test DVs that are linked to one
+another either in the model you develop or in literature – e.g., testing
+motivation, interest, and curiosity across different groups",
+4,"However, standardized questionnaires may not capture the depth of information that unstructured interviews can provide, as they are limited to the questions asked.","Common ground: Questionnaires, tests,: Common ground: Questionnaires, tests,
+surveys, and instruments
+
+Measure: a procedure for obtaining data
+
+Construct: “abstract idea, underlying theme, or subject matter that one wishes to measure using survey
+questions” (Lavrakas, 2008, p. 133)
+
+Item: the basic building block (or element) of an instrument
+
+Scale: a group of items that are seek to measure one dimension of the variable of interest.
+
+(Research) Instrument: a tool or procedure used to measure (and quantify) subject characteristics
+
+Questionnaire: a written set of questions that a respondent completes typically used for research
+purposes which can be both qualitative as well as quantitative in nature.
+
+Test: an instrument meant to assess the ability to present a correct answer to a specific item/question, i.e.
+it measures performance
+
+Survey: a research method composed of instruments (e.g. tests, questionnaires, interviews) and it’s also
+a broader concept that describes content, method, and analysis of the data obtained from the instruments
+
+Lavrakas, P. J. (2008). Encyclopedia of survey research methods (Vols. 1-0). Sage Publications, Inc.
+https://dx.doi.org/10.4135/9781412963947.n91
+
+5",
+5,This window has two views: Data View and Variable View.,"SPSS Environment: Data Editor window: SPSS Environment: Data Editor window
+
+Default window
+
+Displayed in spreadsheet format
+
+Contains 2 views: Data and Variable
+
+Data View: columns represent variables, rows represent
+cases
+
+Variable View: Shows information about variables present
+in the open data (but not the data itself)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+11",
+6,"By following best practices for naming variables, such as avoiding spaces and using alphanumeric characters, you maintain clarity and prevent errors during analysis.","Variables: Variables
+
+Best practices for naming variables in SPSS:
+
+Each variable name must be unique
+Keep variable names up to 64 characters long.
+No spaces, you may include alphanumeric characters, non-
+punctuation characters. Also periods and underscores within (not
+at the end).
+You can use upper and lower cases (Camel case - e.g. typeOfcar).
+SPSS has reserved keywords, you can’t use them as a variable
+name (i.e.: ALL, AND, BY, NOT, OR, TO or WITH).
+You can add any type of character and quantity at the “Label”, but
+also keep it short to keep the output more “readable”.
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+21",
+7,"On the other hand, Variable View shows information about the variables themselves, not the data.","SPSS Environment: Data Editor window: SPSS Environment: Data Editor window
+
+Default window
+
+Displayed in spreadsheet format
+
+Contains 2 views: Data and Variable
+
+Data View: columns represent variables, rows represent
+cases
+
+Variable View: Shows information about variables present
+in the open data (but not the data itself)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+11",
+8,"Variance is calculated as the sum of the squared deviations from the mean, divided by the number of observations (N).","Measures – dispersion: Key definitions of variance and standard: Measures – dispersion: Key definitions of variance and standard
+deviation (SD)
+
+ Variance (s²) = sum of the squared deviations of the mean, divided by N
+ Standard deviation (SD or s) = square root of the variance. Normally
+
+reported in publications
+
+ The variance describes dispersion of data points from the mean value
+ It is the average of the squared differences from the mean
+
+Adapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020",
+9,"Interestingly, a dataset can have more than one mode, which is referred to as bimodal or multimodal if there are two or more frequent values.","Measures of central tendency- Understanding the MODE: Measures of central tendency- Understanding the MODE
+
+• Mode: the value that appears most frequently in a dataset
+• Specially useful for nominal and ordinal scale data
+• Several modes? Yes!
+• More than one mode is possible Visual depictions of modes: Single mode,
+
+bi modal, multi-modal (>2 peaks)
+
+Adapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020",
+10,"Before conducting a MANOVA, it's important to ensure that the assumptions are met, such as the homogeneity of variance-covariance matrices, which requires a non-significant Box’s M value at α =.001.","6. Homogeneity of variance-covariance matrices: 6. Homogeneity of variance-covariance matrices
+
+Look at literature
+In order to satisfy this assumption, the Box’s M value should be
+non-significant at α = .001
+
+•
+
+•
+
+•",
+11,"Empirical Research Methods involve the systematic collection and analysis of data, which includes observation and evidence.","What is ERM1 all about?: What is ERM1 all about?
+
+• Empirical Research Methods =
+
+systematic collection and analysis of data
+(i.e. observation and evidence)
+
+• In this course, you will learn about...
+
+• Basic empirical concepts and research philosophy
+• Developing an experiment design
+• Quality aspects of scientific texts
+• Designing questionnaires and measuring their validity & reliability
+• Using SPSS and preparing datasets
+• Parametric and non-parametric approaches to data analysis
+• Multi-level analysis
+• ...",
+12,"It's often reported in publications because it is in the same units as the data, making it more interpretable than variance.","Measures – dispersion: Key definitions of variance and standard: Measures – dispersion: Key definitions of variance and standard
+deviation (SD)
+
+ Variance (s²) = sum of the squared deviations of the mean, divided by N
+ Standard deviation (SD or s) = square root of the variance. Normally
+
+reported in publications
+
+ The variance describes dispersion of data points from the mean value
+ It is the average of the squared differences from the mean
+
+Adapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020",
+13,"Quality criteria in research include objectivity, reliability, and validity.","QUALITY CRITERIA: OBJECTIVITY,: QUALITY CRITERIA: OBJECTIVITY,
+RELIABILITY, VALIDITY
+
+11",
+14,"After running the analysis, you'll need to report the results, which typically include the test statistic, degrees of freedom, and p-value.","Agenda: Agenda
+
+• An introduction to MANOVA
+
+• MANOVA assumptions
+
+• Testing for the assumptions
+
+• Conducting a MANOVA (one-way)
+
+• Reporting MANOVAs",
+15,"Depending on these factors, you might choose different multivariate tests like Pillai’s Trace, Wilk’s Lambda, Hotelling’s Trace, or Roy’s Largest Root.","7. Before you conduct a MANOVA: 7. Before you conduct a MANOVA
+
+Based on your data please select the `right`test
+
+Multivariate
+Test
+
+Sample
+Size
+
+Levels
+of IVs
+
+Uneven
+Cell Sizes
+
+Unequal
+variance
+
+Non-normal
+Data
+
+Collinearity
+
+Robustness
+
+Pillai’s Trace
+
+Small
+
+> 2
+
+Wilk’s
+Lambda
+
+Medium to
+large
+
+Hotelling’s
+Trace
+
+Medium to
+large
+
+Roy’s Largest
+Root
+
+Medium to
+large
+
+> 2
+
+= 2
+
+> 2
+
+Y
+
+N
+
+N
+
+N
+
+Y
+
+N
+
+N
+
+N
+
+Y
+
+N
+
+N
+
+N
+
+Low to
+medium
+
+Low to
+medium
+
+Low to
+medium
+
+Medium to
+high",
+16,"In terms of how it affects the model, multicollinearity can limit the size of R, which is the coefficient of determination that tells us how well the predictors explain the variability of the outcome variable.","Assumptions of the linear model: Assumptions of the linear model
+
+Assumptions of the model:
+
+4. Variable types: Predictors must be quantitative or categorical (two
+categories)
+
+5. No perfect multicollinearity: bad because it limits the size of R
+
+can conduct a variance inflation factor VIF: Bad news if it is greater
+than 10 but a value of 1 already points to bias in regression.
+
+6. Non-zero variance: predictors should have variation",
+17,"This view is essential for setting up your data correctly before analysis, as it affects everything from graphs to the internal algorithms used for statistical analysis.","Variables in Data View: Variables in Data View
+
+Name: name of the variable
+
+Type: type of variable (e.g.: string, numeric, comma, date)
+
+Width: number of digits displayed (for numeric values) or the number of characters (for a
+string)
+
+Decimals: number of decimal digits to be shown
+
+Columns: the width of the actual column in the Data View (not the number of digits).
+
+Align: the alignment of content of the cell.
+
+Measure: level of measurement for the variable nominal, ordinal, or scale (interval or
+ratio). This setting affects everything from graphs to internal algorithms for statistical
+analysis.
+
+Role: how the variable will be used in your analysis (e.g.: input for IV or target for DV)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+22",
+18,"If your factor is a category, then a level is a sub-category within that factor.","So far on ERM1…: So far on ERM1…
+
+Independent Variable: a.k.a. IV, factor, input variable, experimental variable, and predictor (variable). Is
+the variable that is manipulated in our experiment. We expect the IV to have an effect on the dependent
+variable
+
+Factors = IV
+
+Levels: the possible values within a factor. If a factor is a category, a level is a sub-category
+
+Dependent Variable: a.k.a. DV, outcome variable, response variable. Is the variable that we measure
+within our experiment. We expect the DV to be affected, or depend of, the independent variable
+
+Categorical Variable: Nominal scale variable with labels used for distinguishing the levels of a factor. The
+labels can be numerical but won’t be treated as such!
+
+Null hypothesis: Hypothesis that states no difference or change between factors and/or levels
+
+Alternative hypothesis: Hypothesis that states the existence of a difference or change between factors
+and/or levels. Can either be directional or non-directional.
+
+Significance level: a.k.a. p-value, measure of the probability that an observed difference could have
+occurred just by random chance. That’s why we want p-values to be as small as possible.
+
+5",
+19,"In the social sciences, a p-value of ≤ 0.05 is typically considered statistically significant, meaning there is strong evidence against the null hypothesis, as there is less than a 5% probability that the null is correct.","P value: P value
+
+ A p-value is a measure of the probability that an observed difference could have
+occurred just by random chance. That’s why we want p-values to be as small as
+possible.
+
+ A p-value indicates evidence against the null hypothesis, indicating the probability
+
+the null is correct (and the results are random).
+
+ In social sciences, a p-value of ≤ 0.05 normally signifies a statistically significant
+result. It indicates strong evidence against the null hypothesis, as there is less
+than a 5% probability the null is correct (and the results are random).
+
+ Therefore, we reject the null hypothesis, and accept the alternative hypothesis.
+ However, this does not mean that there is a 95% probability that the research
+
+hypothesis is true. The p-value is conditional upon the null hypothesis being true
+is unrelated to the truth or falsity of the research hypothesis.",
+20,"In terms of its impact on the model, multicollinearity can limit the size of R, which is a measure of how well the predictors explain the variability in the outcome variable.","Assumptions of the linear model: Assumptions of the linear model
+
+Assumptions of the model:
+
+4. Variable types: Predictors must be quantitative or categorical (two
+categories)
+
+5. No perfect multicollinearity: bad because it limits the size of R
+
+can conduct a variance inflation factor VIF: Bad news if it is greater
+than 10 but a value of 1 already points to bias in regression.
+
+6. Non-zero variance: predictors should have variation",
+21,"Here, you can define and modify the properties of each variable, such as the variable name, type, width, decimals, columns, alignment, measure, and role.","Variables in Data View: Variables in Data View
+
+Name: name of the variable
+
+Type: type of variable (e.g.: string, numeric, comma, date)
+
+Width: number of digits displayed (for numeric values) or the number of characters (for a
+string)
+
+Decimals: number of decimal digits to be shown
+
+Columns: the width of the actual column in the Data View (not the number of digits).
+
+Align: the alignment of content of the cell.
+
+Measure: level of measurement for the variable nominal, ordinal, or scale (interval or
+ratio). This setting affects everything from graphs to internal algorithms for statistical
+analysis.
+
+Role: how the variable will be used in your analysis (e.g.: input for IV or target for DV)
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+22",
+22,"A VIF value greater than 10 is considered problematic, but even a value of 1 can indicate potential bias in the regression model.","Assumptions of the linear model: Assumptions of the linear model
+
+Assumptions of the model:
+
+4. Variable types: Predictors must be quantitative or categorical (two
+categories)
+
+5. No perfect multicollinearity: bad because it limits the size of R
+
+can conduct a variance inflation factor VIF: Bad news if it is greater
+than 10 but a value of 1 already points to bias in regression.
+
+6. Non-zero variance: predictors should have variation",
+23,"Standardized questionnaires are structured tools that provide a consistent way to collect data, making it easier to compare responses across different participants.","Common ground: Questionnaires, tests,: Common ground: Questionnaires, tests,
+surveys, and instruments
+
+Measure: a procedure for obtaining data
+
+Construct: “abstract idea, underlying theme, or subject matter that one wishes to measure using survey
+questions” (Lavrakas, 2008, p. 133)
+
+Item: the basic building block (or element) of an instrument
+
+Scale: a group of items that are seek to measure one dimension of the variable of interest.
+
+(Research) Instrument: a tool or procedure used to measure (and quantify) subject characteristics
+
+Questionnaire: a written set of questions that a respondent completes typically used for research
+purposes which can be both qualitative as well as quantitative in nature.
+
+Test: an instrument meant to assess the ability to present a correct answer to a specific item/question, i.e.
+it measures performance
+
+Survey: a research method composed of instruments (e.g. tests, questionnaires, interviews) and it’s also
+a broader concept that describes content, method, and analysis of the data obtained from the instruments
+
+Lavrakas, P. J. (2008). Encyclopedia of survey research methods (Vols. 1-0). Sage Publications, Inc.
+https://dx.doi.org/10.4135/9781412963947.n91
+
+5",
+24,"For instance, if the Greenhouse-Geisser value is greater than 0.75, the Huynh-Feldt correction is recommended, as was the case in the example where the value was 0.871.","The following decision chart allows us to: Paired samples ANOVA in SPSS. Output
+
+The following decision chart allows us to
+decide which sphericity correction to pick
+when interpreting our ANOVA results (slide
+56).
+
+We start by defining if our Mauchly’s test
+was significant or not. If it was significant,
+which was our case (p = 0.047), we need to
+look at the value of Greenhouse-Geisser
+correction. In our case, this value was
+0.871. Because this value is >0.75, then
+according to our decision chart we should
+take the “Huynh-Feldt” correction.
+
+P.S. The other side of the decision chart
+indicates the choice of using the
+“Greenhouse-Geisser results” or the
+“multivariate results”. These multivariate
+results are the ones from the “Multivariate
+Tests” table in our output (slide 52).
+
+Image: https://www.spss-tutorials.com/spss-repeated-measures-anova-example-2/
+
+54",
+25,"Specifically, they assume that the data follows a normal distribution, that there is homogeneity of variance, that the data is measured at the interval or ratio level, and that the observations are independent.","Parametric tests: Parametric tests
+
+We mentioned that we want normal data because we want (to use)
+parametric tests. But what are parametric tests?
+1. A parametric test is a statistical test which makes certain assumptions
+
+about the distribution of the unknown parameter of interest and thus the
+test statistic is valid under these assumptions.
+
+2. Parametric tests need to ensure four basic assumptions for the test to be
+
+accurate:
+
+1. A normally sampling distribution
+2. Homogeneity of variance
+3. Interval or ratio data
+4. Independence
+
+Why do we want parametric tests? Because they have more power.",
+26,"The median is the midpoint of a dataset and is a better representative of a sample when scores are extreme, as it is not sensitive to extreme scores.","Measures of central tendency- Understanding the MEDIAN: Measures of central tendency- Understanding the MEDIAN
+
+Median = midpoint
+The median is a better representative of a sample when scores are extreme, not
+sensitive to extreme scores
+
+How to determine the median:
+1. From all the values of a varaible in your dataset, order them from lowest to
+
+highest
+
+2. Once ordered, the median is the value in the middle
+
+If you have an odd amount of values, the value in the middle is the median
+a)
+b) b) If you have an even amount of values, the average of the two values in the
+
+middle is the median
+
+Adapted from the slides from Lena Schielke, Ghafiq Alkurdi and Chris Vizcarrondo, 2020",
+27,"Additionally, using labels can make your output more readable, which is particularly helpful when dealing with large datasets.","Variables: Variables
+
+Best practices for naming variables in SPSS:
+
+Each variable name must be unique
+Keep variable names up to 64 characters long.
+No spaces, you may include alphanumeric characters, non-
+punctuation characters. Also periods and underscores within (not
+at the end).
+You can use upper and lower cases (Camel case - e.g. typeOfcar).
+SPSS has reserved keywords, you can’t use them as a variable
+name (i.e.: ALL, AND, BY, NOT, OR, TO or WITH).
+You can add any type of character and quantity at the “Label”, but
+also keep it short to keep the output more “readable”.
+
+Adapted from the slides from Claudio Alves da Silva, 2020
+
+21",
+28,"Examples of parametric tests include the t-test and ANOVA, which are used to compare means between groups.","T-test family of tests: T-test family of tests
+
+T-test family of tests: When you want to find out if 2, and only 2, means are
+statistically significantly different
+
+This is a family of parametric tests!
+
+Three members of the t-test family: independent-samples, repeated-samples, and
+one-sample
+
+Regardless if it’s an independent-samples, repeated-samples, or one-sample, any t-
+test we do:
+
+a)
+
+b)
+
+consists of comparing the difference between 2 means, accounting for its variability,
+and
+
+the output of such comparison will produce a t-value that can be charted on a t-
+distribution and from this we will obtain a p-value to determine if our test was
+significant or not
+
+The focus of this topic - independent-samples t-test, which we will see in
+a moment, but before that we will learn about t-values and t-distributions.
+
+21",
+29,This means that the results should not be influenced by the researcher's personal feelings or opinions.,"QUALITY CRITERIA: OBJECTIVITY,: QUALITY CRITERIA: OBJECTIVITY,
+RELIABILITY, VALIDITY
+
+11",
+30,"Properly defined variables also facilitate the manipulation and analysis of statistical data, which is the primary purpose of using SPSS in a quantitative research context.","About SPSS: About SPSS
+
+• Statistical Package for the Social Sciences (aka IBM SPSS Statistics)
+• Software package used for manipulation and analysis of statistical data
+• In a quantitative
+research context:",

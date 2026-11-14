@@ -21,7 +21,8 @@ from pathlib import Path
 
 from .run_eval import statements
 
-MODEL = "cross-encoder/nli-deberta-v3-base"
+# The base cross-encoder labelled verbatim slide definitions "neutral" in a spot check; the large model did not.
+MODEL = "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli"
 HERE = Path(__file__).resolve().parent
 CITE = re.compile(r"\[(\d+)\]")
 
@@ -56,7 +57,7 @@ def classify(items: list[dict], batch: int = 8) -> None:
     for it in items:
         it["nli"] = []
     for (i, _), pr in zip(flat, probs):
-        items[i]["nli"].append({labels[k]: round(v, 3) for k, v in enumerate(pr)})
+        items[i]["nli"].append({labels[k].lower(): round(v, 3) for k, v in enumerate(pr)})
     for it in items:
         best = max(it["nli"], key=lambda d: d["entailment"])
         it["label"] = max(best, key=best.get)

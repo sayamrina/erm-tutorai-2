@@ -95,6 +95,32 @@ What this shows: with the version 1 rules the tutor stayed in the course but cit
 cd backend && ../.venv/bin/python -m eval.run_eval --url https://erm-tutorai-2.onrender.com
 ```
 
+### Citations built into generation, and an NLI check (14 November 2026)
+
+The two runs above left two open questions: prompt rules alone do not get every sentence cited, and word overlap cannot tell whether a cited slide supports a statement. Two additions address them:
+
+- **Structured citations** (`--citations structured`, used by the evaluation only; the app still answers with the version 2 rules). The answer is a JSON object whose schema lists the explanation as statements, and every statement must name its source: one of the retrieved passages or "general". A statement without a source cannot be written. The answer is then shown in the same form as before.
+- **NLI check** (`eval/nli_check.py`). For every cited statement, an NLI model that is independent of GPT-4o ([DeBERTa-v3-large, MNLI/FEVER/ANLI/LING/WANLI](https://huggingface.co/MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli)) judges whether the cited passage entails it. In a spot check the smaller `cross-encoder/nli-deberta-v3-base` labelled verbatim slide definitions as neutral, so the large model is used.
+
+Counted over the explanation, without the opening reflection, which carries no citation by design ([structured run](backend/eval/results/2026-11-14-structured.md), [NLI report](backend/eval/results/2026-11-14-nli-check.md)):
+
+| | Version 1 rules | Version 2 rules | Structured |
+|---|---|---|---|
+| Explanation statements per answer | 8.3 | 7.8 | 3.4 |
+| …with a citation | 27% | 46% | **97%** |
+| …neither cited nor marked as general knowledge | 73% | 39% | **0%** |
+| Cited statements the passage entails (NLI) | 57% | 76% | 65% |
+| Answers based on the course materials / off-topic declined | 20 of 20 / 3 of 3 | 20 of 20 / 3 of 3 | 20 of 20 / 3 of 3 |
+| Answer length | 190 words | 192 words | 101 words |
+
+What this shows: building the rule into generation gives every statement a source, which prompt rules did not achieve. It does not make the sources right: about a third of the forced citations are not entailed by the passage they cite, more than with the version 2 rules, and the answers are half as long. A label per statement is necessary for checking an answer, but the check itself still has to happen, for example by testing each citation before the answer is shown. NLI on terse slide text is strict: a look at the neutral cases found both real misses (a citation of an agenda slide, a claim the slide does not make) and statements the slide does support, so the entailment rates are a lower bound.
+
+```bash
+cd backend && ../.venv/bin/python -m eval.run_eval --url https://erm-tutorai-2.onrender.com --citations structured --name 2026-11-14-structured
+pip install -r eval/requirements-nli.txt   # torch and transformers, only for the NLI check
+python -m eval.nli_check eval/results/2026-11-03-v1-prompt.json eval/results/2026-11-03-v2-prompt.json eval/results/2026-11-14-structured.json --name 2026-11-14-nli-check
+```
+
 ## Evaluation of version 1 (thesis)
 
 The thesis evaluated version 1:
